@@ -1,0 +1,137 @@
+---
+---
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    const selectedFlag = document.getElementById('selectedFlagImage') as HTMLImageElement | null;
+    const optionsContainer = document.getElementById('optionsContainer');
+    const options = document.querySelectorAll('.option');
+    const customSelect = document.getElementById('customSelect');
+
+    if (selectedFlag && customSelect && optionsContainer) {
+      console.log(optionsContainer);
+      customSelect.addEventListener('click', function(event) {
+        if (event.target === this || event.target === selectedFlag) {
+          const isDisplayed = optionsContainer.style.display === 'block';
+          optionsContainer.style.display = isDisplayed ? 'none' : 'block';
+        }
+      });
+
+      options.forEach(option => {
+        option.addEventListener('click', function() {
+          const img = this.querySelector('img');
+          if (img) {
+            const imgSrc = img.src;
+            const imgAlt = img.alt;
+            selectedFlag.src = imgSrc;
+            selectedFlag.alt = imgAlt;
+          }
+
+          optionsContainer.style.display = 'none';
+          console.log('Valor seleccionado:', this.dataset.value);
+        });
+      });
+    } else {
+      console.error('No se encontraron elementos necesarios en el DOM.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+});
+
+</script>
+<style>
+  .custom-select {
+width: 40px;
+position: relative;
+}
+
+.selected-flag {
+border: 1px solid #ccc;
+padding: 5px;
+cursor: pointer;
+}
+
+.options-container {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+z-index: 1;
+background: white;
+border: 1px solid #ccc;
+}
+
+.option {
+padding: 5px;
+cursor: pointer;
+}
+
+.option:hover {
+background-color: #f0f0f0;
+}
+.hidden {
+display: none !important;
+}
+</style>
+<!-- START NavBar -->
+<nav class="bg-white p-4 fixed top-0 w-full z-10 dark:bg-gray-900">
+<div class="flex justify-between">
+  <!-- Izquierda (40%) -->
+  <div class="flex w-1/10">
+    <!-- Botón de Instagram con icono solo visible en dispositivos móviles -->
+    <button class="mr-4 text-orange-500 hover:text-orange-600 md:hidden">
+      <i class="fab fa-instagram"></i>
+    </button>
+  <!-- Botón de Instagram con texto visible en dispositivos de escritorio -->
+<button class="hidden md:inline-block text-orange-500 hover:text-orange-600">Instagram</button>
+
+  </div>
+  <div class="flex w-3/10">
+    <!-- Botón de Instagram con texto visible en dispositivos de escritorio -->
+    <button class="text-orange-500 hover:text-orange-600 md:inline-block"
+      >Docente</button
+    >
+  </div>
+  <!-- Centro (20%) -->
+  <div class="custom-select" id="customSelect">
+      <div class="selected-flag">
+        <img src="/images/countries/estados-unidos.svg" alt="Selected Country" 
+id="selectedFlagImage">
+      </div>
+      <div class="options-container" id="optionsContainer">
+        <div class="option" data-value="estados-unidos"><img src="/images/countries/estados-unidos.svg" alt="Estados Unidos"></div>
+        <div class="option" data-value="chile"><img src="/images/countries/chile.svg" alt="Chile"></div>
+        <div class="option" data-value="argentina"><img src="/images/countries/argentina.svg" alt="Argentina"></div>
+        <div class="option" data-value="colombia"><img src="/images/countries/colombia.svg" alt="Colombia"></div>
+        <div class="option" data-value="peru"><img src="/images/countries/peru.svg" alt="Peru"></div>
+        <div class="option" data-value="venezuela"><img src="/images/countries/venezuela.svg" alt="Venezuela"></div>
+      <div class="option" data-value="espana"><img src="/images/countries/espana.svg" alt="Espana"></div>
+        <!-- Agrega el resto de las opciones aquí -->
+      </div>
+    </div>             
+
+  <!-- Derecha (40%) -->
+  <div class="flex w-3/10 justify-end">
+    <!-- Botón de Alumnos y Facebook con texto visible en dispositivos de escritorio -->
+    <button class="text-orange-500 hover:text-orange-600 md:inline-block"
+      >Alumn@s</button
+    >
+  </div>
+  <div class="flex w-1/10">
+    <!-- Botón de Facebook con texto, visible solo en dispositivos de tamaño mediano hacia arriba -->
+    <button class="hidden md:inline-block text-orange-500 hover:text-orange-600">Facebook</button>
+    
+    <!-- Botón de Facebook con ícono, visible solo en dispositivos móviles -->
+    <button class="mr-4 text-orange-500 hover:text-orange-600 md:hidden">
+      <i class="fab fa-facebook"></i>
+    </button>
+  </div>
+  
+
+
+</div>
+</nav>
+<!-- END NavBar -->
