@@ -1,0 +1,247 @@
+<h2 class="text-2xl font-bold text-center mb-4">Calculadora de notas</h2>
+<div class="flex flex-col lg:flex-row items-center lg:items-start">
+    <div
+        class="w-full xl:w-1/5 lg:w-1/3 md:w-full sm:w-full mx-2 mb-4 xl:mb-0 p-4 shadow-lg h-full caja"
+    >
+        <div class="flex lg:block gap-4">
+            <div class="w-full flex">
+                <div class="flex w-full pr-1 items-center">
+                    <label
+                        for="nMax"
+                        class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                    >
+                        Nota máxima:
+                    </label>
+                    <input
+                        type="number"
+                        id="nMax"
+                        value="10"
+                        placeholder="10, 100..."
+                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    />
+                </div>
+            </div>
+            <div class="w-full flex">
+                <div class="flex w-full pr-1 items-center">
+                    <label
+                        for="nMin"
+                        class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                    >
+                        Nota mínima:
+                    </label>
+                    <input
+                        type="number"
+                        id="nMin"
+                        value="0"
+                        placeholder="0 ..."
+                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="flex lg:block gap-4">
+            <div class="w-full flex">
+                <div class="flex w-full pr-1 items-center">
+                    <label
+                        for="nApr"
+                        class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                    >
+                        Nota probación:
+                    </label>
+                    <input
+                        type="number"
+                        id="nApr"
+                        value="50"
+                        placeholder="50, 40, 60..."
+                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    />
+                </div>
+            </div>
+            <div class="w-full flex">
+                <div class="flex w-full pr-1 items-center">
+                    <label
+                        for="e"
+                        class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                    >
+                        Exigencia:
+                    </label>
+                    <input
+                        type="number"
+                        id="e"
+                        value="60"
+                        placeholder="60%, 70%..."
+                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="flex lg:block gap-4">
+            <div class="w-full flex">
+                <div class="flex w-full pr-1 items-center">
+                    <label
+                        for="pMax"
+                        class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                    >
+                        Puntaje máximo:
+                    </label>
+                    <input
+                        type="number"
+                        id="pMax"
+                        value="100"
+                        placeholder=" 100, 30..."
+                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    />
+                </div>
+            </div>
+            <div class="w-full flex">
+                <div class="flex w-full pr-1 items-center">
+                    <label
+                        for="incremento"
+                        class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                    >
+                        Incremento:
+                    </label>
+                    <input
+                        type="number"
+                        id="incremento"
+                        value="1"
+                        placeholder="1, 0.5..."
+                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="flex lg:block gap-4">
+            <div
+                class="w-full flex justify-center content-center items-center pb-1"
+            >
+                <div class="flex w-1/2 lg:w-full pr-1 items-center">
+                    <label
+                        for="orden"
+                        class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                    >
+                        Orden:
+                    </label>
+                    <select
+                        id="orden"
+                        class="w-1/2 mt-1 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                    >
+                        <option value="ascendente">Ascendente</option>
+                        <option value="descendente">Descendente</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="w-full mx-auto flex justify-center">
+            <button
+                id="calcularNotasBtn"
+                class="w-max py-2 px-4 bg-purple-500 text-white rounded text-xs sm:text-sm"
+                >Calcular</button
+            >
+        </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="w-full xl:w-4/5 lg:w-2/3 shadow-lg mx-2 caja">
+        <div id="resultados">
+            <!-- Las tablas generadas por JS irán aquí -->
+        </div>
+    </div>
+</div>
+<!-- END section -->
+
+<script type="module" async>
+    // Añadir event listener al botón de calcular
+    document
+        .getElementById("calcularNotasBtn")
+        .addEventListener("click", calcularNotas);
+
+    function calcularNotas() {
+        const nMax = parseFloat(document.getElementById("nMax").value);
+        const nMin = parseFloat(document.getElementById("nMin").value);
+        const nApr = parseFloat(document.getElementById("nApr").value);
+        const e = parseFloat(document.getElementById("e").value);
+        const pMax = parseFloat(document.getElementById("pMax").value);
+        const incremento = parseFloat(
+            document.getElementById("incremento").value,
+        );
+        const orden = document.getElementById("orden").value;
+
+        if (
+            isNaN(nMax) ||
+            isNaN(nMin) ||
+            isNaN(nApr) ||
+            isNaN(e) ||
+            isNaN(pMax) ||
+            isNaN(incremento)
+        ) {
+            alert(
+                "Por favor, rellena todos los campos con valores numéricos válidos.",
+            );
+            return;
+        }
+
+        let notas = [];
+        for (let p = 0; p <= pMax; p += incremento) {
+            let n;
+            if (p < e * pMax) {
+                n = ((nApr - nMin) / (e * pMax)) * p + nMin;
+            } else {
+                n = ((nMax - nApr) / (pMax * (1 - e))) * (p - e * pMax) + nApr;
+            }
+            notas.push({ puntaje: p, nota: Math.round(n * 10) / 10 });
+        }
+
+        if (orden === "descendente") {
+            notas.reverse();
+        }
+        const resultadosElement = document.getElementById("resultados");
+        resultadosElement.innerHTML = ""; // Limpiar resultados anteriores
+        resultadosElement.className = "flex flex-wrap wrap justify-center p-2"; // Ajusta aquí según necesites
+        const resultadosPorTabla = 10; // Cantidad de resultados por tabla
+
+        notas.forEach((nota, index) => {
+            if (index % resultadosPorTabla === 0) {
+                // Inicio de un nuevo grupo
+                // Crea el contenedor de la tabla con clases para manejar el ancho y margen
+                const tablaContenedor = document.createElement("div");
+                tablaContenedor.className = "flex justify-center"; // Ajusta el ancho por fila aquí
+                const tablaActual = document.createElement("div");
+                tablaActual.className =
+                    "overflow-hidden rounded-lg bg-white py-1 px-1"; // Clases de Tailwind
+                // Crear thead para cada nueva tabla
+                const thead = document.createElement("thead");
+                thead.className =
+                    "text-xs sm:text-sm md:text-xs lg:text-xs bg-purple-400 text-white rounded-tl-lg rounded-tr-lg pb-1"; // Clase de Tailwind para el fondo y color del texto del encabezado
+                const trHead = document.createElement("tr");
+                ["Ptje.", "Nota"].forEach((text) => {
+                    const th = document.createElement("th");
+                    th.textContent = text;
+                    th.className =
+                        "px-3 py-1 border text-xs sm:text-sm md:text-xs lg:text-xs text-center"; // Clases de Tailwind para padding y bordes
+                    trHead.appendChild(th);
+                });
+                thead.appendChild(trHead);
+                tablaActual.appendChild(thead);
+                const tbody = document.createElement("tbody");
+                tablaActual.appendChild(tbody);
+                resultadosElement.appendChild(tablaActual);
+            }
+            // Crear y añadir filas a la última tbody añadida al DOM
+            const tbody = resultadosElement.lastChild.lastChild;
+            const tr = document.createElement("tr");
+            tr.className = "border-b px-2 py-2 justify-center"; // Clase de Tailwind para el borde inferior
+            const tdPuntaje = document.createElement("td");
+            tdPuntaje.textContent = nota.puntaje;
+            tdPuntaje.className =
+                "px-1 py-1 border text-xs sm:text-sm md:text-xs lg:text-xs justify-center text-center"; // Clases de Tailwind para bordes y padding
+            const tdNota = document.createElement("td");
+            tdNota.textContent = nota.nota;
+            tdNota.className =
+                "px-1 py-1 border text-xs sm:text-sm md:text-xs lg:text-xs justify-center text-center"; // Clases de Tailwind para bordes y padding
+            tr.appendChild(tdPuntaje);
+            tr.appendChild(tdNota);
+            tbody.appendChild(tr);
+        });
+    }
+</script>

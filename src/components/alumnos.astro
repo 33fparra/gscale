@@ -1,8 +1,169 @@
----
-interface Props {
-	title: string;
-}
+<h2 class="text-2xl font-bold text-center mb-4">
+	Calculadora de Notas para Estudiantes
+</h2>
+<div class="flex flex-col items-center">
+	<div class="w-auto mx-2 mb-0 p-4 shadow-lg h-full caja">
+		<div class="flex gap-4">
+			<div class="w-full flex">
+				<div class="flex w-full pr-1 items-center">
+					<label
+						for="notaMaxima"
+						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+					>
+						Nota máxima:
+					</label>
+					<input
+						type="number"
+						id="notaMaxima"
+						placeholder="Nota máxima"
+						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					/>
+				</div>
+			</div>
+			<div class="w-full flex">
+				<div class="flex w-full pr-1 items-center">
+					<label
+						for="notaMinima"
+						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+					>
+						Nota mínima:
+					</label>
+					<input
+						type="number"
+						id="notaMinima"
+						placeholder="Nota mínima"
+						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="flex gap-4">
+			<div class="w-full flex">
+				<div class="flex w-full pr-1 items-center">
+					<label
+						for="notaEximir"
+						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+					>
+						Nota eximisión:
+					</label>
+					<input
+						type="number"
+						id="notaEximir"
+						placeholder="Nota para eximir examen"
+						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					/>
+				</div>
+			</div>
+			<div class="w-full flex">
+				<div class="flex w-full pr-1 items-center">
+					<label
+						for="notaAprobar"
+						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+					>
+						Nota aprobar:
+					</label>
+					<input
+						type="number"
+						id="notaAprobar"
+						placeholder="Nota para aprobar"
+						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					/>
+				</div>
+			</div>
+		</div>
+		<hr class="my-2" />
+		<div id="sections">
+			<div class="section" id="section1">
+				<div class="flex gap-4">
+					<div class="w-full flex">
+						<div class="flex w-full pr-1 items-center">
+							<label
+								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+							>
+								Nombre de sección:
+							</label>
+							<input
+								type="text"
+								placeholder="Nombre de la sección"
+								class="section-name w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+							/>
+						</div>
+					</div>
+					<div class="w-full flex">
+						<div class="flex w-full pr-1 items-center">
+							<label
+								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+							>
+								% de ponderación sección:
+							</label>
+							<input
+								type="text"
+								placeholder="% de ponderación de la sección"
+								class="section-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="flex gap-4 notes">
+					<div class="w-full flex">
+						<div class="flex w-full pr-1 items-center">
+							<label
+								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+							>
+								Nota:
+							</label>
+							<input
+								type="number"
+								placeholder="Nota"
+								class="note w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+							/>
+						</div>
+					</div>
+					<div class="w-full flex">
+						<div class="flex w-full pr-1 items-center">
+							<label
+								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+							>
+								% de ponderación:
+							</label>
+							<input
+								type="number"
+								placeholder="% de ponderación"
+								class="note-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="w-full mx-auto flex justify-center">
+					<button
+						class="w-max py-2 px-4 bg-purple-500 text-white rounded text-xs add-note-btn"
+					>
+						Agregar nota
+					</button>
+				</div>
+				<div class="section-average text-center font-bold mt-2">
+					Promedio de la sección: <span></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="w-full mx-auto flex justify-center">
+		<button
+			class="w-max py-2 px-4 mt-4 bg-purple-500 text-white rounded text-xs add-section-btn"
+		>
+			Agregar sección
+		</button>
+	</div>
+	<div class="w-full mx-auto flex justify-center">
+		<button
+			class="w-max py-2 px-4 bg-purple-500 text-white rounded text-xs calculate-grade-btn"
+		>
+			Calcular Nota Final
+		</button>
+	</div>
+	<div id="result" class="font-bold my-4"></div>
+	<div id="eximirse" class="font-bold my-4"></div>
+</div>
+<!-- END section -->
 
-const { title } = Astro.props;
----
-
+<script src="src/public/js/alumnos.js"></script>
