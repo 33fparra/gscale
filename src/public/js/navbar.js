@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const isDisplayed = optionsContainer.style.display === "block";
             optionsContainer.style.display = isDisplayed ? "none" : "block";
         }
+        // Evita que el evento de clic se propague al documento
+        event.stopPropagation();
     });
 
     // Añade manejadores de clics a cada opción
@@ -30,5 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // Opcional: Realizar acciones adicionales con el valor seleccionado
             console.log("Valor seleccionado:", this.dataset.value);
         });
+    });
+
+    // Agrega un manejador de clics al documento para ocultar las opciones si se hace clic fuera de ellas
+    document.addEventListener("click", function (event) {
+        const isInsideCustomSelect = event.target.closest("#customSelect");
+        if (!isInsideCustomSelect) {
+            optionsContainer.style.display = "none";
+        }
     });
 });
