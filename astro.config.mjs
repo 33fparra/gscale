@@ -10,7 +10,7 @@ export default defineConfig({
       }
     },
     optimizeDeps: {
-      include: ['./src/script/script.js']
+      include: ['./script/script.js']
     },
     plugins: [
       // Agrega cualquier complemento necesario aquí
