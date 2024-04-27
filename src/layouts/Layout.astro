@@ -1,0 +1,46 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		/>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+	<style is:global>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+		}
+
+		body {
+			background-color: #2a2f3b;
+		}
+
+		section {
+			font-family: Arial, sans-serif;
+			padding: 15px;
+		}
+
+		input,
+		select,
+		button {
+			margin: 5px 0;
+			transition: 0.5s ease all;
+		}
+	</style>
+</html>

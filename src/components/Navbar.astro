@@ -1,137 +1,142 @@
----
----
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  try {
-    const selectedFlag = document.getElementById('selectedFlagImage') as HTMLImageElement | null;
-    const optionsContainer = document.getElementById('optionsContainer');
-    const options = document.querySelectorAll('.option');
-    const customSelect = document.getElementById('customSelect');
-
-    if (selectedFlag && customSelect && optionsContainer) {
-      console.log(optionsContainer);
-      customSelect.addEventListener('click', function(event) {
-        if (event.target === this || event.target === selectedFlag) {
-          const isDisplayed = optionsContainer.style.display === 'block';
-          optionsContainer.style.display = isDisplayed ? 'none' : 'block';
-        }
-      });
-
-      options.forEach(option => {
-        option.addEventListener('click', function() {
-          const img = this.querySelector('img');
-          if (img) {
-            const imgSrc = img.src;
-            const imgAlt = img.alt;
-            selectedFlag.src = imgSrc;
-            selectedFlag.alt = imgAlt;
-          }
-
-          optionsContainer.style.display = 'none';
-          console.log('Valor seleccionado:', this.dataset.value);
-        });
-      });
-    } else {
-      console.error('No se encontraron elementos necesarios en el DOM.');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-});
-
-</script>
 <style>
+  nav {
+    background-color: #13151a;
+  }
   .custom-select {
-width: 40px;
-position: relative;
-}
+    width: 90px;
+    position: relative;
+  }
 
-.selected-flag {
-border: 1px solid #ccc;
-padding: 5px;
-cursor: pointer;
-}
+  .selected-flag {
+    padding: 5px;
+    cursor: pointer;
+  }
 
-.options-container {
-display: none;
-position: absolute;
-top: 100%;
-left: 0;
-right: 0;
-z-index: 1;
-background: white;
-border: 1px solid #ccc;
-}
+  .options-container {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 3px;
+    z-index: 1;
+    background: #212735;
+    border-radius: 10px;
+  }
 
-.option {
-padding: 5px;
-cursor: pointer;
-}
+  .option {
+    padding: 6px;
+    cursor: pointer;
+  }
 
-.option:hover {
-background-color: #f0f0f0;
-}
-.hidden {
-display: none !important;
-}
+  .option:hover {
+    border-radius: 10px;
+    background-color: #333b4e;
+  }
 </style>
-<!-- START NavBar -->
-<nav class="bg-white p-4 fixed top-0 w-full z-10 dark:bg-gray-900">
-<div class="flex justify-between">
-  <!-- Izquierda (40%) -->
-  <div class="flex w-1/10">
-    <!-- Botón de Instagram con icono solo visible en dispositivos móviles -->
-    <button class="mr-4 text-orange-500 hover:text-orange-600 md:hidden">
-      <i class="fab fa-instagram"></i>
-    </button>
-  <!-- Botón de Instagram con texto visible en dispositivos de escritorio -->
-<button class="hidden md:inline-block text-orange-500 hover:text-orange-600">Instagram</button>
-
-  </div>
-  <div class="flex w-3/10">
-    <!-- Botón de Instagram con texto visible en dispositivos de escritorio -->
-    <button class="text-orange-500 hover:text-orange-600 md:inline-block"
-      >Docente</button
-    >
-  </div>
-  <!-- Centro (20%) -->
-  <div class="custom-select" id="customSelect">
-      <div class="selected-flag">
-        <img src="/images/countries/estados-unidos.svg" alt="Selected Country" 
-id="selectedFlagImage">
+<nav class="px-4 fixed top-0 w-full z-10 shadow-xl">
+  <div class="max-w-6xl mx-auto p-2 sm:p-0">
+    <div class="flex justify-center p-2 sm:p-4">
+      <a
+        href="#"
+        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-left font-semibold hover:text-yellow-500 hidden md:inline-block"
+        >Instagram</a
+      >
+      <a
+        href="#"
+        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-left font-semibold hover:text-yellow-500 md:hidden"
+        ><i class="fab fa-instagram"></i></a
+      >
+      <a
+        href="#"
+        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-center font-semibold hover:text-yellow-500 md:inline-block"
+        >Docente</a
+      >
+      <div class="py-1 px-1 custom-select md:inline-block" id="customSelect">
+        <div class="selected-flag">
+          <img
+            src="src/public/img/peru.svg"
+            alt="Selected Country"
+            id="selectedFlagImage"
+          />
+        </div>
+        <div class="options-container" id="optionsContainer">
+          <div class="option" data-value="estados-unidos">
+            <img src="src/public/img/estados-unidos.svg" alt="Estados Unidos" />
+          </div>
+          <div class="option" data-value="chile">
+            <img src="src/public/img/chile.svg" alt="Chile" />
+          </div>
+          <div class="option" data-value="argentina">
+            <img src="src/public/img/argentina.svg" alt="Argentina" />
+          </div>
+          <div class="option" data-value="colombia">
+            <img src="src/public/img/colombia.svg" alt="Colombia" />
+          </div>
+          <div class="option" data-value="peru">
+            <img src="src/public/img/peru.svg" alt="Peru" />
+          </div>
+          <div class="option" data-value="venezuela">
+            <img src="src/public/img/venezuela.svg" alt="Venezuela" />
+          </div>
+          <div class="option" data-value="espana">
+            <img src="src/public/img/espana.svg" alt="Espana" />
+          </div>
+        </div>
       </div>
-      <div class="options-container" id="optionsContainer">
-        <div class="option" data-value="estados-unidos"><img src="/images/countries/estados-unidos.svg" alt="Estados Unidos"></div>
-        <div class="option" data-value="chile"><img src="/images/countries/chile.svg" alt="Chile"></div>
-        <div class="option" data-value="argentina"><img src="/images/countries/argentina.svg" alt="Argentina"></div>
-        <div class="option" data-value="colombia"><img src="/images/countries/colombia.svg" alt="Colombia"></div>
-        <div class="option" data-value="peru"><img src="/images/countries/peru.svg" alt="Peru"></div>
-        <div class="option" data-value="venezuela"><img src="/images/countries/venezuela.svg" alt="Venezuela"></div>
-      <div class="option" data-value="espana"><img src="/images/countries/espana.svg" alt="Espana"></div>
-        <!-- Agrega el resto de las opciones aquí -->
-      </div>
-    </div>             
-
-  <!-- Derecha (40%) -->
-  <div class="flex w-3/10 justify-end">
-    <!-- Botón de Alumnos y Facebook con texto visible en dispositivos de escritorio -->
-    <button class="text-orange-500 hover:text-orange-600 md:inline-block"
-      >Alumn@s</button
-    >
+      <a
+        href="#"
+        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-center font-semibold hover:text-yellow-500 md:inline-block"
+        >Alumnos(as)</a
+      >
+      <a
+        href="#"
+        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-right font-semibold hover:text-yellow-500 hidden md:inline-block"
+        >Facebook</a
+      >
+      <a
+        href="#"
+        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-right font-semibold hover:text-yellow-500 md:hidden"
+        ><i class="fab fa-facebook"></i></a
+      >
+    </div>
   </div>
-  <div class="flex w-1/10">
-    <!-- Botón de Facebook con texto, visible solo en dispositivos de tamaño mediano hacia arriba -->
-    <button class="hidden md:inline-block text-orange-500 hover:text-orange-600">Facebook</button>
-    
-    <!-- Botón de Facebook con ícono, visible solo en dispositivos móviles -->
-    <button class="mr-4 text-orange-500 hover:text-orange-600 md:hidden">
-      <i class="fab fa-facebook"></i>
-    </button>
-  </div>
-  
-
-
-</div>
 </nav>
 <!-- END NavBar -->
+
+<script type="module" async>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Selecciona elementos importantes del DOM
+    const selectedFlag = document.getElementById("selectedFlagImage");
+    const optionsContainer = document.getElementById("optionsContainer");
+    const options = document.querySelectorAll(".option");
+    const customSelect = document.getElementById("customSelect");
+
+    // Manejador de clics para el contenedor principal
+    customSelect.addEventListener("click", function (event) {
+      // Verifica si el clic fue directamente en la bandera seleccionada o en su contenedor
+      if (event.target === this || event.target === selectedFlag) {
+        // Alterna la visibilidad del contenedor de opciones
+        const isDisplayed = optionsContainer.style.display === "block";
+        optionsContainer.style.display = isDisplayed ? "none" : "block";
+      }
+    });
+
+    // Añade manejadores de clics a cada opción
+    options.forEach((option) => {
+      option.addEventListener("click", function () {
+        // Actualiza la imagen de la bandera seleccionada y su texto alternativo
+        const imgSrc = this.querySelector("img").src;
+        const imgAlt = this.querySelector("img").alt;
+        selectedFlag.src = imgSrc;
+        selectedFlag.alt = imgAlt;
+
+        // Esconde el contenedor de opciones después de seleccionar
+        optionsContainer.style.display = "none";
+
+        // Opcional: Realizar acciones adicionales con el valor seleccionado
+        console.log("Valor seleccionado:", this.dataset.value);
+      });
+    });
+  });
+</script>
