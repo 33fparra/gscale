@@ -1,3 +1,12 @@
+<style>
+    .reprobado {
+    color: #ff4f4f !important; /* Color rojo claro para las filas reprobadas */
+}
+.aprobado{
+    color: #081d7c !important;
+}
+
+</style>
 <h2 class="text-2xl font-bold text-center mb-4">Escala de Notas</h2>
 <div class="flex flex-col lg:flex-row items-center lg:items-start">
     <div
@@ -15,7 +24,7 @@
                     <input
                         type="number"
                         id="nMax"
-                        value="10"
+                        value="100"
                         placeholder="10, 100..."
                         class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     />
@@ -32,7 +41,7 @@
                     <input
                         type="number"
                         id="nMin"
-                        value="0"
+                        value="1"
                         placeholder="0 ..."
                         class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     />
@@ -150,6 +159,8 @@
 </div>
 <!-- END section -->
 
+
+
 <script type="module" async is:inline>
     // Añadir event listener al botón de calcular
     document
@@ -208,6 +219,7 @@
         const resultadosPorTabla = 10; // Cantidad de resultados por tabla
 
         notas.forEach((nota, index) => {
+            //console.log("Puntaje:", nota.puntaje, "Nota:", nota.nota, "Nota de aprobación:", nApr); // Agrega esto
             if (index % resultadosPorTabla === 0) {
                 // Inicio de un nuevo grupo
                 // Crea el contenedor de la tabla con clases para manejar el ancho y margen
@@ -234,16 +246,20 @@
                 tablaActual.appendChild(tbody);
                 resultadosElement.appendChild(tablaActual);
             }
+
             // Crear y añadir filas a la última tbody añadida al DOM
             const tbody = resultadosElement.lastChild.lastChild;
             const tr = document.createElement("tr");
-            tr.className = "border-b px-2 py-2 justify-center"; // Clase de Tailwind para el borde inferior
+
+            // tr.className = "border-b px-2 py-2 justify-center"; // Clase de Tailwind para el borde inferior
+
             const tdPuntaje = document.createElement("td");
             tdPuntaje.textContent = nota.puntaje;
             tdPuntaje.className =
                 "px-1 py-1 border text-xs sm:text-sm md:text-xs lg:text-xs justify-center text-center"; // Clases de Tailwind para bordes y padding
             const tdNota = document.createElement("td");
             tdNota.textContent = nota.nota;
+            // Revisa si la nota es menor que nApr
             tdNota.className =
                 "px-1 py-1 border text-xs sm:text-sm md:text-xs lg:text-xs justify-center text-center"; // Clases de Tailwind para bordes y padding
             tr.appendChild(tdPuntaje);
