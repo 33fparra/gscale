@@ -269,7 +269,7 @@
             const tdNota = document.createElement("td");
             tdNota.textContent = nota.nota;
             // Revisa si la nota es menor que nApr
-            if(nApr>parseInt(tdNota.textContent)){ tdNota.style="color:red"; /* rep="reprobado"; */ } else {tdNota.style="color:blue"}
+            if(nApr>parseInt(tdNota.textContent)){ tdNota.style="color:#d37700; font-weight:600;"; /* rep="reprobado"; */ } else {tdNota.style="color:#13224f; font-weight:600;"}
 
             tdNota.className =
                 "px-1 py-1 border text-xs sm:text-sm md:text-xs lg:text-xs justify-center text-center "; // Clases de Tailwind para bordes y padding
