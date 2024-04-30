@@ -1,13 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
+//import Layout from "../layouts/Layout.astro";
+import LayoutAlumno from "../layouts/LayoutAlumno.astro";
 import Navbar from "../components/Navbar.astro";
 import Alumnos from "../components/alumnos.astro";
 ---
 
-<Layout title="Calculadora de notas para estudiantes">
+<LayoutAlumno title="Calcula mi promedio">
     <Navbar />
     <section class="p-4 mt-20 container mx-auto">
         <Alumnos />
     </section>
-</Layout>
+</LayoutAlumno>
 <script src="/js/navbar.js" is:inline></script>

@@ -58,9 +58,9 @@ function addNote(button) {
     <div class="w-full flex">
         <div class="flex w-full pr-1 items-center">
             <label class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2">
-                % de ponderación:
+                Ponderación de la nota:
             </label>
-            <input type="number" placeholder="% de ponderación"
+            <input type="number" placeholder="%"
                 class="note-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
         </div>
     </div>
@@ -82,16 +82,16 @@ function addSection() {
                 <label class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2">
                 Nombre de sección:
                 </label>
-                <input type="text" placeholder="Nombre de la sección"
+                <input type="text" placeholder="Taller, Cátedra, etc..."
                     class="section-name w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
             </div>
         </div>
         <div class="w-full flex">
             <div class="flex w-full pr-1 items-center">
                 <label class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2">
-                    % de ponderación sección:
+                    Ponderación de la sección:
                 </label>
-                <input type="text" placeholder="% de ponderación de la sección"
+                <input type="text" placeholder="%"
                     class="section-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
             </div>
         </div>
@@ -109,19 +109,19 @@ function addSection() {
         <div class="w-full flex">
             <div class="flex w-full pr-1 items-center">
                 <label class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2">
-                    % de ponderación:
+                    Ponderación de la nota:
                 </label>
-                <input type="number" placeholder="% de ponderación"
+                <input type="number" placeholder="%"
                     class="note-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
             </div>
         </div>
     </div>
     <div class="w-full mx-auto flex justify-center gap-2">
         <button
-            class="w-max py-2 px-4 bg-purple-500 text-white rounded text-xs add-note-btn">
+            class="w-max py-2 px-4 text-yellow-500 hover:text-yellow-300 text-white rounded text-xs add-note-btn" style="background: #212735;">
             Agregar nota
         </button>
-        <button class="w-max py-2 px-3 bg-red-500 text-white rounded text-xs delete-note-btn">
+        <button class="w-max py-2 px-3 text-white rounded text-xs delete-note-btn" style="background: #eab308";>
             <i class="fas fa-trash"></i>
         </button>
     </div>
