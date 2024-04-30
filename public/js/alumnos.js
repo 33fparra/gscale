@@ -18,6 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".calculate-grade-btn").forEach((button) => {
         button.addEventListener("click", calculateFinalGrade);
     });
+
+    document.querySelectorAll(".delete-note-btn").forEach((button) => {
+        button.addEventListener("click", deleteLastNote);
+    });
+
+    document.querySelectorAll(".delete-section-btn").forEach((button) => {
+        button.addEventListener("click", deleteLastSection);
+    });
 });
 
 function addNoteEventHandler(parent) {
@@ -108,10 +116,13 @@ function addSection() {
             </div>
         </div>
     </div>
-    <div class="w-full mx-auto flex justify-center">
+    <div class="w-full mx-auto flex justify-center gap-2">
         <button
             class="w-max py-2 px-4 bg-purple-500 text-white rounded text-xs add-note-btn">
             Agregar nota
+        </button>
+        <button class="w-max py-2 px-3 bg-red-500 text-white rounded text-xs delete-note-btn">
+            <i class="fas fa-trash"></i>
         </button>
     </div>
     <div class="section-average text-center font-bold mt-2">Promedio de la sección: <span>0</span></div>
@@ -124,6 +135,10 @@ function addSection() {
         .addEventListener("click", () =>
             addNote(newSection.querySelector(".add-note-btn")),
         );
+
+    newSection
+        .querySelector(".delete-note-btn")
+        .addEventListener("click", deleteLastNote);
 }
 
 function addInputEventListeners(section) {
@@ -216,4 +231,29 @@ function calculateFinalGrade() {
             "La suma de las ponderaciones de las secciones no es 100%.";
         // document.getElementById("eximirse").textContent = ""; // Limpiar este campo por si acaso.
     }
+}
+
+function deleteLastNote(event) {
+    const section = event.target.closest(".section");
+    const notes = section.querySelectorAll(".notes");
+
+    if (notes.length === 1) {
+        alert("Debe haber al menos una nota en la sección.");
+        return;
+    }
+
+    const lastNote = notes[notes.length - 1];
+    lastNote.parentNode.removeChild(lastNote);
+    calculateSectionAverage(event);
+}
+
+
+function deleteLastSection() {
+    const sections = document.querySelectorAll(".section");
+    if (sections.length <= 1) {
+        alert("Debes tener al menos una sección.");
+        return;
+    }
+    const lastSection = sections[sections.length - 1];
+    lastSection.remove();
 }
