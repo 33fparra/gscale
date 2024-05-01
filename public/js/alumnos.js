@@ -58,7 +58,7 @@ function addNote(button) {
     <div class="w-full flex">
         <div class="flex w-full pr-1 items-center">
             <label class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2">
-                Ponderación de la nota:
+                Pondera la nota:
             </label>
             <input type="number" placeholder="%"
                 class="note-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
@@ -89,7 +89,7 @@ function addSection() {
         <div class="w-full flex">
             <div class="flex w-full pr-1 items-center">
                 <label class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2">
-                    Ponderación de la sección:
+                    Pondera la sección:
                 </label>
                 <input type="text" placeholder="%"
                     class="section-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
@@ -109,7 +109,7 @@ function addSection() {
         <div class="w-full flex">
             <div class="flex w-full pr-1 items-center">
                 <label class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2">
-                    Ponderación de la nota:
+                    Pondera la nota:
                 </label>
                 <input type="number" placeholder="%"
                     class="note-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
