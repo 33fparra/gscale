@@ -6,9 +6,10 @@ import Footer from "@/components/footer.astro";
 ---
 
 <Layout title="Escala de Notas">
-    <Navbar />
+    <Navbar slot="header" />
     <section class="p-4 mt-20 container mx-auto">
         <Docente />
     </section>
+    <Footer slot="footer" />
 </Layout>
 <script src="/js/navbar.js" is:inline></script>

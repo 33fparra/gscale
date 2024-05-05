@@ -1,5 +1,5 @@
 <style>
-  footer {
+  /* footer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -14,6 +14,21 @@
     display: flex;
     background: #1e212a;
     width: 100vw;
+    padding: 20px;
+    justify-content: center;
+  } */
+
+  footer {
+    background: #1e212a;
+    color: #CA8A04;
+    width: 100%;
+    height: auto; /* o puedes especificar una altura fija si prefieres */
+  }
+
+  .footer-bottom {
+    display: flex;
+    background: inherit;
+    width: 100%;
     padding: 20px;
     justify-content: center;
   }
@@ -48,7 +63,7 @@
 </style>
 <footer>
   <div class="footer-bottom">
-    <p>Copyright &copy <span id="year"></span> <a href="#">&nbsp;Revive SpA</a></p>
+    <p>Copyright &copy <span id="year"></span> <a href="https://agenciarevive.cl" target="_blank">&nbsp;Revive SpA</a></p>
  </div>
   <script is:inline>
     const year = document.getElementById("year");
