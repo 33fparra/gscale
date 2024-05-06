@@ -1,0 +1,72 @@
+<style>
+  /* footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1e212a;
+    height: auto;
+    width: 100vw;
+    color: #CA8A04;
+  }
+
+ .footer-bottom {
+    display: flex;
+    background: #1e212a;
+    width: 100vw;
+    padding: 20px;
+    justify-content: center;
+  } */
+
+  footer {
+    background: #1e212a;
+    color: #CA8A04;
+    width: 100%;
+    height: auto; /* o puedes especificar una altura fija si prefieres */
+  }
+
+  .footer-bottom {
+    display: flex;
+    background: inherit;
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+  }
+  .footer-bottom p {
+    display: flex;
+    float: left;
+    font-size: 15px;
+    word-spacing: 2px;
+    font-weight: 600;
+  }
+  .footer-bottom p a {
+    color: #CA8A04;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .footer-bottom span {
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 500px) {
+    .footer-bottom p {
+      float: none;
+    }
+    .footer-menu ul {
+      display: flex;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>
+<footer>
+  <div class="footer-bottom">
+    <p>Copyright &copy <span id="year"></span> <a href="https://agenciarevive.cl" target="_blank">&nbsp;Revive SpA</a></p>
+ </div>
+  <script is:inline>
+    const year = document.getElementById("year");
+    year.textContent = new Date().getFullYear();
+  </script>
+</footer>

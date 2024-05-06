@@ -13,6 +13,7 @@
 					<input
 						type="number"
 						id="notaMaxima"
+						value="70"
 						placeholder="Nota máxima"
 						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 					/>
@@ -29,6 +30,7 @@
 					<input
 						type="number"
 						id="notaMinima"
+						value="10"
 						placeholder="Nota mínima"
 						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 					/>
@@ -42,11 +44,12 @@
 						for="notaEximir"
 						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
 					>
-						Nota eximisión:
+						Nota eximirse:
 					</label>
 					<input
 						type="number"
 						id="notaEximir"
+						value="55"
 						placeholder="Nota para eximir examen"
 						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 					/>
@@ -63,6 +66,7 @@
 					<input
 						type="number"
 						id="notaAprobar"
+						value="40"
 						placeholder="Nota para aprobar"
 						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 					/>
@@ -82,7 +86,7 @@
 							</label>
 							<input
 								type="text"
-								placeholder="Nombre de la sección"
+								placeholder="Taller, Cátedra, etc..."
 								class="section-name w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 							/>
 						</div>
@@ -92,11 +96,11 @@
 							<label
 								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
 							>
-								% de ponderación sección:
+								Pondera la sección:
 							</label>
 							<input
 								type="text"
-								placeholder="% de ponderación de la sección"
+								placeholder="%"
 								class="section-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 							/>
 						</div>
@@ -122,11 +126,11 @@
 							<label
 								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
 							>
-								% de ponderación:
+								Pondera la nota:
 							</label>
 							<input
 								type="number"
-								placeholder="% de ponderación"
+								placeholder="%"
 								class="note-weight w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 							/>
 						</div>
@@ -139,7 +143,7 @@
 						Agregar nota
 					</button>
 					<button
-						class="w-max py-2 px-3 bg-red-500 text-white rounded text-xs delete-note-btn"
+						class="w-max py-2 px-3 bg-red-500 text-white rounded text-xs delete-note-btn" style="background: #eab308;"
 					>
 						<i class="fas fa-trash"></i>
 					</button>
@@ -157,7 +161,7 @@
 			Agregar sección
 		</button>
 		<button
-			class="w-max py-2 px-3 bg-red-500 text-white rounded text-xs delete-section-btn"
+			class="w-max py-2 px-3 bg-red-500 text-white rounded text-xs delete-section-btn" style="background: #eab308;"
 		>
 			<i class="fas fa-trash"></i>
 		</button>
