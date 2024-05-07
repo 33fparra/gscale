@@ -7,10 +7,10 @@ import Footer from "@/components/footer.astro";
 ---
 
 <LayoutAlumno title="Calcula mi promedio">
-    <Navbar />
+    <Navbar slot="header" />
     <section class="p-4 mt-20 container mx-auto">
         <Alumnos />
     </section>
-
+    <Footer slot="footer" />
 </LayoutAlumno>
 <script src="/js/navbar.js" is:inline></script>

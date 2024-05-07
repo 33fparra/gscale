@@ -1,14 +1,12 @@
-
 <style>
     .reprobado {
-    color: #ff4f4f !important; /* Color rojo claro para las filas reprobadas */
-}
-.aprobado{
-    color: #081d7c !important;
-}
-
+        color: #ff4f4f !important; /* Color rojo claro para las filas reprobadas */
+    }
+    .aprobado {
+        color: #081d7c !important;
+    }
 </style>
-<h2 class="text-2xl font-bold text-center mb-4">Escala de Notas</h2>
+<h2 class="text-2xl font-bold text-center mb-4 mt-4">Escala de notas</h2>
 <div class="flex flex-col lg:flex-row items-center lg:items-start">
     <div
         class="w-full xl:w-1/5 lg:w-1/3 md:w-full sm:w-full mx-2 mb-4 xl:mb-0 p-4 shadow-lg h-full caja"
@@ -145,8 +143,8 @@
         <div class="w-full mx-auto flex justify-center">
             <button
                 id="calcularNotasBtn"
-                class="w-max py-2 px-4 text-yellow-500 hover:text-yellow-300 text-white rounded text-xs sm:text-sm" style="background: #212735;"
-                >Calcular</button
+                class="w-max py-2 px-4 text-yellow-500 hover:text-yellow-300 text-white rounded text-xs sm:text-sm"
+                style="background: #212735;">Calcular</button
             >
         </div>
     </div>
@@ -161,7 +159,6 @@
 <!-- END section -->
 
 <script type="module" async is:inline>
-
     // Añadir event listener al botón de calcular
     document
         .getElementById("calcularNotasBtn")
@@ -171,7 +168,7 @@
         const nMax = parseFloat(document.getElementById("nMax").value);
         const nMin = parseFloat(document.getElementById("nMin").value);
         const nApr = parseFloat(document.getElementById("nApr").value);
-        const e = parseFloat(document.getElementById("e").value)/100;
+        const e = parseFloat(document.getElementById("e").value) / 100;
         const pMax = parseFloat(document.getElementById("pMax").value);
         const incremento = parseFloat(
             document.getElementById("incremento").value,
@@ -193,11 +190,13 @@
         }
 
         // Validar que la nota mínima y de aprobación no sean mayores que la nota máxima
-    if (nMin > nMax || nApr > nMax) {
-        alert('La nota mínima y la nota de aprobación no pueden ser mayores que la nota máxima.');
-        console.error('Debes cambiar la nota de Aprobación');
-        return;
-    }
+        if (nMin > nMax || nApr > nMax) {
+            alert(
+                "La nota mínima y la nota de aprobación no pueden ser mayores que la nota máxima.",
+            );
+            console.error("Debes cambiar la nota de Aprobación");
+            return;
+        }
 
         let notas = [];
         for (let p = 0; p <= pMax; p += incremento) {
@@ -253,23 +252,28 @@
 
             // tr.className = "border-b px-2 py-2 justify-center"; // Clase de Tailwind para el borde inferior
             // $("tbody").find("tr").find("td:last-child").each(function(){
-                // var nota=parseInt($(this).text);
-                // if(nApr>nota){
-                    // $(this).css("color","red");
-                //$(this).addClass("rojo");
-                // }
+            // var nota=parseInt($(this).text);
+            // if(nApr>nota){
+            // $(this).css("color","red");
+            //$(this).addClass("rojo");
+            // }
             // })
 
-            let rep="";//class
-            
+            let rep = ""; //class
+
             const tdPuntaje = document.createElement("td");
-            tdPuntaje.textContent = nota.puntaje;
+            tdPuntaje.textContent = nota.puntaje.toFixed(2);
             tdPuntaje.className =
                 "px-1 py-1 border text-xs sm:text-sm md:text-xs lg:text-xs justify-center text-center"; // Clases de Tailwind para bordes y padding
             const tdNota = document.createElement("td");
-            tdNota.textContent = nota.nota;
+            tdNota.textContent = nota.nota.toFixed(2);
             // Revisa si la nota es menor que nApr
-            if(nApr>parseInt(tdNota.textContent)){ tdNota.style="color:#d37700; font-weight:600;"; /* rep="reprobado"; */ } else {tdNota.style="color:#13224f; font-weight:600;"}
+            if (nApr > parseInt(tdNota.textContent)) {
+                tdNota.style =
+                    "color:#d37700; font-weight:600;"; /* rep="reprobado"; */
+            } else {
+                tdNota.style = "color:#13224f; font-weight:600;";
+            }
 
             tdNota.className =
                 "px-1 py-1 border text-xs sm:text-sm md:text-xs lg:text-xs justify-center text-center "; // Clases de Tailwind para bordes y padding
@@ -277,7 +281,7 @@
             tr.appendChild(tdNota);
             tbody.appendChild(tr);
         });
-
     }
 
+    calcularNotas();
 </script>
