@@ -32,8 +32,12 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
-    <slot />
+  <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+    <slot name="header"></slot>  <!-- Aquí se insertará el Navbar -->
+  <main style="flex: 1;">
+    <slot />  <!-- Aquí se insertará el contenido principal de cada página -->
+  </main>
+  <slot name="footer"></slot>  <!-- Aquí se insertará el Footer -->
   </body>
   <style is:global>
     * {
