@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         estados_unidos: {
             notaMaxima: 100,
-            notaMinima: 0,
+            notaMinima: 1,
             notaAprobacion: 60,
             exigencia: 90,
             puntajeMaximo: 100,
@@ -21,31 +21,31 @@ document.addEventListener("DOMContentLoaded", function () {
             notaMaxima: 10,
             notaMinima: 1,
             notaAprobacion: 4,
-            exigencia: 6,
-            puntajeMaximo: 10,
+            exigencia: 60,
+            puntajeMaximo: 100,
             incremento: 1
         },
         colombia: {
             notaMaxima: 5,
             notaMinima: 0,
             notaAprobacion: 2.5,
-            exigencia: 3.5,
-            puntajeMaximo: 5,
-            incremento: 0.1
+            exigencia: 60,
+            puntajeMaximo: 100,
+            incremento: 1
         },
         venezuela: {
             notaMaxima: 20,
-            notaMinima: 0,
+            notaMinima: 1,
             notaAprobacion: 7,
-            exigencia: 12,
-            puntajeMaximo: 20,
+            exigencia: 60,
+            puntajeMaximo: 100,
             incremento: 1
         },
         espana: {
             notaMaxima: 10,
-            notaMinima: 0,
+            notaMinima: 1,
             notaAprobacion: 5,
-            exigencia: 7,
+            exigencia: 70,
             puntajeMaximo: 10,
             incremento: 0.1
         },
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             notaMaxima: 20,
             notaMinima: 1,
             notaAprobacion: 10.5,
-            exigencia: 15,
+            exigencia: 60,
             puntajeMaximo: 20,
             incremento: 1
         }
