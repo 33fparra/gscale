@@ -11,33 +11,92 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- SEO inicia -->
-    <meta
-      name="description"
-      content="Calcula tus promedios académicos con ponderaciones de manera sencilla y rápida. Ideal para estudiantes que desean llevar un registro preciso de su rendimiento académico."
-    />
-    <meta
-      name="keywords"
-      content="calcular promedios, herramienta para estudiantes, promedios con ponderaciones, rendimiento académico"
-    />
-    <meta
-      property="og:description"
-      content="Utiliza nuestra herramienta para estudiantes y calcula tus promedios con ponderaciones, optimizando tu tiempo de estudio y rendimiento académico."
-    />
-    <!-- SEO termina -->
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <script is:inline>
+      const metaData = {
+        al: {
+          title: "Llogarit mesataren time - Mjet falas për studentë",
+          description: "Llogaritni mesataret tuaja akademike me ponderime në mënyrë të thjeshtë dhe të shpejtë. Ideal për studentët që dëshirojnë të mbajnë një regjistër të saktë të performancës akademike.",
+          keywords: "llogaritje mesataresh, mjete për studentë, mesatare me ponderime, performancë akademike",
+          ogTitle: "Llogarit mesataren time - Mjet falas për studentë",
+          ogDescription: "Përdorni mjetin tonë për studentë dhe llogaritni mesataret tuaja me ponderime, duke optimizuar kohën tuaj të studimit dhe performancën akademike."
+        },
+        en: {
+          title: "Calculate my average - Free tool for students",
+          description: "Calculate your academic averages with weightings in a simple and fast way. Ideal for students who want to keep an accurate record of their academic performance.",
+          keywords: "calculate averages, tools for students, weighted averages, academic performance",
+          ogTitle: "Calculate my average - Free tool for students",
+          ogDescription: "Use our student tool and calculate your weighted averages, optimizing your study time and academic performance."
+        },
+        es: {
+          title: "Calcula mi promedio - Herramienta gratuita para estudiantes",
+          description: "Calcula tus promedios académicos con ponderaciones de manera sencilla y rápida. Ideal para estudiantes que desean llevar un registro preciso de su rendimiento académico.",
+          keywords: "calcular promedios, herramienta para estudiantes, promedios con ponderaciones, rendimiento académico",
+          ogTitle: "Calcula mi promedio - Herramienta gratuita para estudiantes",
+          ogDescription: "Utiliza nuestra herramienta para estudiantes y calcula tus promedios con ponderaciones, optimizando tu tiempo de estudio y rendimiento académico."
+        }
+      };
+
+      async function applyMetaTags() {
+        let lang = 'es';
+        try {
+          const response = await fetch('http://ip-api.com/json/?fields=countryCode');
+          const data = await response.json();
+          if (data.countryCode === 'AL') lang = 'al';
+          else if (data.countryCode === 'US') lang = 'en';
+          else if (!['ES', 'CL', 'MX'].includes(data.countryCode)) lang = 'en';
+        } catch(e) {
+          lang = 'en';
+        }
+        
+        const meta = metaData[lang] || metaData.es;
+        
+        document.title = meta.title;
+        
+        let desc = document.querySelector('meta[name="description"]');
+        if (!desc) {
+          desc = document.createElement('meta');
+          desc.name = 'description';
+          document.head.appendChild(desc);
+        }
+        desc.content = meta.description;
+        
+        let keys = document.querySelector('meta[name="keywords"]');
+        if (!keys) {
+          keys = document.createElement('meta');
+          keys.name = 'keywords';
+          document.head.appendChild(keys);
+        }
+        keys.content = meta.keywords;
+        
+        let ogDesc = document.querySelector('meta[property="og:description"]');
+        if (!ogDesc) {
+          ogDesc = document.createElement('meta');
+          ogDesc.property = 'og:description';
+          document.head.appendChild(ogDesc);
+        }
+        ogDesc.content = meta.ogDescription;
+        
+        document.documentElement.lang = lang;
+      }
+      
+      applyMetaTags();
+    </script>
+    
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
   </head>
   <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
-    <slot name="header"></slot>  <!-- Aquí se insertará el Navbar -->
+    <slot name="header"></slot>
   <main style="flex: 1;">
-    <slot />  <!-- Aquí se insertará el contenido principal de cada página -->
+    <slot />
   </main>
-  <slot name="footer"></slot>  <!-- Aquí se insertará el Footer -->
+  <slot name="footer"></slot>
   </body>
   <style is:global>
     * {

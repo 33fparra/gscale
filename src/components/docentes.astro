@@ -20,13 +20,14 @@
                     >
                         Nota máxima:
                     </label>
-                    <input
-                        type="number"
-                        id="nMax"
-                        value="70"
-                        placeholder="10, 100..."
-                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                    />
+<input
+						type="number"
+						id="nMax"
+						value="70"
+						placeholder="70"
+						data-i18n="notaMaxima"
+						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					/>
                 </div>
             </div>
             <div class="w-full flex">
@@ -37,13 +38,14 @@
                     >
                         Nota mínima:
                     </label>
-                    <input
-                        type="number"
-                        id="nMin"
-                        value="10"
-                        placeholder="0 ..."
-                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                    />
+<input
+						type="number"
+						id="nMin"
+						value="10"
+						placeholder="10"
+						data-i18n="notaMinima"
+						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					/>
                 </div>
             </div>
         </div>
@@ -56,30 +58,33 @@
                     >
                         Nota aprobación:
                     </label>
-                    <input
-                        type="number"
-                        id="nApr"
-                        value="40"
-                        placeholder="50, 40, 60..."
-                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                    />
+<input
+						type="number"
+						id="nApr"
+						value="40"
+						placeholder="40"
+						data-i18n="notaAprobacion"
+						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					/>
                 </div>
             </div>
-            <div class="w-full flex">
+<div class="w-full flex">
                 <div class="flex w-full pr-1 items-center">
                     <label
                         for="e"
                         class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                        id="label-exigencia"
                     >
-                        Exigencia:
+                        Exigencia (%):
                     </label>
-                    <input
-                        type="number"
-                        id="e"
-                        value="60"
-                        placeholder="60%, 70%..."
-                        class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                    />
+<input
+						type="number"
+						id="e"
+						value="60"
+						placeholder="60"
+						data-i18n="exigencia"
+						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+					/>
                 </div>
             </div>
         </div>
@@ -96,7 +101,8 @@
                         type="number"
                         id="pMax"
                         value="100"
-                        placeholder=" 100, 30..."
+                        placeholder="100"
+                        data-i18n="puntajeMaximo"
                         class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     />
                 </div>
@@ -113,7 +119,8 @@
                         type="number"
                         id="incremento"
                         value="1"
-                        placeholder="1, 0.5..."
+                        placeholder="1"
+                        data-i18n="incremento"
                         class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     />
                 </div>
@@ -127,6 +134,7 @@
                     <label
                         for="orden"
                         class="text-xs sm:text-sm block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+                        id="label-orden"
                     >
                         Orden:
                     </label>
@@ -134,8 +142,8 @@
                         id="orden"
                         class="w-1/2 mt-1 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs sm:text-sm text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     >
-                        <option value="ascendente">Ascendente</option>
-                        <option value="descendente">Descendente</option>
+                        <option value="ascendente">↑ Ascendente</option>
+                        <option value="descendente">↓ Descendente</option>
                     </select>
                 </div>
             </div>
@@ -175,6 +183,33 @@
         );
         const orden = document.getElementById("orden").value;
 
+        // Obtener traducciones para mensajes de error
+        const traduccionesError = {
+            al: {
+                errorCampos: "Ju lutem plotësoni të gjitha fushat me vlera numerike të vlefshme.",
+                errorMinimo: "Nota minimale dhe nota e kalimit nuk mund të jenë më të mëdha se nota maksimale."
+            },
+            en: {
+                errorCampos: "Please fill in all fields with valid numeric values.",
+                errorMinimo: "The minimum grade and passing grade cannot be greater than the maximum grade."
+            },
+            es: {
+                errorCampos: "Por favor, rellena todos los campos con valores numéricos válidos.",
+                errorMinimo: "La nota mínima y la nota de aprobación no pueden ser mayores que la nota máxima."
+            }
+        };
+        
+        let lang = 'es';
+        try {
+            const savedLang = localStorage.getItem('gscale_idioma');
+            if (savedLang) lang = savedLang;
+            else if (document.documentElement.lang && ['al','en','es'].includes(document.documentElement.lang)) {
+                lang = document.documentElement.lang;
+            }
+        } catch(e) {}
+        
+        const err = traduccionesError[lang] || traduccionesError.es;
+
         if (
             isNaN(nMax) ||
             isNaN(nMin) ||
@@ -183,18 +218,13 @@
             isNaN(pMax) ||
             isNaN(incremento)
         ) {
-            alert(
-                "Por favor, rellena todos los campos con valores numéricos válidos.",
-            );
+            alert(err.errorCampos);
             return;
         }
 
         // Validar que la nota mínima y de aprobación no sean mayores que la nota máxima
         if (nMin > nMax || nApr > nMax) {
-            alert(
-                "La nota mínima y la nota de aprobación no pueden ser mayores que la nota máxima.",
-            );
-            console.error("Debes cambiar la nota de Aprobación");
+            alert(err.errorMinimo);
             return;
         }
 
@@ -232,7 +262,24 @@
                 thead.className =
                     "text-xs sm:text-sm md:text-xs lg:text-xs bg-purple-400 text-white rounded-tl-lg rounded-tr-lg pb-1"; // Clase de Tailwind para el fondo y color del texto del encabezado
                 const trHead = document.createElement("tr");
-                ["Ptje.", "Nota"].forEach((text) => {
+                // Obtener traducciones para la tabla
+        const traduccionesTabla = {
+            al: { ptje: "Pk", nota: "Nota" },
+            en: { ptje: "Scr", nota: "Grade" },
+            es: { ptje: "Ptje", nota: "Nota" }
+        };
+        
+        let lang = 'es';
+        try {
+            const savedLang = localStorage.getItem('gscale_idioma');
+            if (savedLang) lang = savedLang;
+            else if (document.documentElement.lang && ['al','en','es'].includes(document.documentElement.lang)) {
+                lang = document.documentElement.lang;
+            }
+        } catch(e) {}
+        
+        const t = traduccionesTabla[lang] || traduccionesTabla.es;
+        [t.ptje, t.nota].forEach((text) => {
                     const th = document.createElement("th");
                     th.textContent = text;
                     th.className =

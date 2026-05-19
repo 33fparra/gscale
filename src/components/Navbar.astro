@@ -35,73 +35,98 @@
     border-radius: 10px;
     background-color: #333b4e;
   }
+  
+  .view-toggle {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .view-btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .view-btn.active {
+    background: #eab308;
+    color: #1e212a;
+  }
+  
+  .view-btn.inactive {
+    background: #333b4e;
+    color: #9ca3af;
+  }
+  
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .nav-container {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
 </style>
 <nav class="px-4 fixed top-0 w-full z-10 shadow-xl">
   <div class="max-w-6xl mx-auto p-2 sm:p-0">
     <div class="flex justify-center p-2 sm:p-4">
-      <a
-        href="https://www.instagram.com/revive.latam/" target="_blank"
-        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-left font-semibold hover:text-yellow-500 hidden md:inline-block"
-        >Instagram</a
-      >
-      <a
-        href="#"
-        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-left font-semibold hover:text-yellow-500 md:hidden"
-        ><i class="fab fa-instagram"></i></a
-      >
-      <a
-        href="/"
-        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-center font-semibold hover:text-yellow-500 md:inline-block"
-        >Docente</a
-      >
-      <div class="py-1 px-1 custom-select md:inline-block" id="customSelect">
-        <div class="selected-flag">
-          <img
-            src="/img/chile.svg"
-            alt="Selected Country"
-            id="selectedFlagImage"
-          />
+      <div class="nav-container">
+        <div class="view-toggle">
+          <a href="/" class="view-btn active" id="btn-docente">Docente</a>
+          <a href="/alumno" class="view-btn inactive" id="btn-alumno">Alumno</a>
         </div>
-        <div class="options-container" id="optionsContainer">
-          <div class="option" data-value="estados_unidos">
-            <img src="/img/estados-unidos.svg" alt="Estados Unidos" />
+        <div class="py-1 px-1 custom-select md:inline-block" id="customSelect">
+          <div class="selected-flag">
+            <img
+              src="/img/chile.svg"
+              alt="Selected Country"
+              id="selectedFlagImage"
+            />
           </div>
-          <div class="option" data-value="chile">
-            <img src="/img/chile.svg" alt="chile" />
-          </div>
-          <div class="option" data-value="argentina">
-            <img src="/img/argentina.svg" alt="Argentina" />
-          </div>
-          <div class="option" data-value="colombia">
-            <img src="/img/colombia.svg" alt="Colombia" />
-          </div>
-          <div class="option" data-value="peru">
-            <img src="/img/peru.svg" alt="Peru" />
-          </div>
-          <div class="option" data-value="venezuela">
-            <img src="/img/venezuela.svg" alt="Venezuela" />
-          </div>
-          <div class="option" data-value="espana">
-            <img src="/img/espana.svg" alt="Espana" />
+          <div class="options-container" id="optionsContainer">
+            <div class="option" data-value="estados_unidos">
+              <img src="/img/estados-unidos.svg" alt="Estados Unidos" />
+            </div>
+            <div class="option" data-value="albania">
+              <img src="/img/albania.svg" alt="Albania" />
+            </div>
+            <div class="option" data-value="chile">
+              <img src="/img/chile.svg" alt="Chile" />
+            </div>
+            <div class="option" data-value="espana">
+              <img src="/img/espana.svg" alt="España" />
+            </div>
+            <div class="option" data-value="mexico">
+              <img src="/img/mexico.svg" alt="México" />
+            </div>
           </div>
         </div>
       </div>
-      <a
-        href="/alumno"
-        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-center font-semibold hover:text-yellow-500 md:inline-block"
-        >Alumn@s</a
-      >
-      <a
-      href="https://www.facebook.com/revive.ideas" target="_blank"
-        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-right font-semibold hover:text-yellow-500 hidden md:inline-block"
-        >Facebook</a
-      >
-      <a
-        href="#"
-        class="py-1 px-1 text-yellow-600 w-1/2 content-center transition ease-out duration-500 text-right font-semibold hover:text-yellow-500 md:hidden"
-        ><i class="fab fa-facebook"></i></a
-      >
     </div>
   </div>
 </nav>
-<!-- END NavBar -->
+
+<script is:inline>
+  // Actualizar estado de botones según la página actual
+  const path = window.location.pathname;
+  const btnDocente = document.getElementById('btn-docente');
+  const btnAlumno = document.getElementById('btn-alumno');
+  
+  if (path.includes('alumno')) {
+    btnDocente.classList.remove('active');
+    btnDocente.classList.add('inactive');
+    btnAlumno.classList.remove('inactive');
+    btnAlumno.classList.add('active');
+  } else {
+    btnAlumno.classList.remove('active');
+    btnAlumno.classList.add('inactive');
+    btnDocente.classList.remove('inactive');
+    btnDocente.classList.add('active');
+  }
+</script>
