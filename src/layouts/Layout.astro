@@ -1,31 +1,62 @@
 ---
+interface SeoVariant {
+  title: string;
+  description: string;
+  keywords: string;
+}
+
 interface Props {
   title: string;
+  description?: string;
+  keywords?: string;
+  canonical?: string;
+  ogDescription?: string;
+  seoEn?: SeoVariant;
+  seoEs?: SeoVariant;
+  ldJson?: object | object[];
 }
-const { title } = Astro.props;
 
-const ldJson = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "ScaleGrades",
-  "url": "https://scalegrades.com",
-  "description": "Free grade scale calculator for teachers. Set maximum, minimum and passing grades to instantly generate a complete student grade distribution table.",
-  "applicationCategory": "EducationApplication",
-  "operatingSystem": "All",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": [
-    "Grade scale calculator",
-    "Multi-country grade systems",
-    "Albanian, English and Spanish support",
-    "Automatic grade distribution table"
-  ],
-  "inLanguage": [
-    { "@type": "Language", "name": "English",  "alternateName": "en" },
-    { "@type": "Language", "name": "Albanian", "alternateName": "sq" },
-    { "@type": "Language", "name": "Spanish",  "alternateName": "es" }
-  ],
-  "audience": { "@type": "Audience", "audienceType": "Teachers" }
-};
+const {
+  title,
+  description = "Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave të nxënësve tuaj.",
+  keywords = "llogaritës notash, shkalla e notave, mjet falas mësues, vlerësim nxënësish, tabela e notave, nota kaluese, kalkulator notash shqip",
+  canonical = "https://scalegrades.com/",
+  ogDescription,
+  seoEn = {
+    title: "Grade Scale Calculator — Free Tool for Teachers | ScaleGrades",
+    description: "Free grade scale calculator for teachers. Set maximum, minimum, and passing grades to instantly generate a complete student grade distribution table.",
+    keywords: "grade scale calculator, grading scale, teacher grade calculator, grade distribution table, pass fail grade calculator, free grading tool",
+  },
+  seoEs = {
+    title: "Calculadora de Escala de Notas — Herramienta Gratis para Profesores | ScaleGrades",
+    description: "Crea escalas de notas profesionales gratis. Configura nota máxima, mínima y de aprobación para generar automáticamente la distribución de notas de tus alumnos.",
+    keywords: "calculadora escala de notas, tabla de notas, herramienta para profesores, distribución de notas, calcular nota aprobación, escala de calificaciones gratis",
+  },
+  ldJson = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ScaleGrades",
+    "url": "https://scalegrades.com",
+    "description": "Free grade scale calculator for teachers. Set maximum, minimum and passing grades to instantly generate a complete student grade distribution table.",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": [
+      "Grade scale calculator",
+      "Multi-country grade systems",
+      "Albanian, English and Spanish support",
+      "Automatic grade distribution table"
+    ],
+    "inLanguage": [
+      { "@type": "Language", "name": "English",  "alternateName": "en" },
+      { "@type": "Language", "name": "Albanian", "alternateName": "sq" },
+      { "@type": "Language", "name": "Spanish",  "alternateName": "es" }
+    ],
+    "audience": { "@type": "Audience", "audienceType": "Teachers" }
+  },
+} = Astro.props;
+
+const resolvedOgDescription = ogDescription || description;
 ---
 
 <!doctype html>
@@ -37,55 +68,55 @@ const ldJson = {
     <meta name="robots" content="index, follow" />
 
     <!-- Canonical & hreflang -->
-    <link rel="canonical"  id="link-canonical"   href="https://scalegrades.com/" />
-    <link rel="alternate"  hreflang="x-default"  href="https://scalegrades.com/" />
-    <link rel="alternate"  hreflang="sq"          href="https://scalegrades.com/" />
-    <link rel="alternate"  hreflang="en"          href="https://scalegrades.com/" />
+    <link rel="canonical"  id="link-canonical"   href={canonical} />
+    <link rel="alternate"  hreflang="x-default"  href={canonical} />
+    <link rel="alternate"  hreflang="sq"          href={canonical} />
+    <link rel="alternate"  hreflang="en"          href={canonical} />
 
     <!-- SEO parazgjedhëse — shqip (ndryshon nga JS sipas vendndodhjes) -->
-    <title>Llogaritës i Shkallës së Notave — Falas për Mësues | ScaleGrades</title>
-    <meta name="description" content="Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave të nxënësve tuaj." />
-    <meta name="keywords"    content="llogaritës notash, shkalla e notave, mjet falas mësues, vlerësim nxënësish, tabela e notave, nota kaluese, kalkulator notash shqip" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords"    content={keywords} />
 
     <!-- Open Graph -->
     <meta property="og:type"              content="website" />
     <meta property="og:site_name"         content="ScaleGrades" />
-    <meta property="og:url"               content="https://scalegrades.com/" />
-    <meta property="og:title"             content="Llogaritës i Shkallës së Notave — Falas për Mësues | ScaleGrades" />
-    <meta property="og:description"       content="Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave." />
+    <meta property="og:url"               content={canonical} />
+    <meta property="og:title"             content={title} />
+    <meta property="og:description"       content={resolvedOgDescription} />
     <meta property="og:locale"            content="sq_AL" />
     <meta property="og:locale:alternate"  content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card"        content="summary" />
-    <meta name="twitter:title"       content="Llogaritës i Shkallës së Notave — Falas për Mësues | ScaleGrades" />
-    <meta name="twitter:description" content="Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave." />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={resolvedOgDescription} />
 
     <!-- JSON-LD Structured Data (static, crawler-friendly) -->
     <script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
 
     <!-- Dynamic SEO: overrides title/meta based on detected IP language -->
-    <script is:inline>
+    <script define:vars={{ pageTitle: title, pageDescription: description, pageKeywords: keywords, pageCanonical: canonical, seoEn, seoEs }} is:inline>
       const _SEO = {
         al: {
           lang: 'sq',
-          title: 'Llogaritës i Shkallës së Notave — Falas për Mësues | ScaleGrades',
-          description: 'Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave të nxënësve tuaj.',
-          keywords: 'llogaritës notash, shkalla e notave, mjet falas mësues, vlerësim nxënësish, tabela e notave, nota kaluese, kalkulator notash shqip',
+          title: pageTitle,
+          description: pageDescription,
+          keywords: pageKeywords,
           ogLocale: 'sq_AL',
         },
         en: {
           lang: 'en',
-          title: 'Grade Scale Calculator — Free Tool for Teachers | ScaleGrades',
-          description: 'Free grade scale calculator for teachers. Set maximum, minimum, and passing grades to instantly generate a complete student grade distribution table.',
-          keywords: 'grade scale calculator, grading scale, teacher grade calculator, grade distribution table, pass fail grade calculator, free grading tool',
+          title: seoEn.title,
+          description: seoEn.description,
+          keywords: seoEn.keywords,
           ogLocale: 'en_US',
         },
         es: {
           lang: 'es',
-          title: 'Calculadora de Escala de Notas — Herramienta Gratis para Profesores | ScaleGrades',
-          description: 'Crea escalas de notas profesionales gratis. Configura nota máxima, mínima y de aprobación para generar automáticamente la distribución de notas de tus alumnos.',
-          keywords: 'calculadora escala de notas, tabla de notas, herramienta para profesores, distribución de notas, calcular nota aprobación, escala de calificaciones gratis',
+          title: seoEs.title,
+          description: seoEs.description,
+          keywords: seoEs.keywords,
           ogLocale: 'es_ES',
         }
       };

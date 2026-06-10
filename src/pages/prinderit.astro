@@ -16,6 +16,23 @@ import Footer from "@/components/footer.astro";
     <a href="/" class="pp-back-link"><i class="fas fa-arrow-left"></i> Kthehu në Faqen Kryesore</a>
   </div>
 
+  <section class="pp-landing">
+    <div class="pp-intro-badge"><i class="fas fa-heart"></i> Test për Prindër</div>
+    <h1 class="pp-landing-title">Si e njoh fëmijën tim?</h1>
+    <p class="pp-landing-sub">
+      Një test i shkurtër prej 21 pyetjesh që ju ndihmon të kuptoni pikat e forta të fëmijës suaj dhe pritshmëritë tuaja si prind.
+      Në fund merrni një profil të personalizuar me këshilla konkrete se si ta mbështesni në zgjedhjen e shkollës dhe karrierës.
+    </p>
+    <ul class="pp-landing-bullets">
+      <li><i class="fas fa-compass"></i> Zbuloni fushat ku fëmija juaj shkëlqen më shumë</li>
+      <li><i class="fas fa-balance-scale"></i> Krahasoni pritshmëritë tuaja me prirjet reale të tij/saj</li>
+      <li><i class="fas fa-lightbulb"></i> Merrni këshilla konkrete si ta mbështesni pa e shtypur</li>
+    </ul>
+    <button class="pp-landing-cta" onclick="document.getElementById('app').scrollIntoView({behavior:'smooth'})">
+      Fillo Testin <i class="fas fa-arrow-down"></i>
+    </button>
+  </section>
+
   <div id="app" style="min-height:100vh;"></div>
 
   <Footer slot="footer" />
@@ -131,12 +148,45 @@ import Footer from "@/components/footer.astro";
   .pp-blog-link:hover { border-color: #3b82f6; background: rgba(59,130,246,0.06); color: #93c5fd; }
   .pp-blog-link i { color: #3b82f6; flex-shrink: 0; }
 
+  /* ── LANDING ────────────────────────────────────────────────────────── */
+  .pp-landing {
+    max-width: 800px; margin: 0 auto; padding: 112px 20px 60px;
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  }
+  .pp-landing-title {
+    font-size: 2.4rem; font-weight: 900; color: #fff;
+    margin: 14px 0 16px; letter-spacing: -0.02em; line-height: 1.15;
+  }
+  .pp-landing-sub {
+    color: #9ca3af; font-size: 1rem; line-height: 1.75; margin-bottom: 28px; max-width: 600px;
+  }
+  .pp-landing-bullets {
+    list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .pp-landing-bullets li {
+    display: flex; align-items: flex-start; gap: 12px; color: #d1d5db; font-size: 0.95rem;
+    line-height: 1.5; background: #2a3042; border: 1px solid #333b4e; border-radius: 12px; padding: 14px 18px;
+  }
+  .pp-landing-bullets li i { color: #3b82f6; margin-top: 3px; flex-shrink: 0; }
+  .pp-landing-cta {
+    display: inline-flex; align-items: center; gap: 10px; align-self: flex-start;
+    background: #3b82f6; color: #fff; font-weight: 800; font-size: 1rem;
+    padding: 16px 32px; border-radius: 12px; border: none; cursor: pointer;
+    transition: all 0.2s; box-shadow: 0 8px 24px rgba(59,130,246,0.25); font-family: inherit;
+  }
+  .pp-landing-cta:hover { background: #60a5fa; transform: translateY(-2px); }
+
   @media (max-width: 600px) {
     .pp-container { padding: 100px 16px 60px; }
     .pp-btn-row { gap: 6px; }
     .pp-sel-btn { font-size: 0.8rem; padding: 10px 4px; }
     .kk-likert-btns { gap: 6px; }
     .kk-likert-btn { padding: 10px 4px; font-size: 0.88rem; }
+
+    .pp-landing { padding: 100px 16px 50px; min-height: auto; }
+    .pp-landing-title { font-size: 1.8rem; }
+    .pp-landing-sub { font-size: 0.92rem; }
+    .pp-landing-cta { width: 100%; justify-content: center; }
   }
 </style>
 

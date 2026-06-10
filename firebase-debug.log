@@ -1,0 +1,36 @@
+[debug] [2026-06-10T10:49:54.374Z] ----------------------------------------------------------------------
+[debug] [2026-06-10T10:49:54.380Z] Command:       C:\nvm4w\nodejs\node.exe C:\nvm4w\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-06-10T10:49:54.380Z] CLI Version:   15.14.0
+[debug] [2026-06-10T10:49:54.381Z] Platform:      win32
+[debug] [2026-06-10T10:49:54.381Z] Node Version:  v23.7.0
+[debug] [2026-06-10T10:49:54.381Z] Time:          Wed Jun 10 2026 12:49:54 GMT+0200 (hora de verano de Europa central)
+[debug] [2026-06-10T10:49:54.381Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-06-10T10:49:56.812Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-10T10:49:56.812Z] > authorizing via signed-in user (dimensiones4@gmail.com)
+[debug] [2026-06-10T10:49:56.813Z] [iam] checking project myavg-site for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-06-10T10:49:56.814Z] Checked if tokens are valid: false, expires at: 1781081299266
+[debug] [2026-06-10T10:49:56.814Z] Checked if tokens are valid: false, expires at: 1781081299266
+[debug] [2026-06-10T10:49:56.815Z] > refreshing access token with scopes: []
+[debug] [2026-06-10T10:49:56.817Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-06-10T10:49:56.817Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-10T10:49:57.114Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-06-10T10:49:57.114Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-10T10:49:57.136Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/myavg-site:testIamPermissions [none]
+[debug] [2026-06-10T10:49:57.137Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/myavg-site:testIamPermissions  x-goog-user-project=myavg-site
+[debug] [2026-06-10T10:49:57.137Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myavg-site:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-06-10T10:49:57.489Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/myavg-site:testIamPermissions 200
+[debug] [2026-06-10T10:49:57.489Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/myavg-site:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-06-10T10:49:57.490Z] Checked if tokens are valid: true, expires at: 1781092196114
+[debug] [2026-06-10T10:49:57.490Z] Checked if tokens are valid: true, expires at: 1781092196114
+[debug] [2026-06-10T10:49:57.490Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/myavg-site [none]
+[debug] [2026-06-10T10:49:57.919Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/myavg-site 200
+[debug] [2026-06-10T10:49:57.919Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/myavg-site {"projectId":"myavg-site","projectNumber":"802348179014","displayName":"myavg-site","name":"projects/myavg-site","resources":{"hostingSite":"myavg-site"},"state":"ACTIVE","etag":"1_0557d9d2-7764-4441-9cb3-5f02db205ad2"}
+[info] 
+[info] === Deploying to 'myavg-site'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2026-06-10T10:49:57.929Z] Checked if tokens are valid: true, expires at: 1781092196114
+[debug] [2026-06-10T10:49:57.929Z] Checked if tokens are valid: true, expires at: 1781092196114
+[debug] [2026-06-10T10:49:57.930Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/myavg-site/versions [none]
+[debug] [2026-06-10T10:49:57.930Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/myavg-site/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}

@@ -4,7 +4,49 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "@/components/footer.astro";
 ---
 
-<Layout title="ScaleGrades — Platforma Arsimore për Shqipërinë">
+<Layout
+  title="ScaleGrades — Platforma Arsimore për Shqipërinë | Mësues, Nxënës & Prindër"
+  description="ScaleGrades është platformë arsimore falas për Shqipërinë: llogaritës i shkallës së notave për mësues, teste personaliteti dhe orientimi në karrierë për nxënës, dhe mjete udhëzuese për prindër."
+  keywords="platformë arsimore shqip, mjete për mësues, teste për nxënës, orientim karriere, llogaritës notash, mjete për prindër, ScaleGrades"
+  canonical="https://scalegrades.com/"
+  seoEn={{
+    title: "ScaleGrades — Free Education Platform for Albania | Teachers, Students & Parents",
+    description: "ScaleGrades is a free education platform for Albania: a grade scale calculator for teachers, personality and career orientation tests for students, and guidance tools for parents.",
+    keywords: "education platform Albania, free tools for teachers, student personality tests, career orientation, grade scale calculator, tools for parents",
+  }}
+  seoEs={{
+    title: "ScaleGrades — Plataforma Educativa Gratuita para Albania | Profesores, Estudiantes y Padres",
+    description: "ScaleGrades es una plataforma educativa gratuita para Albania: calculadora de escala de notas para profesores, tests de personalidad y orientación vocacional para estudiantes, y herramientas guía para padres.",
+    keywords: "plataforma educativa Albania, herramientas gratis profesores, tests de personalidad para estudiantes, orientación vocacional, calculadora de notas, herramientas para padres",
+  }}
+  ldJson={[
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ScaleGrades",
+      "url": "https://scalegrades.com",
+      "description": "Free education platform for Albania with tools for teachers, students and parents.",
+      "inLanguage": [
+        { "@type": "Language", "name": "Albanian", "alternateName": "sq" },
+        { "@type": "Language", "name": "English",  "alternateName": "en" },
+        { "@type": "Language", "name": "Spanish",  "alternateName": "es" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "ScaleGrades",
+      "url": "https://scalegrades.com",
+      "description": "Free education platform for Albania offering a grade scale calculator for teachers, personality and career orientation tests for students, and guidance tools for parents.",
+      "areaServed": "AL",
+      "audience": [
+        { "@type": "Audience", "audienceType": "Teachers" },
+        { "@type": "Audience", "audienceType": "Students" },
+        { "@type": "Audience", "audienceType": "Parents" }
+      ]
+    }
+  ]}
+>
   <Navbar slot="header" />
 
   <!-- Hero -->
@@ -50,7 +92,7 @@ import Footer from "@/components/footer.astro";
       <ul class="hub-card-features">
         <li><i class="fas fa-check"></i> Çfarë lloj shoku klase je?</li>
         <li><i class="fas fa-check"></i> Orientim profesional RIASEC</li>
-        <li><i class="fas fa-check"></i> Test i karrierës (së shpejti)</li>
+        <li><a href="/nxenes/zgjidhje-karriere"><i class="fas fa-check"></i> Test i zgjedhjes së karrierës</a></li>
       </ul>
       <a href="/nxenes" class="hub-card-btn">
         Shiko Testet <i class="fas fa-arrow-right"></i>
@@ -244,6 +286,15 @@ import Footer from "@/components/footer.astro";
     gap: 7px;
   }
   .hub-card-features i { font-size: 0.7rem; }
+  .hub-card-features li a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: color 0.18s;
+  }
+  .hub-card-features li a:hover { color: #c4b5fd; }
   .hub-card-btn {
     display: flex;
     align-items: center;
