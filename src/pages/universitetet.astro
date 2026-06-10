@@ -1,0 +1,1461 @@
+---
+import LayoutInfo from "../layouts/LayoutInfo.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+
+const ldJson = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Universities & Careers in Albania",
+    "url": "https://scalegrades.com/universitetet",
+    "description": "Rankings of Albanian universities and the best careers to study. Comparison of public and private institutions with salary and employment data.",
+    "inLanguage": ["sq", "en"],
+    "isPartOf": { "@type": "WebSite", "name": "ScaleGrades", "url": "https://scalegrades.com" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Top Universities in Albania",
+    "numberOfItems": 10,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "University of Tirana (UT)" },
+      { "@type": "ListItem", "position": 2, "name": "Polytechnic University of Tirana (UPT)" },
+      { "@type": "ListItem", "position": 3, "name": "Epoka University" },
+      { "@type": "ListItem", "position": 4, "name": "University of Medicine Tirana (UMSH)" },
+      { "@type": "ListItem", "position": 5, "name": "University of New York in Tirana (UNYT)" }
+    ]
+  }
+];
+---
+
+<LayoutInfo
+  title="Universities & Careers in Albania 2024 — Full Rankings | ScaleGrades"
+  description="Complete guide to Albanian universities ranked by reputation, plus the best careers, salary comparisons, employability charts and technical vocational paths."
+  keywords="universities albania, albanian university rankings, best careers albania, study in albania, tirana universities, salary albania careers, technical careers albania"
+  canonical="https://scalegrades.com/universitetet"
+  ldJson={ldJson}
+>
+  <Navbar slot="header" />
+
+  <div style="padding-top: 62px;">
+
+    <!-- Hero -->
+    <section style="background: linear-gradient(135deg, #1e212a 0%, #212735 55%, #4c1d95 100%); padding: 44px 20px 36px; text-align: center; color: #fff;">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:12px;">
+          <img src="/img/albania.svg" alt="Albania" style="width:42px; border-radius:4px; box-shadow:0 2px 10px rgba(0,0,0,0.4);" />
+          <h1 style="font-size:clamp(1.4rem,4vw,2.1rem); font-weight:900; margin:0;">Arsimi në Shqipëri</h1>
+        </div>
+        <p style="font-size:1rem; color:#c4b5fd; max-width:600px; margin:0 auto 6px; line-height:1.6;">
+          Education in Albania — Rankings, Careers & Salary Data
+        </p>
+      </div>
+    </section>
+
+    <!-- Tab navigation -->
+    <div id="tab-nav" style="background:#fff; border-bottom:2px solid #e5e7eb; position:sticky; top:62px; z-index:5; box-shadow:0 2px 8px rgba(0,0,0,0.06); overflow-x:auto;">
+      <div style="max-width:960px; margin:0 auto; display:flex; min-width:max-content;">
+        <button class="tab-btn active" onclick="showTab('karriera')" id="tab-karriera">
+          <i class="fas fa-graduation-cap"></i><span>Karriera</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('teknike')" id="tab-teknike">
+          <i class="fas fa-tools"></i><span>Teknike</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('general')" id="tab-general">
+          <i class="fas fa-trophy"></i><span>Ranking</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('publike')" id="tab-publike">
+          <i class="fas fa-university"></i><span>Publike</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('private')" id="tab-private">
+          <i class="fas fa-building"></i><span>Private</span>
+        </button>
+        <button class="tab-btn" onclick="showTab('ballkani')" id="tab-ballkani">
+          <i class="fas fa-map-marked-alt"></i><span>Ballkani</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="max-width:980px; margin:0 auto; padding:28px 16px 60px;">
+
+      <!-- ═══════════════════════════════════════════
+           TAB 1: KARRIERA (University Careers)
+      ═══════════════════════════════════════════ -->
+      <div class="tab-panel" id="panel-karriera">
+
+        <h2 class="section-title">Karrierat më të Mira — Best University Careers</h2>
+        <p class="section-sub">Albania's most in-demand university careers ranked by salary and job prospects.</p>
+
+        <!-- Career cards -->
+        <div class="cards-grid">
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#dbeafe;"><i class="fas fa-laptop-code" style="color:#1d4ed8;"></i></div>
+              <div>
+                <h3 class="card-name">Teknologji Informacioni</h3>
+                <small class="card-sub">Information Technology</small>
+              </div>
+            </div>
+            <span class="badge badge-green">⭐ Excellent demand</span>
+            <p class="card-desc">Albania's IT outsourcing sector is booming. High pay, global career potential.</p>
+            <div class="card-stat"><strong>Salary:</strong> €800 – 1,500/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> CIT, Epoka, UPT</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fee2e2;"><i class="fas fa-heartbeat" style="color:#dc2626;"></i></div>
+              <div>
+                <h3 class="card-name">Mjekësi</h3>
+                <small class="card-sub">Medicine</small>
+              </div>
+            </div>
+            <span class="badge badge-green">⭐ Excellent demand</span>
+            <p class="card-desc">Chronic doctor shortage in Albania. EU-recognized degree opens doors abroad.</p>
+            <div class="card-stat"><strong>Salary:</strong> €700 – 2,000/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> UMSH, Albanian Univ.</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fef3c7;"><i class="fas fa-balance-scale" style="color:#d97706;"></i></div>
+              <div>
+                <h3 class="card-name">Drejtësi</h3>
+                <small class="card-sub">Law</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">EU integration process drives demand for lawyers with European law expertise.</p>
+            <div class="card-stat"><strong>Salary:</strong> €600 – 1,500/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> Univ. Tirana, Epoka</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#ede9fe;"><i class="fas fa-chart-line" style="color:#7c3aed;"></i></div>
+              <div>
+                <h3 class="card-name">Ekonomi dhe Financa</h3>
+                <small class="card-sub">Economics & Finance</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">Growing banking and financial sector. International institutions are hiring.</p>
+            <div class="card-stat"><strong>Salary:</strong> €600 – 1,200/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> Univ. Tirana, Epoka</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fce7f3;"><i class="fas fa-drafting-compass" style="color:#be185d;"></i></div>
+              <div>
+                <h3 class="card-name">Arkitekturë</h3>
+                <small class="card-sub">Architecture</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">Construction boom in Tirana and coastal cities creating strong demand.</p>
+            <div class="card-stat"><strong>Salary:</strong> €700 – 1,500/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> Polis Univ., Epoka, UPT</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#d1fae5;"><i class="fas fa-cogs" style="color:#059669;"></i></div>
+              <div>
+                <h3 class="card-name">Inxhinieri</h3>
+                <small class="card-sub">Engineering</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">EU-funded infrastructure projects require civil, electrical and mechanical engineers.</p>
+            <div class="card-stat"><strong>Salary:</strong> €700 – 1,400/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> UPT, Epoka, CIT</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fee2e2;"><i class="fas fa-procedures" style="color:#dc2626;"></i></div>
+              <div>
+                <h3 class="card-name">Infermieri</h3>
+                <small class="card-sub">Nursing</small>
+              </div>
+            </div>
+            <span class="badge badge-green">⭐ Excellent demand</span>
+            <p class="card-desc">High demand locally and across the EU. Recognized degree across Europe.</p>
+            <div class="card-stat"><strong>Salary:</strong> €500 – 900/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> UMSH, Albanian Univ.</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fff7ed;"><i class="fas fa-plane" style="color:#ea580c;"></i></div>
+              <div>
+                <h3 class="card-name">Turizëm & Hoteleri</h3>
+                <small class="card-sub">Tourism & Hospitality</small>
+              </div>
+            </div>
+            <span class="badge badge-blue">🚀 Growing</span>
+            <p class="card-desc">Albania is one of Europe's fastest growing tourist destinations.</p>
+            <div class="card-stat"><strong>Salary:</strong> €500 – 1,000/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> Univ. Vlorë, Shkodra</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#ede9fe;"><i class="fas fa-brain" style="color:#7c3aed;"></i></div>
+              <div>
+                <h3 class="card-name">Psikologji</h3>
+                <small class="card-sub">Psychology</small>
+              </div>
+            </div>
+            <span class="badge badge-blue">🚀 Growing</span>
+            <p class="card-desc">Growing mental health awareness creates opportunities in clinics, schools and companies.</p>
+            <div class="card-stat"><strong>Salary:</strong> €500 – 900/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> Univ. Tirana, UNYT</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#dbeafe;"><i class="fas fa-globe" style="color:#1d4ed8;"></i></div>
+              <div>
+                <h3 class="card-name">Marrëdhënie Ndërkombëtare</h3>
+                <small class="card-sub">International Relations</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">EU accession process creates roles in diplomacy, NGOs and European institutions.</p>
+            <div class="card-stat"><strong>Salary:</strong> €600 – 1,200/mo</div>
+            <div class="card-stat"><strong>Top unis:</strong> Epoka, Univ. Tirana, UNYT</div>
+          </div>
+
+        </div><!-- /cards-grid -->
+
+        <!-- ────────────────────────────────────────
+             CHART 1: Salary comparison
+        ──────────────────────────────────────── -->
+        <div class="chart-card" id="chart-salary">
+          <h3 class="chart-title">
+            <i class="fas fa-coins" style="color:#f97316;"></i>
+            Average Monthly Salary by Career (EUR)
+          </h3>
+          <p class="chart-note">Based on 2024 Albanian labor market data. Max reference: €1,500/mo.</p>
+          <div class="chart-wrap">
+            {[
+              { label: "Mjekësi",                pct: 90,  val: "€1,350" },
+              { label: "Teknologji IT",           pct: 77,  val: "€1,150" },
+              { label: "Arkitekturë",             pct: 73,  val: "€1,100" },
+              { label: "Inxhinieri",              pct: 70,  val: "€1,050" },
+              { label: "Drejtësi",               pct: 70,  val: "€1,050" },
+              { label: "Marrëd. Ndërk.",         pct: 60,  val: "€900" },
+              { label: "Ekonomi",                pct: 60,  val: "€900" },
+              { label: "Turizëm",               pct: 50,  val: "€750" },
+              { label: "Infermieri",             pct: 47,  val: "€700" },
+              { label: "Psikologji",             pct: 47,  val: "€700" },
+            ].map((r) => (
+              <div class="ch-row">
+                <div class="ch-label">{r.label}</div>
+                <div class="ch-track">
+                  <div class="abar abar-grad" data-w={`${r.pct}%`} style="width:0;">
+                    <span>{r.val}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- ────────────────────────────────────────
+             CHART 2: Employability
+        ──────────────────────────────────────── -->
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-briefcase" style="color:#7c3aed;"></i>
+            Employability — % Finding Work within 6 Months
+          </h3>
+          <p class="chart-note">Estimated probability of securing employment within 6 months of graduation.</p>
+          <div class="chart-wrap">
+            {[
+              { label: "Infermieri",      pct: 95, val: "95%" },
+              { label: "Teknologji IT",   pct: 93, val: "93%" },
+              { label: "Mjekësi",         pct: 90, val: "90%" },
+              { label: "Inxhinieri",      pct: 80, val: "80%" },
+              { label: "Turizëm",        pct: 75, val: "75%" },
+              { label: "Arkitekturë",    pct: 72, val: "72%" },
+              { label: "Ekonomi",        pct: 68, val: "68%" },
+              { label: "Drejtësi",      pct: 65, val: "65%" },
+              { label: "Marrëd. Ndërk.", pct: 62, val: "62%" },
+              { label: "Psikologji",     pct: 55, val: "55%" },
+            ].map((r) => (
+              <div class="ch-row">
+                <div class="ch-label">{r.label}</div>
+                <div class="ch-track">
+                  <div class="abar abar-orange" data-w={`${r.pct}%`} style="width:0;">
+                    <span>{r.val}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- ────────────────────────────────────────
+             CHART 3: AI vs No AI
+        ──────────────────────────────────────── -->
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-robot" style="color:#7c3aed;"></i>
+            AI Specialization Impact on Salary
+          </h3>
+          <p class="chart-note">
+            Professionals who add <strong style="color:#f97316;">AI/ML skills</strong> to their degree earn significantly more.
+            Max reference: €2,000/mo.
+          </p>
+
+          <div style="display:flex; gap:16px; margin-bottom:14px; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:7px; font-size:0.8rem; color:#374151;">
+              <div style="width:14px; height:14px; border-radius:3px; background:#7c3aed; flex-shrink:0;"></div>
+              <span>Without AI specialization</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:7px; font-size:0.8rem; color:#374151;">
+              <div style="width:14px; height:14px; border-radius:3px; background:#f97316; flex-shrink:0;"></div>
+              <span>With AI specialization</span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            {[
+              { career: "Zhvillues IT",        noAI: 950,  withAI: 1600, pNoAI: 48, pWith: 80 },
+              { career: "Mjek / Diagnozë",     noAI: 1200, withAI: 1900, pNoAI: 60, pWith: 95 },
+              { career: "Avokat / Legal Tech", noAI: 800,  withAI: 1350, pNoAI: 40, pWith: 68 },
+              { career: "Ekonomist",           noAI: 750,  withAI: 1250, pNoAI: 38, pWith: 63 },
+              { career: "Arkitekt / BIM+AI",   noAI: 900,  withAI: 1500, pNoAI: 45, pWith: 75 },
+            ].map((r) => (
+              <div>
+                <div style="font-size:0.85rem; font-weight:700; color:#1e212a; margin-bottom:6px;">{r.career}</div>
+                <div style="display:flex; flex-direction:column; gap:5px;">
+                  <div class="ch-track" style="height:30px;">
+                    <div class="abar abar-purple" data-w={`${r.pNoAI}%`} style="width:0; height:30px;">
+                      <span style="font-size:0.78rem;">€{r.noAI}/mo</span>
+                    </div>
+                  </div>
+                  <div class="ch-track" style="height:30px;">
+                    <div class="abar abar-orange" data-w={`${r.pWith}%`} style="width:0; height:30px;">
+                      <span style="font-size:0.78rem;">€{r.withAI}/mo</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style="margin-top:20px; padding:14px 16px; background:#f5f3ff; border-radius:8px; border-left:3px solid #7c3aed;">
+            <p style="font-size:0.85rem; color:#5b21b6; margin:0;">
+              <strong>Key insight:</strong> On average, AI specialization adds <strong>+€450–700/month</strong> to your salary. The greatest impact is in Medicine (+€700) and IT Development (+€650).
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /panel-karriera -->
+
+
+      <!-- ═══════════════════════════════════════════
+           TAB 2: TEKNIKE (Technical / Vocational)
+      ═══════════════════════════════════════════ -->
+      <div class="tab-panel hidden" id="panel-teknike">
+
+        <h2 class="section-title">Shkolla Profesionale — Technical Careers</h2>
+        <p class="section-sub">Careers that don't require a university degree — with strong job prospects and competitive salaries in Albania.</p>
+
+        <div style="background:#f5f3ff; border:1px solid #ddd6fe; border-radius:10px; padding:18px 20px; margin-bottom:28px;">
+          <h3 style="font-size:0.95rem; font-weight:700; color:#4c1d95; margin:0 0 8px; display:flex; align-items:center; gap:8px;">
+            <i class="fas fa-info-circle"></i> Shkolla Profesionale in Albania
+          </h3>
+          <p style="font-size:0.88rem; color:#374151; margin:0; line-height:1.65;">
+            Albania has a growing vocational education system (<em>Arsimi dhe Formimi Profesional</em>). These 2–3 year programs lead directly to employment without the cost or time of a university degree. Many pay competitively — especially in the construction, tech, and hospitality sectors fueled by Albania's economic growth.
+          </p>
+        </div>
+
+        <!-- Technical career cards -->
+        <div class="cards-grid">
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#dbeafe;"><i class="fas fa-network-wired" style="color:#1d4ed8;"></i></div>
+              <div>
+                <h3 class="card-name">Teknik IT / Rrjete</h3>
+                <small class="card-sub">IT Technician / Networks</small>
+              </div>
+            </div>
+            <span class="badge badge-green">⭐ Excellent</span>
+            <p class="card-desc">Highest-paid technical career. IT support, network setup and cybersecurity basics.</p>
+            <div class="card-stat"><strong>Salary:</strong> €600 – 1,000/mo</div>
+            <div class="card-stat"><strong>Training:</strong> 2 years + certifications</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fef3c7;"><i class="fas fa-bolt" style="color:#d97706;"></i></div>
+              <div>
+                <h3 class="card-name">Elektriçist</h3>
+                <small class="card-sub">Electrician</small>
+              </div>
+            </div>
+            <span class="badge badge-green">⭐ Excellent</span>
+            <p class="card-desc">Construction boom creates constant demand. Residential, commercial and industrial.</p>
+            <div class="card-stat"><strong>Salary:</strong> €550 – 850/mo</div>
+            <div class="card-stat"><strong>Training:</strong> 2–3 years vocational</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#d1fae5;"><i class="fas fa-truck" style="color:#059669;"></i></div>
+              <div>
+                <h3 class="card-name">Shofer Profesionist</h3>
+                <small class="card-sub">Professional Driver (Trucks)</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">Logistics and transport sector growing fast. EU truck drivers especially in demand.</p>
+            <div class="card-stat"><strong>Salary:</strong> €600 – 950/mo</div>
+            <div class="card-stat"><strong>Training:</strong> License + 1 year</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fce7f3;"><i class="fas fa-fire" style="color:#be185d;"></i></div>
+              <div>
+                <h3 class="card-name">Saldator</h3>
+                <small class="card-sub">Welder</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">Industrial and construction welding. Certified welders are sought-after across the Balkans.</p>
+            <div class="card-stat"><strong>Salary:</strong> €500 – 800/mo</div>
+            <div class="card-stat"><strong>Training:</strong> 2 years vocational</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fff7ed;"><i class="fas fa-utensils" style="color:#ea580c;"></i></div>
+              <div>
+                <h3 class="card-name">Kuzhinier Profesionist</h3>
+                <small class="card-sub">Professional Chef</small>
+              </div>
+            </div>
+            <span class="badge badge-blue">🚀 Growing</span>
+            <p class="card-desc">Tourism boom increases demand for trained chefs in restaurants, hotels and resorts.</p>
+            <div class="card-stat"><strong>Salary:</strong> €450 – 800/mo</div>
+            <div class="card-stat"><strong>Training:</strong> 2–3 years hospitality</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#d1fae5;"><i class="fas fa-wrench" style="color:#059669;"></i></div>
+              <div>
+                <h3 class="card-name">Mekanik Automjetesh</h3>
+                <small class="card-sub">Automotive Mechanic</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">Growing car market. Specialization in EV/hybrid systems increasingly valuable.</p>
+            <div class="card-stat"><strong>Salary:</strong> €480 – 750/mo</div>
+            <div class="card-stat"><strong>Training:</strong> 2 years vocational</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#e0f2fe;"><i class="fas fa-snowflake" style="color:#0284c7;"></i></div>
+              <div>
+                <h3 class="card-name">Teknik HVAC</h3>
+                <small class="card-sub">Heating, Ventilation & AC</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Good demand</span>
+            <p class="card-desc">Construction boom and climate awareness drive demand for HVAC technicians.</p>
+            <div class="card-stat"><strong>Salary:</strong> €500 – 780/mo</div>
+            <div class="card-stat"><strong>Training:</strong> 2 years vocational</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="career-icon" style="background:#fce7f3;"><i class="fas fa-cut" style="color:#be185d;"></i></div>
+              <div>
+                <h3 class="card-name">Berber / Stilist</h3>
+                <small class="card-sub">Barber / Hair Stylist</small>
+              </div>
+            </div>
+            <span class="badge badge-yellow">📈 Stable</span>
+            <p class="card-desc">Own-business potential. Top barbers in Tirana earn well above average. Recession-proof.</p>
+            <div class="card-stat"><strong>Salary:</strong> €400 – 700/mo + tips</div>
+            <div class="card-stat"><strong>Training:</strong> 1–2 years</div>
+          </div>
+
+        </div><!-- /cards-grid -->
+
+        <!-- Chart: Technical salaries -->
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-hard-hat" style="color:#7c3aed;"></i>
+            Technical Career Salaries vs University Average (EUR/mo)
+          </h3>
+          <p class="chart-note">Comparison of technical/vocational salaries against the average university career salary (€940/mo). Max reference: €1,100/mo.</p>
+          <div class="chart-wrap">
+            {[
+              { label: "Teknik IT / Rrjete",  pct: 73, val: "€800",  isUni: false },
+              { label: "Elektriçist",          pct: 64, val: "€700",  isUni: false },
+              { label: "Shofer Profesionist",  pct: 64, val: "€700",  isUni: false },
+              { label: "⌀ University Career",  pct: 85, val: "€940",  isUni: true  },
+              { label: "Saldator",             pct: 55, val: "€600",  isUni: false },
+              { label: "Kuzhinier",           pct: 55, val: "€600",  isUni: false },
+              { label: "Mekanik",             pct: 50, val: "€550",  isUni: false },
+              { label: "Teknik HVAC",          pct: 50, val: "€550",  isUni: false },
+              { label: "Berber / Stilist",     pct: 41, val: "€450",  isUni: false },
+            ].map((r) => (
+              <div class="ch-row">
+                <div class="ch-label" style={r.isUni ? 'font-weight:700; color:#1d4ed8;' : ''}>{r.label}</div>
+                <div class="ch-track">
+                  <div class={`abar ${r.isUni ? 'abar-blue' : 'abar-dark'}`} data-w={`${r.pct}%`} style="width:0;">
+                    <span>{r.val}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Chart: Employability technical -->
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-briefcase" style="color:#f97316;"></i>
+            Employability — Technical Careers (% hired in 3 months)
+          </h3>
+          <p class="chart-note">Technical careers often have faster hiring timelines than university-level roles.</p>
+          <div class="chart-wrap">
+            {[
+              { label: "Teknik IT",           pct: 96, val: "96%" },
+              { label: "Elektriçist",         pct: 93, val: "93%" },
+              { label: "Shofer Profesionist", pct: 90, val: "90%" },
+              { label: "Mekanik",             pct: 85, val: "85%" },
+              { label: "Teknik HVAC",         pct: 82, val: "82%" },
+              { label: "Saldator",            pct: 80, val: "80%" },
+              { label: "Kuzhinier",           pct: 78, val: "78%" },
+              { label: "Berber / Stilist",    pct: 72, val: "72%" },
+            ].map((r) => (
+              <div class="ch-row">
+                <div class="ch-label">{r.label}</div>
+                <div class="ch-track">
+                  <div class="abar abar-grad" data-w={`${r.pct}%`} style="width:0;">
+                    <span>{r.val}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style="background:#1e212a; border-radius:10px; padding:22px 24px; color:#fff;">
+          <h3 style="font-size:1rem; font-weight:700; color:#f97316; margin:0 0 10px;">
+            <i class="fas fa-lightbulb"></i> University vs Technical — What's right for you?
+          </h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div>
+              <div style="font-size:0.8rem; font-weight:700; color:#c4b5fd; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.05em;">University</div>
+              <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:4px; font-size:0.83rem; color:#d1d5db;">
+                <li>✅ Higher salary ceiling</li>
+                <li>✅ International recognition</li>
+                <li>✅ Management roles</li>
+                <li>⏳ 3–6 years + costs</li>
+                <li>⏳ Competitive admissions</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:0.8rem; font-weight:700; color:#fdba74; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.05em;">Technical / Vocational</div>
+              <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:4px; font-size:0.83rem; color:#d1d5db;">
+                <li>✅ Work in 2–3 years</li>
+                <li>✅ Lower cost</li>
+                <li>✅ Hands-on skills</li>
+                <li>✅ IT Technicians near-university salary</li>
+                <li>📊 Lower salary ceiling (avg)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-teknike -->
+
+
+      <!-- ═══════════════════════════════════════════
+           TAB 3: RANKING GENERAL
+      ═══════════════════════════════════════════ -->
+      <div class="tab-panel hidden" id="panel-general">
+        <h2 class="section-title">General University Ranking — Albania 2024</h2>
+        <p class="section-sub">Combined ranking of public and private universities by academic reputation, research output and international recognition.</p>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          {[
+            { rank:1,  name:"University of Tirana (UT)",               tipo:"Public",  ciudad:"Tirana",  founded:1957, desc:"Albania's largest and oldest university. 10 faculties covering social sciences, law, humanities and natural sciences. The undisputed leader in public higher education.", strengths:["Law","Economics","Humanities"] },
+            { rank:2,  name:"Polytechnic University of Tirana (UPT)",  tipo:"Public",  ciudad:"Tirana",  founded:1951, desc:"Leading engineering institution. Strong Erasmus+ participation and industry partnerships for infrastructure projects funded by the EU.", strengths:["Civil Eng.","Electrical Eng.","IT"] },
+            { rank:3,  name:"Epoka University",                         tipo:"Private", ciudad:"Tirana",  founded:2007, desc:"Top-ranked private university with 150+ international agreements. English-medium instruction. Internationally accredited programs.", strengths:["Business","Civil Eng.","Architecture"] },
+            { rank:4,  name:"University of Medicine, Tirana (UMSH)",   tipo:"Public",  ciudad:"Tirana",  founded:1952, desc:"Only public medical faculty in Albania. EU-recognized degree allowing practice in European countries after professional recognition.", strengths:["Medicine","Dentistry","Pharmacy"] },
+            { rank:5,  name:"Univ. of New York in Tirana (UNYT)",      tipo:"Private", ciudad:"Tirana",  founded:2002, desc:"American-style education with internationally recognized degrees. 100% English-medium. Ideal for students targeting international careers.", strengths:["Business","Computer Sci.","Psychology"] },
+            { rank:6,  name:"Canadian Institute of Technology (CIT)",   tipo:"Private", ciudad:"Tirana",  founded:2011, desc:"Best tech-focused private institution. English-medium. Partnerships with international tech companies and practical-first curriculum.", strengths:["Computer Sci.","Software","Digital Business"] },
+            { rank:7,  name:"Agricultural University of Tirana (UBT)", tipo:"Public",  ciudad:"Tirana",  founded:1951, desc:"National reference for agronomy, forestry and veterinary sciences. Active Erasmus+ and FAO project participation.", strengths:["Agronomy","Veterinary","Biotechnology"] },
+            { rank:8,  name:"Polis University",                         tipo:"Private", ciudad:"Tirana",  founded:2006, desc:"Architecture and urban planning specialist. Double degree with Italian universities. UNDP collaboration on urban planning projects.", strengths:["Architecture","Urban Design","Art"] },
+            { rank:9,  name:"Univ. 'Luigj Gurakuqi', Shkodra",        tipo:"Public",  ciudad:"Shkodra", founded:1957, desc:"One of the largest regional universities. Strong humanities, education and natural sciences faculties.", strengths:["Education","Humanities","Sciences"] },
+            { rank:10, name:"Metropolitan Univ. of Tirana",             tipo:"Private", ciudad:"Tirana",  founded:2011, desc:"Strong law, economics and political science programs. Collaborative programs with European universities.", strengths:["Law","Economics","Political Science"] },
+          ].map((u) => (
+            <div class="info-card" style="display:flex; gap:14px; align-items:flex-start;">
+              <div style={`min-width:44px; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.25rem; font-weight:900; flex-shrink:0; ${u.tipo==='Public' ? 'background:#d1fae5; color:#065f46;' : 'background:#dbeafe; color:#1e40af;'}`}>{u.rank}</div>
+              <div style="flex:1; min-width:0;">
+                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:3px;">
+                  <h3 style="font-size:0.97rem; font-weight:700; color:#1e212a; margin:0;">{u.name}</h3>
+                  <span style={`font-size:0.7rem; font-weight:700; padding:2px 8px; border-radius:99px; ${u.tipo==='Public' ? 'background:#d1fae5; color:#065f46;' : 'background:#dbeafe; color:#1e40af;'}`}>{u.tipo}</span>
+                </div>
+                <div style="font-size:0.8rem; color:#9ca3af; margin-bottom:5px;">{u.ciudad} · Founded {u.founded}</div>
+                <p style="font-size:0.86rem; color:#6b7280; margin:0 0 7px;">{u.desc}</p>
+                <div style="display:flex; gap:5px; flex-wrap:wrap;">
+                  {u.strengths.map((s) => (
+                    <span style="font-size:0.73rem; background:#f3f4f6; color:#374151; padding:2px 8px; border-radius:5px;">{s}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div><!-- /panel-general -->
+
+
+      <!-- ═══════════════════════════════════════════
+           TAB 4: PUBLIKE
+      ═══════════════════════════════════════════ -->
+      <div class="tab-panel hidden" id="panel-publike">
+        <h2 class="section-title">Public Universities of Albania</h2>
+        <p class="section-sub">State-funded universities offering low tuition fees (€150–700/year). Concentrated in Tirana and major cities. Bologna Process compliant.</p>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          {[
+            { rank:1,  name:"University of Tirana (UT)",                   city:"Tirana",       founded:1957, students:"~27,000", desc:"Largest academic institution. 10 faculties spanning all major disciplines.", web:"unitir.edu.al" },
+            { rank:2,  name:"Polytechnic University of Tirana (UPT)",      city:"Tirana",       founded:1951, students:"~8,000",  desc:"Premier engineering centre. Civil, Electrical, Mechanical, IT and Geology faculties.", web:"upt.al" },
+            { rank:3,  name:"University of Medicine, Tirana (UMSH)",       city:"Tirana",       founded:1952, students:"~4,000",  desc:"Only public medical university. EU-recognized medical degree.", web:"umed.edu.al" },
+            { rank:4,  name:"Agricultural University of Tirana (UBT)",     city:"Tirana",       founded:1951, students:"~3,500",  desc:"Agronomy, forestry, veterinary sciences and biotechnology.", web:"ubt.edu.al" },
+            { rank:5,  name:"University 'Luigj Gurakuqi', Shkodra",       city:"Shkodra",      founded:1957, students:"~10,000", desc:"Largest regional university. Humanities, education, and sciences.", web:"unishk.edu.al" },
+            { rank:6,  name:"University 'Ismail Qemali', Vlorë",          city:"Vlorë",        founded:1994, students:"~5,000",  desc:"Coastal university with economics, law and marine science focus.", web:"univlora.edu.al" },
+            { rank:7,  name:"University 'Fan S. Noli', Korçë",            city:"Korçë",        founded:1971, students:"~4,000",  desc:"Regional university known for economics, education and fine arts.", web:"unkorce.edu.al" },
+            { rank:8,  name:"University 'Aleksandër Xhuvani', Elbasan",   city:"Elbasan",      founded:1991, students:"~5,500",  desc:"Natural sciences, social sciences and education programs.", web:"uniel.edu.al" },
+            { rank:9,  name:"University 'Eqrem Çabej', Gjirokastër",     city:"Gjirokastër",  founded:1971, students:"~3,000",  desc:"Humanities-focused with strong philology, history and education departments.", web:"uogj.edu.al" },
+            { rank:10, name:"University of Arts, Tirana (UA)",             city:"Tirana",       founded:1966, students:"~1,000",  desc:"Only public arts university. Music, fine arts, scenic arts and film.", web:"artacademy.al" },
+          ].map((u) => (
+            <div class="info-card" style="display:flex; align-items:flex-start; gap:14px;">
+              <div style="min-width:40px; height:40px; background:#d1fae5; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; font-weight:900; color:#065f46; flex-shrink:0;">{u.rank}</div>
+              <div style="flex:1; min-width:0;">
+                <div style="display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:2px;">
+                  <h3 style="font-size:0.97rem; font-weight:700; color:#1e212a; margin:0;">{u.name}</h3>
+                  <span style="font-size:0.7rem; font-weight:700; padding:2px 8px; border-radius:99px; background:#d1fae5; color:#065f46;">Public</span>
+                </div>
+                <div style="font-size:0.8rem; color:#9ca3af; margin-bottom:5px;">{u.city} · Est. {u.founded} · {u.students} students</div>
+                <p style="font-size:0.86rem; color:#6b7280; margin:0 0 4px;">{u.desc}</p>
+                <span style="font-size:0.76rem; color:#1d4ed8;">{u.web}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div><!-- /panel-publike -->
+
+
+      <!-- ═══════════════════════════════════════════
+           TAB 5: PRIVATE
+      ═══════════════════════════════════════════ -->
+      <div class="tab-panel hidden" id="panel-private">
+        <h2 class="section-title">Private Universities of Albania</h2>
+        <p class="section-sub">Private institutions offering international-standard programs. Many with English instruction and European university partnerships. Fees: €1,500–5,000/year.</p>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          {[
+            { rank:1,  name:"Epoka University",                       city:"Tirana", founded:2007, lang:"English / Albanian", desc:"Best-ranked private university. 150+ international agreements. Accredited engineering and business programs.", web:"epoka.edu.al" },
+            { rank:2,  name:"Univ. of New York in Tirana (UNYT)",    city:"Tirana", founded:2002, lang:"English",            desc:"American-style education. Internationally recognized double-degree programs.", web:"unyt.edu.al" },
+            { rank:3,  name:"Polis University",                       city:"Tirana", founded:2006, lang:"Albanian / Italian", desc:"Architecture and urban design specialist. Double degrees with Italian universities.", web:"universitetipolis.edu.al" },
+            { rank:4,  name:"Canadian Institute of Technology (CIT)", city:"Tirana", founded:2011, lang:"English",            desc:"Best tech-focused private institution. IT, software engineering and digital business.", web:"cit.edu.al" },
+            { rank:5,  name:"Metropolitan Univ. of Tirana",          city:"Tirana", founded:2011, lang:"Albanian",           desc:"Law, economics, political science. European university collaboration programs.", web:"umt.edu.al" },
+            { rank:6,  name:"Beder University College",              city:"Tirana", founded:2011, lang:"English / Albanian", desc:"Multicultural environment with students from 20+ countries. Business and engineering.", web:"beder.edu.al" },
+            { rank:7,  name:"Albanian University",                   city:"Tirana", founded:2001, lang:"Albanian",           desc:"One of the first private universities. Wide range: law, economics, medicine, dentistry.", web:"albanianuniversity.edu.al" },
+            { rank:8,  name:"Aldent University",                     city:"Tirana", founded:2010, lang:"Albanian",           desc:"Dentistry-specialized institution. Own clinics and graduate programs.", web:"aldent.edu.al" },
+            { rank:9,  name:"Logos University",                      city:"Tirana", founded:2006, lang:"Albanian",           desc:"Law, economics and IT. Competitive fees and evening programs for working students.", web:"logos.edu.al" },
+            { rank:10, name:"Kristal University",                    city:"Tirana", founded:2005, lang:"Albanian",           desc:"Economics, finance, international relations. Balkan university partnerships.", web:"kristal.edu.al" },
+          ].map((u) => (
+            <div class="info-card" style="display:flex; align-items:flex-start; gap:14px;">
+              <div style="min-width:40px; height:40px; background:#dbeafe; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; font-weight:900; color:#1e40af; flex-shrink:0;">{u.rank}</div>
+              <div style="flex:1; min-width:0;">
+                <div style="display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:2px;">
+                  <h3 style="font-size:0.97rem; font-weight:700; color:#1e212a; margin:0;">{u.name}</h3>
+                  <span style="font-size:0.7rem; font-weight:700; padding:2px 8px; border-radius:99px; background:#dbeafe; color:#1e40af;">Private</span>
+                </div>
+                <div style="font-size:0.8rem; color:#9ca3af; margin-bottom:5px;">{u.city} · Est. {u.founded} · <strong style="color:#6b7280;">Lang:</strong> {u.lang}</div>
+                <p style="font-size:0.86rem; color:#6b7280; margin:0 0 4px;">{u.desc}</p>
+                <span style="font-size:0.76rem; color:#1d4ed8;">{u.web}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div><!-- /panel-private -->
+
+      <!-- ═══════════════════════════════════════════
+           TAB: BALLKANI — Balkan Universities
+      ═══════════════════════════════════════════ -->
+      <div class="tab-panel hidden" id="panel-ballkani">
+
+        <h2 class="section-title">Universitetet e Ballkanit — Balkan Universities</h2>
+        <p class="section-sub">
+          Krahasim i arsimit të lartë midis Shqipërisë, Kosovës, Kroacisë, Maqedonisë së Veriut dhe Malit të Zi.
+          <em style="color:#9ca3af;">Comparison of higher education across Albania, Kosovo, Croatia, North Macedonia and Montenegro.</em>
+        </p>
+
+        <!-- ── Country cards ── -->
+        <div class="balk-grid">
+
+          <!-- ALBANIA -->
+          <div class="balk-card">
+            <div class="balk-header" style="background:linear-gradient(135deg,#1e212a,#3b1260);">
+              <div class="balk-flag">🇦🇱</div>
+              <div>
+                <h3 class="balk-country">Shqipëri <em>Albania</em></h3>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <span class="balk-badge" style="background:rgba(249,115,22,.2);color:#fb923c;">Kandidate BE</span>
+                  <span class="balk-badge" style="background:rgba(255,255,255,.1);color:#e2e8f0;">Bolonjë 2003</span>
+                </div>
+              </div>
+            </div>
+            <div class="balk-body">
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Universitete publike</span>
+                <span class="balk-stat-val">14</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Tarifë vjetore (publike)</span>
+                <span class="balk-stat-val">€150 – €700</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Pagë mesatare diplomuar</span>
+                <span class="balk-stat-val">€700 – €1,350</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Gjuha</span>
+                <span class="balk-stat-val">Shqip · Anglisht ↗</span>
+              </div>
+              <div class="balk-unis">
+                <div class="balk-uni-label">Universitetet kryesore</div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#f97316;color:#1e212a;">1</span>
+                  <div>
+                    <strong>Universiteti i Tiranës (UT)</strong>
+                    <small>1957 · ~27,000 studentë · Publik</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#7c3aed;color:#fff;">2</span>
+                  <div>
+                    <strong>Univ. Politeknik i Tiranës (UPT)</strong>
+                    <small>1951 · ~8,000 studentë · Publik</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#2a3042;color:#e5e7eb;">3</span>
+                  <div>
+                    <strong>Epoka University</strong>
+                    <small>2007 · ~5,000 studentë · Privat · 🇬🇧 Anglisht</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KOSOVO -->
+          <div class="balk-card">
+            <div class="balk-header" style="background:linear-gradient(135deg,#1e212a,#1a3a5c);">
+              <div class="balk-flag">🇽🇰</div>
+              <div>
+                <h3 class="balk-country">Kosovë <em>Kosovo</em></h3>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <span class="balk-badge" style="background:rgba(249,115,22,.2);color:#fb923c;">Njohje e kufizuar</span>
+                  <span class="balk-badge" style="background:rgba(255,255,255,.1);color:#e2e8f0;">Bolonjë</span>
+                </div>
+              </div>
+            </div>
+            <div class="balk-body">
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Universitete publike</span>
+                <span class="balk-stat-val">8</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Tarifë vjetore (publike)</span>
+                <span class="balk-stat-val">€200 – €600</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Pagë mesatare diplomuar</span>
+                <span class="balk-stat-val">€500 – €900</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Gjuha</span>
+                <span class="balk-stat-val">Shqip · Serbisht</span>
+              </div>
+              <div class="balk-unis">
+                <div class="balk-uni-label">Universitetet kryesore</div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#f97316;color:#1e212a;">1</span>
+                  <div>
+                    <strong>Univ. i Prishtinës "Hasan Prishtina"</strong>
+                    <small>1969 · ~50,000 studentë · Publik</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#7c3aed;color:#fff;">2</span>
+                  <div>
+                    <strong>RIT Kosovo</strong>
+                    <small>2017 · Privat · 🇬🇧 Sistem amerikan</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#2a3042;color:#e5e7eb;">3</span>
+                  <div>
+                    <strong>American Univ. of Kosovo (AUK)</strong>
+                    <small>2003 · Privat · 🇬🇧 Anglisht · SUNY</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CROATIA -->
+          <div class="balk-card">
+            <div class="balk-header" style="background:linear-gradient(135deg,#1e212a,#5b1a1a);">
+              <div class="balk-flag">🇭🇷</div>
+              <div>
+                <h3 class="balk-country">Kroaci <em>Croatia</em></h3>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <span class="balk-badge" style="background:rgba(249,115,22,.35);color:#fed7aa;border-color:#f97316;">✅ Anëtare BE (2013)</span>
+                  <span class="balk-badge" style="background:rgba(255,255,255,.1);color:#e2e8f0;">Bolonjë</span>
+                </div>
+              </div>
+            </div>
+            <div class="balk-body">
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Universitete publike</span>
+                <span class="balk-stat-val">7</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Tarifë vjetore (publike)</span>
+                <span class="balk-stat-val">€500 – €1,500</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Pagë mesatare diplomuar</span>
+                <span class="balk-stat-val">€1,200 – €1,800</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Gjuha</span>
+                <span class="balk-stat-val">Kroatisht · Anglisht ↗</span>
+              </div>
+              <div class="balk-unis">
+                <div class="balk-uni-label">Universitetet kryesore</div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#f97316;color:#1e212a;">1</span>
+                  <div>
+                    <strong>Universiteti i Zagrebit</strong>
+                    <small>1669 · ~70,000 studentë · QS ~601-650 🌍</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#7c3aed;color:#fff;">2</span>
+                  <div>
+                    <strong>Universiteti i Splitit</strong>
+                    <small>1974 · ~28,000 studentë</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#2a3042;color:#e5e7eb;">3</span>
+                  <div>
+                    <strong>Universiteti i Rijekës</strong>
+                    <small>1973 · ~20,000 studentë</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NORTH MACEDONIA -->
+          <div class="balk-card">
+            <div class="balk-header" style="background:linear-gradient(135deg,#1e212a,#3a2a00);">
+              <div class="balk-flag">🇲🇰</div>
+              <div>
+                <h3 class="balk-country">Maqedonia e Veriut <em>North Macedonia</em></h3>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <span class="balk-badge" style="background:rgba(249,115,22,.2);color:#fb923c;">Kandidate BE</span>
+                  <span class="balk-badge" style="background:rgba(255,255,255,.1);color:#e2e8f0;">Bolonjë 2003</span>
+                </div>
+              </div>
+            </div>
+            <div class="balk-body">
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Universitete publike</span>
+                <span class="balk-stat-val">6</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Tarifë vjetore (publike)</span>
+                <span class="balk-stat-val">€400 – €1,200</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Pagë mesatare diplomuar</span>
+                <span class="balk-stat-val">€650 – €1,000</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Gjuha</span>
+                <span class="balk-stat-val">Maqedonisht · Shqip · Anglisht</span>
+              </div>
+              <div class="balk-unis">
+                <div class="balk-uni-label">Universitetet kryesore</div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#f97316;color:#1e212a;">1</span>
+                  <div>
+                    <strong>UKIM — Shën Kirili dhe Metodi</strong>
+                    <small>1949 · ~50,000 studentë · QS ~1001+ 🌍</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#7c3aed;color:#fff;">2</span>
+                  <div>
+                    <strong>Univ. Evropiane Juglindore (SEEU)</strong>
+                    <small>2001 · Tetovë · 🇦🇱🇲🇰🇬🇧 Tre gjuhë</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#2a3042;color:#e5e7eb;">3</span>
+                  <div>
+                    <strong>Universiteti Shtetëror i Tetovës</strong>
+                    <small>1994 · Mësimdhënie në shqip</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MONTENEGRO -->
+          <div class="balk-card">
+            <div class="balk-header" style="background:linear-gradient(135deg,#1e212a,#0f3460);">
+              <div class="balk-flag">🇲🇪</div>
+              <div>
+                <h3 class="balk-country">Mali i Zi <em>Montenegro</em></h3>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <span class="balk-badge" style="background:rgba(124,58,237,.3);color:#c4b5fd;">Kandidate Avancuar BE</span>
+                  <span class="balk-badge" style="background:rgba(255,255,255,.1);color:#e2e8f0;">Bolonjë</span>
+                </div>
+              </div>
+            </div>
+            <div class="balk-body">
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Universitete publike</span>
+                <span class="balk-stat-val">1 (me 19 fak.)</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Tarifë vjetore (publike)</span>
+                <span class="balk-stat-val">€400 – €800</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Pagë mesatare diplomuar</span>
+                <span class="balk-stat-val">€750 – €1,200</span>
+              </div>
+              <div class="balk-stat-row">
+                <span class="balk-stat-label">Gjuha</span>
+                <span class="balk-stat-val">Malazisht · Anglisht ↗</span>
+              </div>
+              <div class="balk-unis">
+                <div class="balk-uni-label">Universitetet kryesore</div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#f97316;color:#1e212a;">1</span>
+                  <div>
+                    <strong>Universiteti i Malit të Zi</strong>
+                    <small>1974 · ~20,000 studentë · Publik</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#7c3aed;color:#fff;">2</span>
+                  <div>
+                    <strong>Universiteti Donja Gorica (UDG)</strong>
+                    <small>2008 · Privat · Anglisht · Podgoricë</small>
+                  </div>
+                </div>
+                <div class="balk-uni-item">
+                  <span class="balk-rank" style="background:#2a3042;color:#e5e7eb;">3</span>
+                  <div>
+                    <strong>Universiteti Mesdhetar</strong>
+                    <small>Privat · Podgoricë · Bar</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /balk-grid -->
+
+        <!-- ── Comparison charts ── -->
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-coins" style="color:#f97316;"></i>
+            Paga mesatare e të diplomuarve — Graduate Salary (EUR/muaj)
+          </h3>
+          <p class="chart-note">Krahasim i pagës mujore mesatare neto pas diplomimit. Referencë max: €1,800/muaj.</p>
+          <div class="chart-wrap">
+            {[
+              { label: "🇭🇷 Kroaci",            pct: 83, val: "€1,500",  accent: "abar-grad" },
+              { label: "🇲🇪 Mali i Zi",          pct: 53, val: "€950",   accent: "abar-orange" },
+              { label: "🇦🇱 Shqipëri",           pct: 47, val: "€850",   accent: "abar-purple" },
+              { label: "🇲🇰 Maqedonia e Veriut", pct: 42, val: "€750",   accent: "abar-dark" },
+              { label: "🇽🇰 Kosovë",             pct: 36, val: "€650",   accent: "abar-purple" },
+            ].map((r) => (
+              <div class="ch-row">
+                <div class="ch-label">{r.label}</div>
+                <div class="ch-track">
+                  <div class={`abar ${r.accent}`} data-w={`${r.pct}%`} style="width:0;">
+                    <span>{r.val}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3 class="chart-title">
+            <i class="fas fa-wallet" style="color:#7c3aed;"></i>
+            Kostoja e studimeve publike — Public Tuition (EUR/vit · vlerë e ulët = më e mirë)
+          </h3>
+          <p class="chart-note">Tarifa vjetore mesatare në universitetet publike për studentët vendas. Sa më e ulët, aq më e arritshme.</p>
+          <div class="chart-wrap">
+            {[
+              { label: "🇽🇰 Kosovë",             pct: 94, val: "€400/vit",  accent: "abar-grad" },
+              { label: "🇦🇱 Shqipëri",           pct: 88, val: "€425/vit",  accent: "abar-orange" },
+              { label: "🇲🇪 Mali i Zi",          pct: 73, val: "€600/vit",  accent: "abar-purple" },
+              { label: "🇲🇰 Maqedonia e Veriut", pct: 65, val: "€800/vit",  accent: "abar-dark" },
+              { label: "🇭🇷 Kroaci",             pct: 40, val: "€1,000/vit", accent: "abar-purple" },
+            ].map((r) => (
+              <div class="ch-row">
+                <div class="ch-label">{r.label}</div>
+                <div class="ch-track">
+                  <div class={`abar ${r.accent}`} data-w={`${r.pct}%`} style="width:0;">
+                    <span>{r.val}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- ── Comparison table ── -->
+        <div class="chart-card" style="overflow-x:auto;">
+          <h3 class="chart-title" style="margin-bottom:16px;">
+            <i class="fas fa-table" style="color:#1e212a;"></i>
+            Tabela krahasuese — Comparison Table
+          </h3>
+          <table style="width:100%; border-collapse:collapse; font-size:0.82rem; min-width:560px;">
+            <thead>
+              <tr style="background:#1e212a; color:#fff;">
+                <th style="padding:10px 12px; text-align:left; border-radius:8px 0 0 0;">Vendi / Country</th>
+                <th style="padding:10px 12px; text-align:center;">Anëtare BE</th>
+                <th style="padding:10px 12px; text-align:center;">Tarifë publike</th>
+                <th style="padding:10px 12px; text-align:center;">Pagë grad.</th>
+                <th style="padding:10px 12px; text-align:center;">QS Top Uni</th>
+                <th style="padding:10px 12px; text-align:center; border-radius:0 8px 0 0;">Anglisht?</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { country:"🇭🇷 Kroaci",            eu:"✅ Po",      tuition:"€500–1,500", salary:"€1,200–1,800", qsRank:"~601-650",  en:"Disa programe" },
+                { country:"🇲🇪 Mali i Zi",          eu:"⏳ Kandidat", tuition:"€400–800",   salary:"€750–1,200",  qsRank:"Pa renditje", en:"Disa programe" },
+                { country:"🇦🇱 Shqipëri",           eu:"⏳ Kandidat", tuition:"€150–700",   salary:"€700–1,350",  qsRank:"Pa renditje", en:"Universitete private" },
+                { country:"🇲🇰 Maqedonia e Veriut", eu:"⏳ Kandidat", tuition:"€400–1,200", salary:"€650–1,000",  qsRank:"~1001+",     en:"SEEU (3 gjuhë)" },
+                { country:"🇽🇰 Kosovë",             eu:"❌ Jo anëtar", tuition:"€200–600",  salary:"€500–900",    qsRank:"Pa renditje", en:"RIT Kosovo / AUK" },
+              ].map((r, i) => (
+                <tr style={i % 2 === 0 ? 'background:#fafafa;' : 'background:#fff;'}>
+                  <td style="padding:9px 12px; font-weight:700; color:#1e212a;">{r.country}</td>
+                  <td style="padding:9px 12px; text-align:center; color:#374151;">{r.eu}</td>
+                  <td style="padding:9px 12px; text-align:center; color:#374151;">{r.tuition}</td>
+                  <td style="padding:9px 12px; text-align:center; font-weight:600; color:#7c3aed;">{r.salary}</td>
+                  <td style="padding:9px 12px; text-align:center; color:#6b7280; font-size:0.78rem;">{r.qsRank}</td>
+                  <td style="padding:9px 12px; text-align:center; color:#374151; font-size:0.78rem;">{r.en}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── Key insights ── -->
+        <div style="background:#1e212a; border-radius:12px; padding:26px 24px; color:#fff;">
+          <h3 style="font-size:1rem; font-weight:800; color:#f97316; margin:0 0 16px;">
+            <i class="fas fa-lightbulb"></i> Insights kryesore — Key Takeaways
+          </h3>
+          <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px;">
+            <div style="background:#2a3042; border-radius:8px; padding:14px 16px; border-left:3px solid #f97316;">
+              <div style="font-size:0.75rem; font-weight:700; color:#f97316; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;">Paga më e lartë</div>
+              <div style="font-size:0.88rem; color:#e5e7eb; line-height:1.5;">🇭🇷 <strong>Kroacia</strong> ofron pagat më të larta të rajonit (BE anëtare). Diploma e Zagrebit ka njohjen ndërkombëtare më të lartë.</div>
+            </div>
+            <div style="background:#2a3042; border-radius:8px; padding:14px 16px; border-left:3px solid #7c3aed;">
+              <div style="font-size:0.75rem; font-weight:700; color:#c4b5fd; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;">Çmimi më i ulët</div>
+              <div style="font-size:0.88rem; color:#e5e7eb; line-height:1.5;">🇽🇰 <strong>Kosova</strong> dhe 🇦🇱 <strong>Shqipëria</strong> kanë tarifat më të ulëta të rajonit — ideale nëse buxheti është prioritet.</div>
+            </div>
+            <div style="background:#2a3042; border-radius:8px; padding:14px 16px; border-left:3px solid #f97316;">
+              <div style="font-size:0.75rem; font-weight:700; color:#fb923c; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;">Anglisht</div>
+              <div style="font-size:0.88rem; color:#e5e7eb; line-height:1.5;">🇦🇱 <strong>Epoka</strong>, 🇽🇰 <strong>RIT Kosovo / AUK</strong> ofrojnë programet më të mira 100% në anglisht në rajon.</div>
+            </div>
+            <div style="background:#2a3042; border-radius:8px; padding:14px 16px; border-left:3px solid #7c3aed;">
+              <div style="font-size:0.75rem; font-weight:700; color:#c4b5fd; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;">Integrim BE</div>
+              <div style="font-size:0.88rem; color:#e5e7eb; line-height:1.5;">🇲🇪 <strong>Mali i Zi</strong> është kandidati më i avancuar pas Kroacisë. 🇦🇱 🇲🇰 janë gjithashtu aktivisht në rrugën e anëtarësimit.</div>
+            </div>
+            <div style="background:#2a3042; border-radius:8px; padding:14px 16px; border-left:3px solid #f97316;">
+              <div style="font-size:0.75rem; font-weight:700; color:#fb923c; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;">Shqipfolësit</div>
+              <div style="font-size:0.88rem; color:#e5e7eb; line-height:1.5;">🇽🇰 Kosova, 🇲🇰 Univ. i Tetovës dhe 🇲🇰 SEEU ofrojnë mësimdhënie <strong>në shqip</strong> jashtë Shqipërisë.</div>
+            </div>
+            <div style="background:#2a3042; border-radius:8px; padding:14px 16px; border-left:3px solid #7c3aed;">
+              <div style="font-size:0.75rem; font-weight:700; color:#c4b5fd; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;">Bolonjë</div>
+              <div style="font-size:0.88rem; color:#e5e7eb; line-height:1.5;">Të 5 vendet janë pjesë e <strong>Procesit të Bolonjës</strong> — kreditet ECTS transferohen lirshëm ndërmjet tyre dhe gjithë Evropës.</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-ballkani -->
+
+    </div><!-- /container -->
+  </div>
+
+  <Footer slot="footer" />
+</LayoutInfo>
+
+<style>
+  /* ── Tab navigation ── */
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 13px 18px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #6b7280;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: #1e212a; background: #f9fafb; }
+  .tab-btn.active { color: #1e212a; border-bottom-color: #f97316; background: #fff8f0; }
+
+  .hidden { display: none !important; }
+
+  /* ── Section headers ── */
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1e212a;
+    margin: 0 0 6px;
+  }
+  .section-sub {
+    color: #6b7280;
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+  }
+
+  /* ── Career cards ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.11); }
+
+  .card-header { display: flex; align-items: center; gap: 11px; margin-bottom: 10px; }
+  .career-icon {
+    width: 40px; height: 40px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .card-name { font-size: 0.95rem; font-weight: 700; color: #1e212a; margin: 0; }
+  .card-sub  { font-size: 0.75rem; color: #9ca3af; }
+  .card-desc { font-size: 0.84rem; color: #6b7280; line-height: 1.55; margin: 8px 0; }
+  .card-stat { font-size: 0.82rem; color: #374151; margin-top: 4px; }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 99px;
+    margin-bottom: 6px;
+  }
+  .badge-green  { background: #dcfce7; color: #166534; }
+  .badge-yellow { background: #fef9c3; color: #854d0e; }
+  .badge-blue   { background: #e0f2fe; color: #0c4a6e; }
+
+  /* ── Ranking list cards ── */
+  .info-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #f0f0f0;
+    transition: box-shadow 0.2s;
+  }
+  .info-card:hover { box-shadow: 0 5px 16px rgba(0,0,0,0.1); }
+
+  /* ── Charts ── */
+  .chart-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    margin-bottom: 24px;
+    border: 1px solid #f0f0f0;
+  }
+  .chart-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e212a;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .chart-note {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin: 0 0 18px;
+  }
+  .chart-wrap { display: flex; flex-direction: column; gap: 9px; }
+
+  .ch-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ch-label {
+    min-width: 140px;
+    max-width: 140px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #374151;
+    text-align: right;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+  .ch-track {
+    flex: 1;
+    background: #f3f4f6;
+    border-radius: 7px;
+    overflow: hidden;
+    height: 36px;
+  }
+  .abar {
+    height: 100%;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 12px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: width 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  /* bar color variants */
+  .abar-grad   { background: linear-gradient(90deg, #7c3aed, #a855f7 50%, #f97316); }
+  .abar-orange { background: linear-gradient(90deg, #ea580c, #f97316); }
+  .abar-purple { background: linear-gradient(90deg, #4c1d95, #7c3aed); }
+  .abar-dark   { background: linear-gradient(90deg, #1e212a, #7c3aed); }
+  .abar-blue   { background: linear-gradient(90deg, #1e40af, #1d4ed8); }
+
+  /* ── Balkan country cards ── */
+  .balk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .balk-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    border: 1px solid #2a3042;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .balk-header {
+    padding: 18px 18px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .balk-flag {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .balk-country {
+    font-size: 0.97rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 7px;
+    line-height: 1.2;
+  }
+  .balk-country em {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #94a3b8;
+    font-style: normal;
+    margin-top: 2px;
+  }
+
+  .balk-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+
+  .balk-body {
+    background: #fff;
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .balk-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid #f3f4f6;
+    gap: 8px;
+  }
+  .balk-stat-row:last-of-type { border-bottom: none; }
+
+  .balk-stat-label {
+    font-size: 0.78rem;
+    color: #6b7280;
+    flex-shrink: 0;
+  }
+  .balk-stat-val {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #1e212a;
+    text-align: right;
+  }
+
+  .balk-unis {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .balk-uni-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #9ca3af;
+    margin-bottom: 2px;
+  }
+
+  .balk-uni-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .balk-uni-item > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .balk-uni-item strong {
+    font-size: 0.82rem;
+    color: #1e212a;
+    line-height: 1.3;
+  }
+  .balk-uni-item small {
+    font-size: 0.72rem;
+    color: #9ca3af;
+    line-height: 1.3;
+  }
+
+  .balk-rank {
+    min-width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  @media (max-width: 640px) {
+    .ch-label { min-width: 100px; max-width: 100px; font-size: 0.75rem; }
+    .abar { font-size: 0.72rem; padding: 0 8px; }
+    .chart-card { padding: 16px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .balk-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script is:inline>
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(function (el) {
+      el.classList.add('hidden');
+    });
+    document.querySelectorAll('.tab-btn').forEach(function (el) {
+      el.classList.remove('active');
+    });
+    var panel = document.getElementById('panel-' + id);
+    var btn   = document.getElementById('tab-' + id);
+    if (panel) panel.classList.remove('hidden');
+    if (btn)   btn.classList.add('active');
+
+    /* animate bars in newly shown panel */
+    setTimeout(function () {
+      if (!panel) return;
+      panel.querySelectorAll('.abar[data-w]').forEach(function (b) {
+        b.style.width = b.dataset.w;
+      });
+    }, 60);
+  }
+
+  /* Animate bars in the default (first) tab on load */
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var firstPanel = document.getElementById('panel-karriera');
+      if (!firstPanel) return;
+      firstPanel.querySelectorAll('.abar[data-w]').forEach(function (b) {
+        b.style.width = b.dataset.w;
+      });
+    }, 350);
+  });
+</script>

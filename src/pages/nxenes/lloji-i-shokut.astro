@@ -1,0 +1,632 @@
+---
+import LayoutInfo from "../../layouts/LayoutInfo.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+---
+
+<LayoutInfo
+  title="Cili është lloji yt? | ScaleGrades"
+  description="Zbulo llojin tënd të personalitetit — 32 pyetje, rezultat unik me emër shqiptar nga 16 profile."
+  canonical="https://scalegrades.com/nxenes/lloji-i-shokut"
+>
+  <Navbar slot="header" />
+  <link rel="stylesheet" href="/js/test-styles.css" />
+
+  <div class="ls-back-bar">
+    <a href="/nxenes" class="ls-back-link"><i class="fas fa-arrow-left"></i> Kthehu te Testet</a>
+  </div>
+
+  <div id="app" style="min-height:100vh;"></div>
+
+  <Footer slot="footer" />
+</LayoutInfo>
+
+<style is:global>
+  body { background-color: #1e212a !important; color: #e5e7eb; }
+
+  .ls-back-bar {
+    position: fixed; top: 62px; left: 0; right: 0; z-index: 50;
+    background: #1e212a; border-bottom: 1px solid #2a3042; padding: 8px 20px;
+  }
+  .ls-back-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    color: #6b7280; text-decoration: none; font-size: 0.8rem; font-weight: 600;
+    transition: color 0.18s;
+  }
+  .ls-back-link:hover { color: #9ca3af; }
+
+  .ls-container { max-width: 800px; margin: 0 auto; padding: 112px 20px 80px; min-height: 100vh; }
+
+  /* Intro */
+  .ls-intro-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 99px; padding: 6px 14px; font-size: 0.8rem; color: #a78bfa; margin-bottom: 14px;
+  }
+  .ls-intro-card { background: #2a3042; border: 1px solid #333b4e; border-radius: 16px; padding: 32px 28px; margin-top: 20px; }
+  .ls-form-group { margin-bottom: 22px; }
+  .ls-label { display: block; font-size: 0.8rem; color: #9ca3af; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ls-input {
+    width: 100%; background: #1e212a; border: 1.5px solid #333b4e; border-radius: 9px;
+    padding: 13px 16px; color: #e5e7eb; font-size: 1rem; font-family: inherit;
+    outline: none; transition: border-color 0.2s; box-sizing: border-box;
+  }
+  .ls-input:focus { border-color: #7c3aed; }
+  .ls-btn-row { display: flex; gap: 10px; }
+  .ls-sel-btn {
+    flex: 1; padding: 11px 6px; border-radius: 9px; border: 1.5px solid #333b4e;
+    background: #1e212a; color: #9ca3af; font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; font-family: inherit; white-space: nowrap;
+  }
+  .ls-sel-btn:hover { border-color: #7c3aed; color: #c4b5fd; }
+  .ls-sel-btn.ls-sel { background: rgba(124,58,237,0.15); border-color: #7c3aed; color: #c4b5fd; }
+
+  /* Bipolar question card */
+  .ls-bipolar-card {
+    background: #2a3042; border-radius: 14px; padding: 22px 24px;
+    border: 1px solid #333b4e; transition: border-color 0.2s;
+  }
+  .ls-bipolar-card.ls-bipolar-answered { border-left: 3px solid #7c3aed; }
+  .ls-bipolar-row {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; margin-top: 14px;
+  }
+  .ls-bipolar-stmt {
+    font-size: 0.86rem; line-height: 1.55; color: #9ca3af; transition: color 0.2s, font-weight 0.2s;
+  }
+  .ls-stmt-a { text-align: right; }
+  .ls-stmt-b { text-align: left; }
+  .ls-bipolar-stmt.ls-stmt-active { color: #e5e7eb; font-weight: 700; }
+  .ls-bipolar-scale { display: flex; gap: 8px; align-items: center; justify-content: center; }
+  .ls-dot {
+    border-radius: 50%; border: 2px solid #333b4e; background: #1e212a;
+    cursor: pointer; transition: all 0.2s; padding: 0; flex-shrink: 0;
+  }
+  .ls-dot-0 { width: 22px; height: 22px; }
+  .ls-dot-1 { width: 30px; height: 30px; }
+  .ls-dot-2 { width: 38px; height: 38px; }
+  .ls-dot:hover { border-color: #7c3aed; }
+  .ls-dot.ls-sel { background: #7c3aed; border-color: #7c3aed; box-shadow: 0 0 0 4px rgba(124,58,237,0.18); }
+
+  /* Result */
+  .ls-code-badge {
+    display: inline-block; margin-top: 12px; padding: 5px 16px; border-radius: 99px;
+    border: 1.5px solid #333b4e; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.1em;
+  }
+  .ls-desc-card {
+    background: linear-gradient(135deg,#2a3042,#333b4e); border-radius: 16px;
+    padding: 26px 28px; border: 1px solid #333b4e; margin: 24px 0;
+  }
+  .ls-desc-card p { color: #d1d5db; font-size: 0.97rem; line-height: 1.75; }
+
+  .ls-section-title {
+    font-size: 0.78rem; font-weight: 700; color: #6b7280; text-transform: uppercase;
+    letter-spacing: 0.07em; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px;
+  }
+
+  .ls-traits-grid, .ls-careers-grid { display: flex; flex-wrap: wrap; gap: 9px; }
+  .ls-trait-tag {
+    padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; border: 1px solid;
+  }
+  .ls-career-tag {
+    background: #2a3042; border: 1px solid #333b4e; color: #9ca3af;
+    padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+  }
+
+  .ls-challenge-card {
+    background: #2a3042; border: 1px solid #333b4e; border-left: 3px solid #fb7185;
+    border-radius: 12px; padding: 18px 20px; font-size: 0.9rem; color: #d1d5db; line-height: 1.65;
+  }
+
+  .ls-quote-card {
+    text-align: center; font-style: italic; color: #9ca3af; font-size: 0.95rem;
+    line-height: 1.7; padding: 20px; margin: 28px 0; border-top: 1px solid #333b4e; border-bottom: 1px solid #333b4e;
+  }
+
+  .ls-cta-card {
+    background: linear-gradient(135deg,rgba(124,58,237,0.08),rgba(56,189,248,0.08));
+    border: 1px solid rgba(124,58,237,0.25); border-radius: 16px; padding: 28px; text-align: center; margin-top: 8px;
+  }
+  .ls-cta-icon { font-size: 2.2rem; margin-bottom: 8px; }
+  .ls-cta-card h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .ls-cta-card p { font-size: 0.87rem; color: #9ca3af; line-height: 1.6; margin-bottom: 18px; }
+  .ls-cta-btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 10px;
+    background: #7c3aed; color: #fff; font-size: 0.9rem; font-weight: 700; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .ls-cta-btn:hover { background: #8b5cf6; transform: translateY(-1px); }
+
+  @media (max-width: 600px) {
+    .ls-container { padding: 100px 16px 60px; }
+    .ls-bipolar-row { grid-template-columns: 1fr; gap: 10px; }
+    .ls-stmt-a, .ls-stmt-b { text-align: center; }
+    .ls-btn-row { gap: 6px; }
+    .ls-sel-btn { font-size: 0.8rem; padding: 10px 4px; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  'use strict';
+
+  /* ── 32 PYETJET (8 për dimension) ──────────────────────────────────── */
+  /* idx 0-7: E/I · idx 8-15: S/N · idx 16-23: T/F · idx 24-31: J/P
+     Polo A = vlerë negative, Polo B = vlerë pozitive */
+  var PREGUNTAS = [
+    { dim:'EI', a:"Pas një dite të gjatë me njerëz, kam nevojë të jem vetëm për t'u çlodhur.", b:"Pas një dite të gjatë me njerëz, ndihem më i/e energjizuar dhe dua të vazhdoj." },
+    { dim:'EI', a:"Preferoj të mendoj gjatë para se të flas.", b:"Mendoj ndërsa flas — biseda më ndihmon të kuptoj mendimet e mia." },
+    { dim:'EI', a:"Kam pak miq të ngushtë me të cilët ndaj gjithçka.", b:"Kam shumë njohje dhe e gëzoj kontaktin me njerëz të ndryshëm." },
+    { dim:'EI', a:"Punoj më mirë kur jam vetëm dhe pa ndërprerje.", b:"Punoj më mirë kur ka jetë rreth meje dhe mund të shkëmbej ide." },
+    { dim:'EI', a:"Ndihem rehat me heshtjen — nuk kam nevojë ta mbush gjithmonë.", b:"Heshtja e gjatë më shqetëson — preferoj të kem diçka që ndodh." },
+    { dim:'EI', a:"Shpesh njerëzit nuk e dinë çfarë mendoj vërtet sepse nuk e shpreh lehtë.", b:"Njerëzit zakonisht e dinë qëndrimin tim — e shpreh hapur dhe shpejt." },
+    { dim:'EI', a:"Festë e madhe me shumë njerëz të panjohur? Jo, faleminderit.", b:"Festë e madhe me shumë njerëz të panjohur? Ku është — jam aty." },
+    { dim:'EI', a:"Rifreskohem kur kam kohë të qetë për vete.", b:"Rifreskohem kur jam i/e rrethuar nga njerëz dhe aktivitet." },
+
+    { dim:'SN', a:"Më interesojnë mundësitë dhe ato që mund të jenë, jo vetëm ato që janë.", b:"Më interesojnë faktet dhe ato që ekzistojnë vërtet, jo spekulimet." },
+    { dim:'SN', a:"Shpesh mendja ime shkon te lidhjet e fshehura midis gjërave.", b:"Më pëlqen të fokusohem tek e konkretja dhe praktikja." },
+    { dim:'SN', a:"Preferoj udhëzime të hapura që lënë hapësirë për interpretim.", b:"Preferoj udhëzime të qarta hap pas hapi." },
+    { dim:'SN', a:"Ndihem i/e tërhequr nga ideja e \"çfarë do të ndodhte nëse...\".", b:"Preferoj të merrem me çfarë ndodh vërtet tani." },
+    { dim:'SN', a:"Kur lexoj, shpesh ndalem të imagjinoj skenarë të ndryshëm.", b:"Kur lexoj, fokusohem tek informacioni dhe kuptimi i drejtpërdrejtë." },
+    { dim:'SN', a:"Parashikimet dhe vizionet afatgjata më duken emocionuese.", b:"Plani konkret për javën e ardhshme më duket më i dobishëm se vizioni 10-vjeçar." },
+    { dim:'SN', a:"Mësoj mirë kur kuptoj konceptin e madh — detajet vijnë vetë.", b:"Mësoj mirë kur filloj me shembuj konkretë dhe detaje specifike." },
+    { dim:'SN', a:"Intuitën time e besoj shpesh edhe pa prova të qarta.", b:"Vendimin e bazoj mbi të dhëna dhe përvojë, jo ndjenjë." },
+
+    { dim:'TF', a:"Kur dikush ka problem, i ofroj zgjidhje praktike.", b:"Kur dikush ka problem, fillimisht dëgjoj dhe tregoj se e kuptoj." },
+    { dim:'TF', a:"Vendos bazuar mbi logjikën edhe kur vendimi është i vështirë emocionalisht.", b:"Marr parasysh ndjenjat e të tjerëve edhe kur kjo e ndërlikon vendimin." },
+    { dim:'TF', a:"Kritika e drejtpërdrejtë është e dobishme — nuk ka nevojë për zbukurime.", b:"Mënyra si thuhet diçka është po aq e rëndësishme sa çfarë thuhet." },
+    { dim:'TF', a:"Në mosmarrëveshje kërkoj të di kush ka të drejtë objektivisht.", b:"Në mosmarrëveshje kërkoj të kuptoj si ndihet secila palë." },
+    { dim:'TF', a:"Konsistenca dhe drejtësia janë vlera që nuk duhen negociuar.", b:"Harmonia dhe mirëkuptimi janë baza e marrëdhënieve të shëndetshme." },
+    { dim:'TF', a:"Mund të marr vendime të vështira pa u ndikuar shumë emocionalisht.", b:"Vendimet e vështira më lënë me ndjenjë të rëndë edhe pasi janë marrë." },
+    { dim:'TF', a:"Preferoj të jem i/e drejtë sesa të jem i/e dashur, nëse duhet të zgjedh.", b:"Preferoj të ruaj marrëdhënien edhe nëse duhet të lëshoj pe pak." },
+    { dim:'TF', a:"Analizoj situatat me distancë për të arritur në përfundimin më të logjikshëm.", b:"Vlerësoj situatat duke u vënë në vendin e njerëzve të përfshirë." },
+
+    { dim:'JP', a:"Preferoj të kem planin e qartë — surprizat e fundit çasit më stresojnë.", b:"Preferoj të mbaj mundësi të hapura — planet e ngurta më kufizojnë." },
+    { dim:'JP', a:"Ndihem mirë kur detyrat janë kryer dhe gjithçka është në rregull.", b:"Ndihem mirë kur ka gjëra interesante në horizont, edhe nëse janë të pasigurta." },
+    { dim:'JP', a:"Filloj projektet herët dhe i ndaj në hapa të qartë.", b:"Pres afatin të afrohet — presioni më ndihmon të fokusohem." },
+    { dim:'JP', a:"Dhoma, çanta, orari — preferoj që gjithçka të ketë vendin e vet.", b:"Kaosi i jashtëm nuk më shqetëson nëse di ku janë gjërat e mia." },
+    { dim:'JP', a:"Vendimi i marrë më jep prehje — nuk dua ta rishqyrtoj vazhdimisht.", b:"Mbaj vendimin të hapur sa të mundem — mund të dalë diçka më e mirë." },
+    { dim:'JP', a:"Lista e detyrave është miku im i besueshëm.", b:"Lista e detyrave bëhet burg nëse nuk ka fleksibilitet." },
+    { dim:'JP', a:"Preferoj të di çfarë të pres — parashikueshmëria është e qetësueshme.", b:"Preferoj të jem i/e hapur ndaj mundësive të papritura — ato shpesh janë më interesante." },
+    { dim:'JP', a:"Kur mbaroj diçka, ndihem i/e kënaqur dhe kaloj te tjetri.", b:"Kur mbaroj diçka, tashmë po mendoj për projektin tjetër që mund të filloj." }
+  ];
+
+  /* 8 grupe x 4 indekse — çdo grup përmban një pyetje nga secili dimension */
+  var GROUPS = [
+    [0, 8, 16, 24],
+    [9, 17, 25, 1],
+    [18, 26, 2, 10],
+    [27, 3, 11, 19],
+    [4, 20, 12, 28],
+    [13, 5, 29, 21],
+    [22, 14, 6, 30],
+    [31, 23, 15, 7]
+  ];
+
+  /* ── 16 TIPET ───────────────────────────────────────────────────────── */
+  var TIPOS = {
+    INTJ: { name:"Ndërtuesi i Heshtur", sub:"Arkitekt i mendjes, ndërtues i botëve të brendshme",
+      desc:"Ke një vizion të qartë për atë që duhet të jetë bota — dhe padurim për gjithçka që e pengon. Mendon shumë, flet pak, por kur flet, ia vlen të dëgjohet. Nuk ke nevojë për aprovim — ke nevojë për rezultate.",
+      forcat:["Vizion strategjik","Pavarësi mendore","Zgjidhje origjinale"], sfida:"Duron me vështirësi papërmbajtjen e të tjerëve",
+      fjale:"Mendja e mençur hapet si libër — ngadalë, por tërësisht.", careers:["Shkenca kompjuterike","Arkitekturë","Kërkim shkencor","Filozofi"] },
+    INTP: { name:"Filozofi i Malit", sub:"Mendimtar i lirë, kërkues i së vërtetës",
+      desc:"Jeton në botën e ideve dhe sistemeve. Pyetja \"pse?\" është motori yt. Nuk pranon asgjë pa e kuptuar — dhe shpesh gjen mangësi në gjëra që të tjerët i marrin si të mirëqena. I pavarur, kurioz, dhe shpesh i humbur në mendime të veta.",
+      forcat:["Analizë e thellë","Origjinalitet","Objektivitet"], sfida:"Vështirësi në zbatimin praktik të ideve",
+      fjale:"Njeriu që pyet është gjysmë i ditur — njeriu që nuk pyet është gjysmë i verbër.", careers:["Matematikë","Filozofi","Programim","Fizikë"] },
+    ENTJ: { name:"Komandanti i Fushës", sub:"Lider i lindur, strateg pa kompromis",
+      desc:"Ti sheh mundësi ku të tjerët shohin pengesa. Organizon, drejton, vendos — dhe pret të njëjtën vendosmëri nga të tjerët. Nuk ke kohë për gjysmë-masa. Ke një qëllim dhe di si të arrish atje.",
+      forcat:["Lidershi","Vendosmëri","Eficiencë"], sfida:"Mund të duket i/e ftohtë ose autoritar/e",
+      fjale:"Shqiponja nuk pyet erën — ajo e pret atë.", careers:["Drejtim biznesi","Drejtësi","Politikë","Menaxhim"] },
+    ENTP: { name:"Debatisti i Pazarit", sub:"Mendim i shpejtë, gjuhë e mprehtë",
+      desc:"Të pëlqen të sfidosh idetë — edhe ato të tua. Gjen kënaqësi në debat jo për të fituar, por për të zbuluar çfarë është e vërtetë. Bezdis disa, fascinon shumë. Nuk të pëlqejnë rregullat pa arsye.",
+      forcat:["Improvizim","Aftësi debati","Zgjidhje kreative"], sfida:"Fillon shumë projekte, mbaron pak",
+      fjale:"Fjala e mençur bën më shumë se shpata — por duhet të godasi në kohën e duhur.", careers:["Gazetari","Drejtësi","Marketing","Sipërmarrje"] },
+    INFJ: { name:"Ruajtësi i Zjarrit", sub:"Vizionar i heshtur, ndjeshmëri e thellë",
+      desc:"Ke një botë të brendshme shumë të pasur që pak njerëz e shohin. Kujdeset thellë — për njerëzit, për vlerat, për ardhmërinë. Shpesh di si ndihet dikush para se ai vetë ta kuptojë. Kërkon kuptim në gjithçka.",
+      forcat:["Empati","Vizion","Besnikëri ndaj vlerave"], sfida:"Mban shumë brenda — lodhja emocionale është reale",
+      fjale:"Zemra e mirë është si burimi i malit — e qetë, por s'thahet kurrë.", careers:["Psikologji","Letërsi","Punë sociale","Mësuesi"] },
+    INFP: { name:"Ëndrruesi i Lirisë", sub:"Poet i brendshëm, kërkues i autenticitetit",
+      desc:"Jeton sipas vlerave të tua — dhe nuk ke ndërmend t'i shesësh për asgjë. Ndjen thellë, krijon shumë, dhe shpesh e shikon botën siç mund të ishte, jo siç është. Ndjeshmëria jote është një superfuqi, jo dobësi.",
+      forcat:["Kreativitet","Autenticitet","Ndjeshmëri e thellë"], sfida:"Idealizmi shpesh has në realitetin e ashpër",
+      fjale:"Ëndrra e lirë fluturon më lart se shqiponja.", careers:["Letërsi","Art","Psikologji","Dizajn"] },
+    ENFJ: { name:"Zëri i Fshatit", sub:"Lider i zemrës, bashkues i njerëzve",
+      desc:"Njerëzit ndihen të kuptuar kur janë me ty. Ke aftësi natyrale për të motivuar, bashkuar dhe drejtuar — jo me forcë, por me ngrohtësi. Shpesh vën nevojat e të tjerëve para tua.",
+      forcat:["Karizëm","Empati","Aftësi komunikimi"], sfida:"Humbas veten duke u kujdesur për të gjithë",
+      fjale:"Njeriu i mirë është si drita — ndriçon pa u shuar.", careers:["Mësuesi","Psikologji","HR","Komunikim"] },
+    ENFP: { name:"Shpirti i Lirë", sub:"Entuziast i palodhur, lidhës i botëve",
+      desc:"Gjej lidhje midis gjërave që të tjerët nuk i shohin. Ke energji ngjitëse dhe kuriozitet të pafund. Njerëzit të tërhiqen — jo sepse përpiqesh, por sepse je autentik/e. Bezdisesh shpejt nga rutina.",
+      forcat:["Entuziazëm","Kreativitet","Aftësi lidhëse"], sfida:"Fokusin e humb kur ka shumë gjëra interesante njëherësh",
+      fjale:"Kroi i malit nuk pyet nga rrjedh — rrjedh e gjallë.", careers:["Marketing kreativ","Gazetari","Psikologji","Sipërmarrje"] },
+    ISTJ: { name:"Gardiani i Traditës", sub:"Besnik, i besueshëm, guri i themeltë",
+      desc:"Ke fjalën — dhe e mban. Punon seriozisht, respekton rregullat, dhe është mburoja e njerëzve rreth teje. Nuk bën zhurmë, por gjithçka funksionon sepse je aty. Tradicioni dhe besueshmëria janë vlerat e tua themelore.",
+      forcat:["Besueshmëri","Organizim","Qëndrueshmëri"], sfida:"Vështirësi me ndryshimin e papritur",
+      fjale:"Guri i vjetër nuk zhvendoset nga era — por mban urën.", careers:["Kontabilitet","Drejtësi","Administrim","Mjekësi"] },
+    ISFJ: { name:"Mbrojtësi i Shtëpisë", sub:"Kujdestari i heshtur, bujar pa bujë",
+      desc:"Të tjerët mund të mos ta vënë re punën tënde — por do ta ndiejnë menjëherë kur mungon. Kujdeset me durim dhe pa u ankuar. Kujtesa jote për detajet e njerëzve të afërt është e jashtëzakonshme.",
+      forcat:["Kujdes","Besnikëri","Vëmendje ndaj detajeve"], sfida:"Thotë po kur duhet të thotë jo",
+      fjale:"Dora që jep s'lodhet kurrë.", careers:["Shëndetësi","Mësuesi","Punë sociale","Administrim"] },
+    ESTJ: { name:"Organizatori i Komunës", sub:"Drejtues praktik, zbatues i rregullave",
+      desc:"Beson në rregull, efikasitet dhe rezultate. Ti nuk pret që gjërat të ndodhin vetë — i organizon. Drejtues natyral në situata ku duhet aksion i shpejtë dhe i qartë. Pak tolerancë për çorganizimin.",
+      forcat:["Organizim","Lidershi praktik","Vendosmëri"], sfida:"Mund të jetë i/e ngurtë kur situata kërkon fleksibilitet",
+      fjale:"Puna e bërë sot nuk pret nesër.", careers:["Menaxhim","Administratë publike","Drejtësi","Financa"] },
+    ESFJ: { name:"Zemra e Lagjes", sub:"Lidhës i komunitetit, kujdesëtar i njerëzve",
+      desc:"Ke radar të mprehtë për nevojat e njerëzve rreth teje. Gëzohesh kur të tjerët gëzohen. Feston me gjithë zemër dhe mbështet me gjithë forcë. Harmonia sociale është si ajri — pa të nuk funksionon.",
+      forcat:["Ngrohtësi","Bashkëpunim","Ndjeshmëri sociale"], sfida:"Konflikti i brendshëm kur njerëzit e dashur nuk pajtohen",
+      fjale:"Shtëpia pa ngrohtësi është vetëm mur.", careers:["Shëndetësi","HR","Mësuesi","Event management"] },
+    ISTP: { name:"Mjeshtri i Heshtjes", sub:"Pragmatist i ftohtë, ekspert i mjeteve",
+      desc:"Pak fjalë, shumë veprim. Kupton si funksionojnë gjërat duke i prishur dhe rindërtuar. Të tjerët e shohin të rezervuar — ti thjesht nuk shpenzon energji për gjëra pa vlerë. Kriza? Ti qetësohet pikërisht atëherë.",
+      forcat:["Aftësi teknike","Qetësi nën presion","Pragmatizëm"], sfida:"Komunikimi emocional vjen me vështirësi",
+      fjale:"Dora e qetë pret më prerë.", careers:["Inxhinieri","IT","Mekanikë","Kirurgji"] },
+    ISFP: { name:"Artisti i Natyrshëm", sub:"I/e butë, autentik/e, krijues i heshtur",
+      desc:"Nuk bën zhurmë — por vepra jote flet. Ke ndjeshmëri artistike të natyrshme dhe një botë të brendshme të pasur. Vlerëson lirinë, bukurinë dhe autenticitetin mbi gjithçka. Nuk të pëlqen t'u imponohesh të tjerëve.",
+      forcat:["Ndjeshmëri artistike","Autenticitet","Butësi"], sfida:"Vështirësi në vetëpromovim dhe vendosmëri",
+      fjale:"Lulëzimi vjen pa zhurmë — por e gjithë fusha e ndjen.", careers:["Art","Dizajn","Muzikë","Shëndetësi"] },
+    ESTP: { name:"Luani i Pazarit", sub:"Energjik, i guximshëm, i gjallë në çdo situatë",
+      desc:"Jeton në të tashmen — dhe e bën çdo çast të mbetet mend. Ke refleks të shpejtë, karizëm natyral dhe aftësi për të lexuar njerëzit brenda sekondash. Rregullat i zbaton kur ka kuptim — dhe i sfidosh kur nuk ka.",
+      forcat:["Energji","Aftësi sociale","Improvizim"], sfida:"Vështirësi me angazhimet afatgjata",
+      fjale:"Shqiponja nuk pyet gur nëse do të fluturojë.", careers:["Sipërmarrje","Sport","Shitje","Gazetari"] },
+    ESFP: { name:"Dielli i Grupit", sub:"Entuziast, spontan, gëzimi i pranishëm",
+      desc:"Kur hyn ti, dhoma ndryshon. Ke aftësi të rrallë për të bërë njerëzit të ndihen mirë — jo duke u përpjekur, por duke qenë vetvetja. Jeton plotësisht në të tashmen dhe e infekton të tjerët me gëzim.",
+      forcat:["Ngrohtësi","Spontanitet","Aftësi performuese"], sfida:"Planifikimi afatgjatë nuk është pikën e fortë",
+      fjale:"Gëzimi i vërtetë është si dielli — nuk pyet kë ndriçon.", careers:["Aktorí","Muzikë","Event management","Mësuesi"] }
+  };
+
+  /* ── STATE ──────────────────────────────────────────────────────────── */
+  var studentName   = '';
+  var studentGender = '';
+  var currentGroup  = -1;
+  var answers       = {};
+  var testDone      = false;
+  var lastResult    = null;
+
+  window.addEventListener('beforeunload', function (e) {
+    if (currentGroup >= 0 && !testDone) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  function setApp(html) { var el = document.getElementById('app'); if (el) el.innerHTML = html; }
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  /* ── INTRO ──────────────────────────────────────────────────────────── */
+  function showIntro() {
+    var g = studentGender;
+    setApp(
+      '<div class="ls-container">' +
+        '<div class="test-header">' +
+          '<div class="ls-intro-badge"><i class="fas fa-user-friends"></i> Test Personaliteti</div>' +
+          '<h1 style="color:#fff;">Cili është lloji yt?</h1>' +
+          '<p>32 pyetje · 8 hapa · Zbulo njërin nga 16 personalitetet shqiptare</p>' +
+        '</div>' +
+        '<div class="ls-intro-card">' +
+          '<div class="ls-form-group">' +
+            '<label class="ls-label" for="ls-name">Emri yt</label>' +
+            '<input class="ls-input" type="text" id="ls-name" placeholder="Shkruaj emrin tënd..." maxlength="30" autocomplete="off" />' +
+          '</div>' +
+          '<div class="ls-form-group">' +
+            '<label class="ls-label">Gjinia jote</label>' +
+            '<div class="ls-btn-row">' +
+              '<button class="ls-sel-btn'+(g==='F'?' ls-sel':'')+'" onclick="lsGender(\'F\')">Vajzë</button>' +
+              '<button class="ls-sel-btn'+(g==='M'?' ls-sel':'')+'" onclick="lsGender(\'M\')">Djalë</button>' +
+              '<button class="ls-sel-btn'+(g==='T'?' ls-sel':'')+'" onclick="lsGender(\'T\')">Tjetër</button>' +
+            '</div>' +
+          '</div>' +
+          '<button id="ls-btn-start" class="nav-btn nav-btn-submit" onclick="lsStart()" style="width:100%;'+ (!studentName||!g?'opacity:0.4;cursor:not-allowed;':'') +'"'+ (!studentName||!g?' disabled':'') +'>' +
+            '<i class="fas fa-play"></i> Fillo Testin' +
+          '</button>' +
+        '</div>' +
+      '</div>'
+    );
+    var inp = document.getElementById('ls-name');
+    if (inp) { if (studentName) inp.value = studentName; inp.addEventListener('input', lsCheckValid); }
+  }
+
+  window.lsGender = function (g) {
+    studentGender = g;
+    document.querySelectorAll('.ls-sel-btn[onclick^="lsGender"]').forEach(function (b) {
+      b.classList.toggle('ls-sel', b.getAttribute('onclick') === "lsGender('" + g + "')");
+    });
+    lsCheckValid();
+  };
+
+  function lsCheckValid() {
+    var name = (document.getElementById('ls-name') || {}).value;
+    name = name ? name.trim() : '';
+    var ok = !!(name && studentGender);
+    var btn = document.getElementById('ls-btn-start');
+    if (!btn) return;
+    btn.disabled = !ok;
+    btn.style.opacity = ok ? '1' : '0.4';
+    btn.style.cursor  = ok ? 'pointer' : 'not-allowed';
+  }
+
+  /* ── START ──────────────────────────────────────────────────────────── */
+  window.lsStart = function () {
+    var inp  = document.getElementById('ls-name');
+    var name = inp ? inp.value.trim() : '';
+    if (!name || !studentGender) return;
+    studentName  = name;
+    answers      = {};
+    testDone     = false;
+    lastResult   = null;
+    currentGroup = 0;
+    showGroup(0);
+  };
+
+  /* ── SHOW GROUP ─────────────────────────────────────────────────────── */
+  function showGroup(idx) {
+    currentGroup = idx;
+    var group   = GROUPS[idx];
+    var pct     = Math.round(((idx + 1) / 8) * 100);
+    var allDone = group.every(function (qi) { return answers[qi] !== undefined; });
+    var isLast  = idx === 7;
+
+    var qHtml = group.map(function (qi, li) {
+      var q   = PREGUNTAS[qi];
+      var num = idx * 4 + li + 1;
+      var val = answers[qi];
+
+      var dots = '';
+      for (var v = -2; v <= 2; v++) {
+        var sel = (val === v) ? ' ls-sel' : '';
+        dots += '<button class="ls-dot ls-dot-' + Math.abs(v) + sel + '" data-v="' + v + '" onclick="lsAns(' + qi + ',' + v + ')" aria-label="Vlera ' + v + '"></button>';
+      }
+
+      var aActive = val !== undefined && val < 0 ? ' ls-stmt-active' : '';
+      var bActive = val !== undefined && val > 0 ? ' ls-stmt-active' : '';
+
+      return (
+        '<div class="ls-bipolar-card' + (val !== undefined ? ' ls-bipolar-answered' : '') + '" id="lq-' + qi + '">' +
+          '<div class="step-q-header"><span class="step-q-num">Pyetja ' + num + ' / 32</span></div>' +
+          '<div class="ls-bipolar-row">' +
+            '<div class="ls-bipolar-stmt ls-stmt-a' + aActive + '">' + esc(q.a) + '</div>' +
+            '<div class="ls-bipolar-scale">' + dots + '</div>' +
+            '<div class="ls-bipolar-stmt ls-stmt-b' + bActive + '">' + esc(q.b) + '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+
+    var btnStyle = allDone ? '' : 'opacity:0.4;cursor:not-allowed;';
+    var btnClass = 'nav-btn ' + (isLast ? 'nav-btn-submit' : 'nav-btn-next');
+    var btnLabel = isLast ? 'Shiko Rezultatin →' : 'Vazhdo →';
+    var hintTxt  = allDone ? '' : 'Përgjigju të 4 pyetjeve për të vazhduar';
+
+    setApp(
+      '<div class="ls-container">' +
+        '<div class="progress-bar-container"><div class="progress-bar" style="width:' + pct + '%;background:linear-gradient(90deg,#7c3aed,#38bdf8)"></div></div>' +
+        '<div class="progress-text">Hapi ' + (idx + 1) + ' / 8</div>' +
+        '<div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">' + qHtml + '</div>' +
+        '<div class="nav-buttons" style="margin-top:24px;">' +
+          (idx > 0 ? '<button class="nav-btn nav-btn-prev" onclick="lsPrev()">← Prapa</button>' : '<span></span>') +
+          '<button class="' + btnClass + '" id="ls-btn-next" onclick="lsNext()" ' + (allDone ? '' : 'disabled') + ' style="' + btnStyle + '">' + btnLabel + '</button>' +
+        '</div>' +
+        '<p id="ls-hint" style="text-align:center;color:#6b7280;font-size:0.78rem;margin-top:8px;">' + hintTxt + '</p>' +
+      '</div>'
+    );
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── ANSWER ─────────────────────────────────────────────────────────── */
+  window.lsAns = function (qIdx, value) {
+    answers[qIdx] = value;
+    var card = document.getElementById('lq-' + qIdx);
+    if (card) {
+      card.classList.add('ls-bipolar-answered');
+      card.querySelectorAll('.ls-dot').forEach(function (d) {
+        d.classList.toggle('ls-sel', parseInt(d.getAttribute('data-v'), 10) === value);
+      });
+      var stmtA = card.querySelector('.ls-stmt-a');
+      var stmtB = card.querySelector('.ls-stmt-b');
+      if (stmtA) stmtA.classList.toggle('ls-stmt-active', value < 0);
+      if (stmtB) stmtB.classList.toggle('ls-stmt-active', value > 0);
+    }
+    var group   = GROUPS[currentGroup];
+    var allDone = group.every(function (qi) { return answers[qi] !== undefined; });
+    var btnNext = document.getElementById('ls-btn-next');
+    var hint    = document.getElementById('ls-hint');
+    if (btnNext) { btnNext.disabled = !allDone; btnNext.style.opacity = allDone ? '1' : '0.4'; btnNext.style.cursor = allDone ? 'pointer' : 'not-allowed'; }
+    if (hint) hint.textContent = allDone ? '' : 'Përgjigju të 4 pyetjeve për të vazhduar';
+  };
+
+  /* ── NAV ────────────────────────────────────────────────────────────── */
+  window.lsNext = function () {
+    if (testDone) return;
+    var group = GROUPS[currentGroup];
+    if (!group || !group.every(function (qi) { return answers[qi] !== undefined; })) return;
+    if (currentGroup < 7) showGroup(currentGroup + 1);
+    else showResult();
+  };
+  window.lsPrev = function () {
+    if (currentGroup > 0) showGroup(currentGroup - 1);
+    else showIntro();
+  };
+
+  /* ── CALC ───────────────────────────────────────────────────────────── */
+  function poleForDim(sum, lastVal, poleA, poleB) {
+    if (sum > 0) return poleB;
+    if (sum < 0) return poleA;
+    return lastVal > 0 ? poleB : poleA;
+  }
+
+  function calcResult() {
+    var sums = { EI: 0, SN: 0, TF: 0, JP: 0 };
+    for (var i = 0; i < 32; i++) {
+      sums[PREGUNTAS[i].dim] += (answers[i] || 0);
+    }
+    var c1 = poleForDim(sums.EI, answers[7]  || 0, 'I', 'E');
+    var c2 = poleForDim(sums.SN, answers[15] || 0, 'N', 'S');
+    var c3 = poleForDim(sums.TF, answers[23] || 0, 'T', 'F');
+    var c4 = poleForDim(sums.JP, answers[31] || 0, 'J', 'P');
+    var code = c1 + c2 + c3 + c4;
+    return { code: code, type: TIPOS[code], sums: sums };
+  }
+
+  function groupColor(code) {
+    var c2 = code[1], c3 = code[2], c4 = code[3];
+    if (c2 === 'N' && c3 === 'T') return '#38bdf8';
+    if (c2 === 'N' && c3 === 'F') return '#2dd4bf';
+    if (c2 === 'S' && c4 === 'J') return '#fbbf24';
+    return '#fb7185';
+  }
+
+  /* ── RESULT ─────────────────────────────────────────────────────────── */
+  function showResult() {
+    testDone   = true;
+    lastResult = calcResult();
+    var t      = lastResult.type;
+    var code   = lastResult.code;
+    var color  = groupColor(code);
+
+    var traitsHtml = t.forcat.map(function (f) {
+      return '<span class="ls-trait-tag" style="background:' + color + '1a;color:' + color + ';border-color:' + color + '40;">' + esc(f) + '</span>';
+    }).join('');
+    var careersHtml = t.careers.map(function (c) {
+      return '<span class="ls-career-tag">' + esc(c) + '</span>';
+    }).join('');
+
+    setApp(
+      '<div class="ls-container">' +
+        '<div class="results-header">' +
+          '<p style="color:#9ca3af;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Rezultati i ' + esc(studentName) + '</p>' +
+          '<h1 style="color:' + color + ';">' + esc(t.name) + '</h1>' +
+          '<p style="color:#9ca3af;font-style:italic;">' + esc(t.sub) + '</p>' +
+          '<div class="ls-code-badge" style="border-color:' + color + '55;color:' + color + ';">' + code + '</div>' +
+        '</div>' +
+
+        '<div class="ls-desc-card" style="border-color:' + color + ';box-shadow:0 0 36px ' + color + '14;">' +
+          '<p>' + esc(t.desc) + '</p>' +
+        '</div>' +
+
+        '<div class="ls-section-title"><i class="fas fa-bolt" style="color:' + color + '"></i> Pikat e tua të forta</div>' +
+        '<div class="ls-traits-grid">' + traitsHtml + '</div>' +
+
+        '<div class="ls-section-title"><i class="fas fa-mountain" style="color:' + color + '"></i> Sfida jote</div>' +
+        '<div class="ls-challenge-card">' + esc(t.sfida) + '</div>' +
+
+        '<div class="ls-section-title"><i class="fas fa-briefcase" style="color:' + color + '"></i> Karriera që mund të të shkojnë</div>' +
+        '<div class="ls-careers-grid">' + careersHtml + '</div>' +
+
+        '<div class="ls-quote-card">"' + esc(t.fjale) + '"</div>' +
+
+        '<div class="ls-cta-card">' +
+          '<div class="ls-cta-icon">🧭</div>' +
+          '<h3>Dëshiron të zbulosh karrierën tënde ideale?</h3>' +
+          '<p>Bëj edhe testin tonë të orientimit profesional — bazuar në interesat dhe aftësitë e tua personale.</p>' +
+          '<a href="/nxenes/zgjidhje-karriere" class="ls-cta-btn">Bëj Testin e Karrierës <i class="fas fa-arrow-right"></i></a>' +
+        '</div>' +
+
+        '<div class="share-buttons" style="margin-top:24px;">' +
+          '<button class="share-btn share-btn-download" onclick="lsDownload()"><i class="fas fa-download"></i> Shkarko PNG</button>' +
+          '<button class="share-btn share-btn-restart" onclick="lsRestart()"><i class="fas fa-redo"></i> Bëje Përsëri</button>' +
+        '</div>' +
+      '</div>'
+    );
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── PNG ────────────────────────────────────────────────────────────── */
+  function wrapText(ctx, text, maxWidth) {
+    var words = text.split(' ');
+    var lines = [];
+    var line  = '';
+    words.forEach(function (w) {
+      var test = line ? line + ' ' + w : w;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        lines.push(line);
+        line = w;
+      } else {
+        line = test;
+      }
+    });
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function lsRR(ctx, x, y, w, h, r) {
+    ctx.beginPath(); ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+
+  window.lsDownload = function () {
+    if (!lastResult) return;
+    var t = lastResult.type, code = lastResult.code, color = groupColor(code);
+    var W = 720, H = 680;
+    var cv = document.createElement('canvas');
+    cv.width = W * 2; cv.height = H * 2;
+    var ctx = cv.getContext('2d');
+    ctx.scale(2, 2);
+
+    ctx.fillStyle = '#1e212a'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = color; ctx.fillRect(10, 10, W - 20, 4);
+    ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+    lsRR(ctx, 10, 10, W - 20, H - 20, 14); ctx.stroke();
+
+    ctx.fillStyle = color; ctx.font = 'bold 22px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText('ScaleGrades', W / 2, 52);
+    ctx.fillStyle = '#9ca3af'; ctx.font = '12px Arial';
+    ctx.fillText('scalegrades.com  ·  Cili është lloji yt?', W / 2, 72);
+    ctx.fillStyle = '#333b4e'; ctx.fillRect(40, 86, W - 80, 1);
+
+    ctx.fillStyle = '#6b7280'; ctx.font = '12px Arial'; ctx.textAlign = 'center';
+    ctx.fillText('Rezultati i ' + studentName, W / 2, 112);
+
+    ctx.fillStyle = color; ctx.font = 'bold 32px Arial';
+    ctx.fillText(t.name, W / 2, 150);
+
+    ctx.fillStyle = '#9ca3af'; ctx.font = 'italic 13px Arial';
+    ctx.fillText(t.sub, W / 2, 172);
+
+    ctx.fillStyle = '#1e212a'; lsRR(ctx, W / 2 - 40, 186, 80, 26, 13); ctx.fill();
+    ctx.strokeStyle = color; lsRR(ctx, W / 2 - 40, 186, 80, 26, 13); ctx.stroke();
+    ctx.fillStyle = color; ctx.font = 'bold 13px Arial';
+    ctx.fillText(code, W / 2, 203);
+
+    ctx.fillStyle = '#d1d5db'; ctx.font = '12px Arial'; ctx.textAlign = 'left';
+    var dy = 244;
+    wrapText(ctx, t.desc, W - 100).forEach(function (line) { ctx.fillText(line, 50, dy); dy += 18; });
+
+    dy += 16;
+    ctx.fillStyle = '#6b7280'; ctx.font = 'bold 11px Arial';
+    ctx.fillText('PIKAT E FORTA', 50, dy);
+    dy += 22;
+    var tx = 50;
+    t.forcat.forEach(function (f) {
+      ctx.font = 'bold 12px Arial';
+      var w = ctx.measureText(f).width + 24;
+      if (tx + w > W - 50) { tx = 50; dy += 32; }
+      ctx.fillStyle = color + '22';
+      lsRR(ctx, tx, dy - 15, w, 24, 12); ctx.fill();
+      ctx.fillStyle = color;
+      ctx.fillText(f, tx + 12, dy + 1);
+      tx += w + 8;
+    });
+
+    dy += 44;
+    ctx.fillStyle = '#333b4e'; ctx.fillRect(40, dy, W - 80, 1);
+    dy += 28;
+
+    ctx.fillStyle = '#9ca3af'; ctx.font = 'italic 13px Arial'; ctx.textAlign = 'center';
+    wrapText(ctx, '"' + t.fjale + '"', W - 140).forEach(function (line) { ctx.fillText(line, W / 2, dy); dy += 20; });
+
+    ctx.fillStyle = '#4b5563'; ctx.font = '11px Arial'; ctx.textAlign = 'center';
+    ctx.fillText('scalegrades.com — Test Personaliteti  ·  Albania & Kosovë', W / 2, H - 24);
+
+    var link = document.createElement('a');
+    link.download = 'ScaleGrades_LlojiYt_' + studentName.replace(/\s+/g, '_') + '.png';
+    link.href = cv.toDataURL('image/png');
+    link.click();
+  };
+
+  /* ── RESTART ────────────────────────────────────────────────────────── */
+  window.lsRestart = function () {
+    testDone = false; currentGroup = -1; answers = {};
+    lastResult = null; studentName = ''; studentGender = '';
+    showIntro();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', showIntro);
+  } else {
+    showIntro();
+  }
+})();
+</script>

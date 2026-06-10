@@ -1,15 +1,14 @@
 ---
-//import Layout from "../layouts/Layout.astro";
-import LayoutAlumno from "../layouts/LayoutAlumno.astro";
+import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
-import Alumnos from "../components/alumnos.astro";
+import Docente from "../components/docentes.astro";
 import Footer from "@/components/footer.astro";
 ---
 
-<LayoutAlumno title="Calcula mi promedio">
+<Layout title="Llogaritës i Shkallës së Notave — Mjet Falas për Mësues | ScaleGrades">
     <Navbar slot="header" />
     <section class="p-4 container mx-auto" style="margin-top: 72px;">
-        <Alumnos />
+        <Docente />
     </section>
     <Footer slot="footer" />
-</LayoutAlumno>
+</Layout>

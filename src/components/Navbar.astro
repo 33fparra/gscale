@@ -1,132 +1,377 @@
 <style>
   nav {
-    background-color: #1e212a;
-  }
-  .custom-select {
-    width: 90px;
-    position: relative;
-  }
-
-  .selected-flag {
-    padding: 5px;
-    width: 48px;
-    cursor: pointer;
+    background: #1e212a;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
   }
 
-  .options-container {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 3px;
-    z-index: 1;
-    background: #212735;
-    border-radius: 10px;
-    width: 55px;
-  }
-
-  .option {
-    padding: 4px;
-    cursor: pointer;
-  }
-
-  .option:hover {
-    border-radius: 10px;
-    background-color: #333b4e;
-  }
-  
-  .view-toggle {
+  .nav-bar {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    height: 62px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 6px;
   }
-  
-  .view-btn {
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
+
+  .nav-brand {
+    font-size: 1.05rem;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+    margin-right: 10px;
   }
-  
-  .view-btn.active {
-    background: #eab308;
-    color: #1e212a;
+  .nav-brand .b1 { color: #fff; }
+  .nav-brand .b2 { color: #f97316; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3px;
   }
-  
-  .view-btn.inactive {
-    background: #333b4e;
+
+  .nav-link {
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 0.845rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
+    background: transparent;
     color: #9ca3af;
+    letter-spacing: 0.01em;
   }
-  
-  .nav-container {
+  .nav-link:hover { background: #2a3042; color: #e5e7eb; }
+  .nav-link.active { background: #f97316; color: #1e212a; }
+
+  .nav-sep {
+    width: 1px; height: 18px;
+    background: #333b4e;
+    margin: 0 4px;
+    flex-shrink: 0;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* ── Flag selector (calc pages only) ── */
+  .flag-wrap { position: relative; }
+
+  .flag-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    border: 1px solid #333b4e;
+    background: #2a3042;
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s;
+    user-select: none;
+  }
+  .flag-trigger:hover { background: #333b4e; border-color: #4b5563; }
+  .flag-trigger img { width: 24px; display: block; border-radius: 2px; }
+  .flag-caret { color: #6b7280; font-size: 0.6rem; line-height: 1; margin-top: 1px; }
+
+  .flag-dropdown {
+    position: absolute;
+    top: calc(100% + 7px);
+    right: 0;
+    background: #212735;
+    border: 1px solid #333b4e;
+    border-radius: 10px;
+    padding: 6px;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.5);
+    display: none;
+    min-width: 120px;
+    z-index: 9999;
+  }
+
+  .flag-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background 0.15s;
+    color: #d1d5db;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .flag-option:hover { background: #333b4e; color: #fff; }
+  .flag-option img { width: 22px; flex-shrink: 0; border-radius: 2px; }
+
+  /* ── SQ | EN toggle (info pages only) ── */
+  .lang-toggle {
+    display: none; /* shown via JS on info pages */
+    align-items: center;
+    gap: 2px;
+    background: #2a3042;
+    border: 1px solid #333b4e;
+    border-radius: 6px;
+    padding: 3px;
+  }
+
+  .lang-btn {
+    padding: 4px 11px;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.06em;
+  }
+  .lang-btn:hover { color: #e5e7eb; }
+  .lang-btn.active { background: #f97316; color: #1e212a; }
+
+  /* ── Hamburger ── */
+  .burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 38px; height: 38px;
+    padding: 8px;
+    background: #2a3042;
+    border: 1px solid #333b4e;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background 0.18s, border-color 0.18s;
+  }
+  .burger:hover { background: #333b4e; border-color: #4b5563; }
+  .burger span {
+    display: block;
+    width: 18px; height: 2px;
+    background: #9ca3af;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.2s ease, background 0.2s;
+  }
+  .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: #f97316; }
+  .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: #f97316; }
+
+  /* ── Mobile menu ── */
+  .mobile-nav {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    background: #181c26;
+    border-top: 1px solid #2a3042;
+  }
+  .mobile-nav.open { max-height: 380px; }
+
+  .mobile-nav-inner {
+    padding: 10px 16px 18px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    gap: 3px;
   }
-  
+
+  .mobile-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #9ca3af;
+    border-left: 3px solid transparent;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .mobile-link:hover { background: #2a3042; color: #e5e7eb; border-left-color: #7c3aed; }
+  .mobile-link.active { color: #f97316; border-left-color: #f97316; background: rgba(249,115,22,0.08); }
+  .mobile-link i { width: 18px; text-align: center; font-size: 0.9rem; }
+
+  /* Alumno: visible again — now links to /nxenes student hub */
+
+  .mobile-sep { height: 1px; background: #2a3042; margin: 5px 0; }
+
+  @media (max-width: 767px) {
+    .nav-links { display: none; }
+    .burger { display: flex; }
+  }
   @media (min-width: 768px) {
-    .nav-container {
-      flex-direction: row;
-      justify-content: center;
-    }
+    .mobile-nav { display: none !important; }
   }
 </style>
-<nav class="px-4 fixed top-0 w-full z-10 shadow-xl">
-  <div class="max-w-6xl mx-auto p-2 sm:p-0">
-    <div class="flex justify-center p-2 sm:p-4">
-      <div class="nav-container">
-        <div class="view-toggle">
-          <a href="/" class="view-btn active" id="btn-docente">Docente</a>
-          <a href="/alumno" class="view-btn inactive" id="btn-alumno">Alumno</a>
+
+<nav>
+  <div class="nav-bar">
+
+    <a href="/" class="nav-brand">
+      <span class="b1">Scale</span><span class="b2">Grades</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="/llogarites-mesues" class="nav-link" id="btn-docente"><span class="nav-text">Mësues</span></a>
+      <a href="/nxenes" class="nav-link" id="btn-alumno"><span class="nav-text">Nxënës</span></a>
+      <a href="/prinderit" class="nav-link" id="btn-estudiante"><span class="nav-text">Prindër</span></a>
+      <div class="nav-sep"></div>
+      <a href="/universitetet" class="nav-link" id="btn-universidades"><span class="nav-text">Universitetet</span></a>
+      <a href="/blog" class="nav-link" id="btn-blog"><span class="nav-text">Blog</span></a>
+    </div>
+
+    <div class="nav-right">
+
+      <!-- Flag selector — only on calculator pages -->
+      <div class="flag-wrap" id="customSelect">
+        <div class="flag-trigger" id="flagTrigger">
+          <img src="/img/estados-unidos.svg" alt="Language" id="selectedFlagImage" />
+          <span class="flag-caret">▼</span>
         </div>
-        <div class="py-1 px-1 custom-select md:inline-block" id="customSelect">
-          <div class="selected-flag">
-            <img
-              src="/img/chile.svg"
-              alt="Selected Country"
-              id="selectedFlagImage"
-            />
+        <div class="flag-dropdown" id="optionsContainer">
+          <div class="flag-option" data-value="albania"
+            onclick="document.getElementById('optionsContainer').style.display='none'; document.getElementById('selectedFlagImage').src='/img/albania.svg'; if(window.cambiarPais)window.cambiarPais('albania')">
+            <img src="/img/albania.svg" alt="Albania" /> Shqip
           </div>
-          <div class="options-container" id="optionsContainer">
-            <div class="option" data-value="estados_unidos">
-              <img src="/img/estados-unidos.svg" alt="Estados Unidos" />
-            </div>
-            <div class="option" data-value="albania">
-              <img src="/img/albania.svg" alt="Albania" />
-            </div>
-            <div class="option" data-value="chile">
-              <img src="/img/chile.svg" alt="Chile" />
-            </div>
-            <div class="option" data-value="espana">
-              <img src="/img/espana.svg" alt="España" />
-            </div>
-            <div class="option" data-value="mexico">
-              <img src="/img/mexico.svg" alt="México" />
-            </div>
+          <div class="flag-option" data-value="estados_unidos"
+            onclick="document.getElementById('optionsContainer').style.display='none'; document.getElementById('selectedFlagImage').src='/img/estados-unidos.svg'; if(window.cambiarPais)window.cambiarPais('estados_unidos')">
+            <img src="/img/estados-unidos.svg" alt="English" /> English
           </div>
         </div>
       </div>
+
+      <!-- SQ | EN toggle — only on info pages -->
+      <div class="lang-toggle" id="lang-toggle">
+        <button class="lang-btn active" id="lang-btn-sq"
+          onclick="window.switchLang && window.switchLang('sq')">SQ</button>
+        <button class="lang-btn" id="lang-btn-en"
+          onclick="window.switchLang && window.switchLang('en')">EN</button>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile slide-down menu -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-inner">
+      <a href="/llogarites-mesues" class="mobile-link" id="mob-docente">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span class="nav-text">Mësues</span>
+        <small class="nav-text-en" style="color:#6b7280; font-size:0.7rem; font-weight:400;">Teacher</small>
+      </a>
+      <a href="/nxenes" class="mobile-link" id="mob-alumno">
+        <i class="fas fa-user-graduate"></i>
+        <span class="nav-text">Nxënës</span>
+        <small class="nav-text-en" style="color:#6b7280; font-size:0.7rem; font-weight:400;">Students</small>
+      </a>
+      <a href="/prinderit" class="mobile-link" id="mob-estudiante">
+        <i class="fas fa-home"></i>
+        <span class="nav-text">Prindër</span>
+        <small class="nav-text-en" style="color:#6b7280; font-size:0.7rem; font-weight:400;">Parents</small>
+      </a>
+      <div class="mobile-sep"></div>
+      <a href="/universitetet" class="mobile-link" id="mob-universidades">
+        <i class="fas fa-university"></i>
+        <span class="nav-text">Universitetet</span>
+        <small class="nav-text-en" style="color:#6b7280; font-size:0.7rem; font-weight:400;">Universities</small>
+      </a>
+      <a href="/blog" class="mobile-link" id="mob-blog">
+        <i class="fas fa-feather-alt"></i>
+        <span class="nav-text">Blog</span>
+      </a>
     </div>
   </div>
 </nav>
 
 <script is:inline>
-  // Actualizar estado de botones según la página actual
-  const path = window.location.pathname;
-  const btnDocente = document.getElementById('btn-docente');
-  const btnAlumno = document.getElementById('btn-alumno');
-  
-  if (path.includes('alumno')) {
-    btnDocente.classList.remove('active');
-    btnDocente.classList.add('inactive');
-    btnAlumno.classList.remove('inactive');
-    btnAlumno.classList.add('active');
-  } else {
-    btnAlumno.classList.remove('active');
-    btnAlumno.classList.add('inactive');
-    btnDocente.classList.remove('inactive');
-    btnDocente.classList.add('active');
-  }
+  (function () {
+    var path = window.location.pathname;
+
+    /* ── Active state ── */
+    var rules = [
+      { ids: ['btn-docente', 'mob-docente'],            active: path === '/llogarites-mesues' },
+      { ids: ['btn-alumno',  'mob-alumno'],              active: path.startsWith('/nxenes') },
+      { ids: ['btn-estudiante','mob-estudiante'],        active: path.startsWith('/prinderit') },
+      { ids: ['btn-universidades','mob-universidades'],  active: path.startsWith('/universitetet') },
+      { ids: ['btn-blog',    'mob-blog'],                active: path.startsWith('/blog') },
+    ];
+    rules.forEach(function (rule) {
+      rule.ids.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        if (rule.active) el.classList.add('active');
+        else el.classList.remove('active');
+      });
+    });
+
+    /* ── Flag selector vs SQ|EN toggle ── */
+    var isCalcPage = (path === '/llogarites-mesues');
+    var flagWrap   = document.getElementById('customSelect');
+
+    /* switchLang: shows/hides [data-lang] elements across the whole page */
+    window.switchLang = function (lang) {
+      localStorage.setItem('page_lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(function (el) {
+        el.style.display = (el.dataset.lang === lang) ? '' : 'none';
+      });
+      var bSq = document.getElementById('lang-btn-sq');
+      var bEn = document.getElementById('lang-btn-en');
+      if (bSq) bSq.classList.toggle('active', lang === 'sq');
+      if (bEn) bEn.classList.toggle('active', lang === 'en');
+    };
+
+    if (isCalcPage) {
+      /* solo en docente: mostrar el selector de bandera */
+    } else {
+      /* en todas las demás páginas: ocultar bandera, sin toggle, forzar albanés */
+      if (flagWrap) flagWrap.style.display = 'none';
+      /* asegurar que solo se muestre el contenido en albanés */
+      window.switchLang('sq');
+    }
+
+    /* ── Hamburger ── */
+    var burger    = document.getElementById('burger');
+    var mobileNav = document.getElementById('mobile-nav');
+    if (burger && mobileNav) {
+      burger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = mobileNav.classList.toggle('open');
+        burger.classList.toggle('open', open);
+        burger.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      });
+      document.addEventListener('click', function (e) {
+        if (!document.querySelector('nav').contains(e.target)) {
+          mobileNav.classList.remove('open');
+          burger.classList.remove('open');
+        }
+      });
+    }
+
+    /* ── Flag dropdown ── */
+    var trigger  = document.getElementById('flagTrigger');
+    var dropdown = document.getElementById('optionsContainer');
+    var wrap     = document.getElementById('customSelect');
+    if (trigger && dropdown) {
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+      document.addEventListener('click', function (e) {
+        if (wrap && !wrap.contains(e.target)) dropdown.style.display = 'none';
+      });
+    }
+  })();
 </script>

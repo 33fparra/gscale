@@ -1,0 +1,9 @@
+[     124ms] Identifier '_AMERICAS' has already been declared
+[   21691ms] Identifier '_AMERICAS' has already been declared
+[   26599ms] Identifier '_AMERICAS' has already been declared
+[   26605ms] [LOG] Actualizando textos de Alumnos... @ http://localhost:4325/js/alumnos.js:3
+[   26605ms] [LOG] Idioma del documento: en @ http://localhost:4325/js/alumnos.js:7
+[   26609ms] ReferenceError: getTranslation is not defined
+    at actualizarTextosAlumnos (http://localhost:4325/js/alumnos.js:13:9)
+    at HTMLDocument.<anonymous> (http://localhost:4325/js/alumnos.js:96:5)
+[   27508ms] Identifier '_AMERICAS' has already been declared

@@ -6,7 +6,7 @@
         color: #081d7c !important;
     }
 </style>
-<h2 class="text-2xl font-bold text-center mb-4 mt-4">Escala de notas</h2>
+<h2 class="text-2xl font-bold text-center mb-4 mt-4" id="titulo-docente">Escala de notas</h2>
 <div class="flex flex-col lg:flex-row items-center lg:items-start">
     <div
         class="w-full xl:w-1/5 lg:w-1/3 md:w-full sm:w-full mx-2 mb-4 xl:mb-0 p-4 shadow-lg h-full caja"
@@ -151,7 +151,7 @@
         <div class="w-full mx-auto flex justify-center">
             <button
                 id="calcularNotasBtn"
-                class="w-max py-2 px-4 text-yellow-500 hover:text-yellow-300 text-white rounded text-xs sm:text-sm"
+                class="w-max py-2 px-4 text-orange-500 hover:text-orange-300 text-white rounded text-xs sm:text-sm"
                 style="background: #212735;">Calcular</button
             >
         </div>
@@ -199,14 +199,8 @@
             }
         };
         
-        let lang = 'es';
-        try {
-            const savedLang = localStorage.getItem('gscale_idioma');
-            if (savedLang) lang = savedLang;
-            else if (document.documentElement.lang && ['al','en','es'].includes(document.documentElement.lang)) {
-                lang = document.documentElement.lang;
-            }
-        } catch(e) {}
+        // Usar window.idiomaActual (actualizado en tiempo real por navbar.js)
+        const lang = (['al','en','es'].includes(window.idiomaActual)) ? window.idiomaActual : 'en';
         
         const err = traduccionesError[lang] || traduccionesError.es;
 
@@ -269,14 +263,8 @@
             es: { ptje: "Ptje", nota: "Nota" }
         };
         
-        let lang = 'es';
-        try {
-            const savedLang = localStorage.getItem('gscale_idioma');
-            if (savedLang) lang = savedLang;
-            else if (document.documentElement.lang && ['al','en','es'].includes(document.documentElement.lang)) {
-                lang = document.documentElement.lang;
-            }
-        } catch(e) {}
+        // Usar window.idiomaActual (actualizado en tiempo real por navbar.js)
+        const lang = (['al','en','es'].includes(window.idiomaActual)) ? window.idiomaActual : 'en';
         
         const t = traduccionesTabla[lang] || traduccionesTabla.es;
         [t.ptje, t.nota].forEach((text) => {

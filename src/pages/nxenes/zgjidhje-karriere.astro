@@ -1,0 +1,666 @@
+---
+import LayoutInfo from "../../layouts/LayoutInfo.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+---
+
+<LayoutInfo
+  title="Çfarë karriera mund të zgjedhësh? — Test Falas | ScaleGrades"
+  description="Test falas orientimi karriere — 21 pyetje, rezultat personal. Zbulo fushat ku je më i fortë dhe karrierat që të përshtaten në Shqipëri dhe Kosovë."
+  keywords="test karriere albania, orientim profesional, çfarë karriere të zgjedhësh, test vocacional shqiperi, riasec shqip"
+  canonical="https://scalegrades.com/nxenes/zgjidhje-karriere"
+>
+  <Navbar slot="header" />
+  <link rel="stylesheet" href="/js/test-styles.css" />
+
+  <div class="kk-back-bar">
+    <a href="/nxenes" class="kk-back-link"><i class="fas fa-arrow-left"></i> Kthehu te Testet</a>
+  </div>
+
+  <div id="app" style="min-height:100vh;"></div>
+
+  <Footer slot="footer" />
+</LayoutInfo>
+
+<style is:global>
+  body { background-color: #1e212a !important; color: #e5e7eb; }
+
+  /* ── Back bar ──────────────────────────────────────── */
+  .kk-back-bar {
+    position: fixed;
+    top: 62px; left: 0; right: 0;
+    z-index: 50;
+    background: #1e212a;
+    border-bottom: 1px solid #2a3042;
+    padding: 8px 20px;
+  }
+  .kk-back-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    color: #6b7280; text-decoration: none;
+    font-size: 0.8rem; font-weight: 600;
+    transition: color 0.18s;
+  }
+  .kk-back-link:hover { color: #9ca3af; }
+
+  /* ── Container ─────────────────────────────────────── */
+  .kk-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 112px 20px 80px;
+    min-height: 100vh;
+  }
+
+  /* ── Intro form ────────────────────────────────────── */
+  .kk-intro-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(124,58,237,0.12);
+    border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 99px; padding: 6px 14px;
+    font-size: 0.8rem; color: #a78bfa; margin-bottom: 14px;
+  }
+  .kk-intro-card {
+    background: #2a3042; border: 1px solid #333b4e;
+    border-radius: 16px; padding: 32px 28px; margin-top: 20px;
+  }
+  .kk-form-group { margin-bottom: 22px; }
+  .kk-label {
+    display: block; font-size: 0.8rem; color: #9ca3af;
+    font-weight: 700; margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .kk-input {
+    width: 100%; background: #1e212a;
+    border: 1.5px solid #333b4e; border-radius: 9px;
+    padding: 13px 16px; color: #e5e7eb;
+    font-size: 1rem; font-family: inherit;
+    outline: none; transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .kk-input:focus { border-color: #f97316; }
+  .kk-gjinia-row { display: flex; gap: 10px; }
+  .kk-gjinia-btn {
+    flex: 1; padding: 12px 0;
+    border-radius: 9px; border: 1.5px solid #333b4e;
+    background: #1e212a; color: #9ca3af;
+    font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; font-family: inherit;
+  }
+  .kk-gjinia-btn:hover { border-color: #7c3aed; color: #a78bfa; }
+  .kk-gjinia-btn.kk-sel { background: rgba(124,58,237,0.15); border-color: #7c3aed; color: #c4b5fd; }
+
+  /* ── Likert scale ──────────────────────────────────── */
+  .kk-likert-scale { margin-top: 18px; }
+  .kk-likert-btns { display: flex; gap: 8px; margin-bottom: 7px; }
+  .kk-likert-labels { display: flex; justify-content: space-between; }
+  .kk-likert-label { font-size: 0.68rem; color: #4b5563; }
+  .kk-likert-btn {
+    flex: 1;
+    padding: 12px 6px;
+    border: 2px solid #333b4e;
+    border-radius: 10px;
+    background: #1e212a;
+    color: #9ca3af;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    text-align: center;
+    font-family: inherit;
+  }
+  .kk-likert-btn:hover {
+    border-color: #f97316;
+    color: #f97316;
+    background: rgba(249,115,22,0.05);
+  }
+  .kk-likert-btn.kk-likert-sel[data-val="1"] { background:#fb7185; border-color:#fb7185; color:#1e212a; }
+  .kk-likert-btn.kk-likert-sel[data-val="2"] { background:#f97316; border-color:#f97316; color:#1e212a; }
+  .kk-likert-btn.kk-likert-sel[data-val="3"] { background:#fbbf24; border-color:#fbbf24; color:#1e212a; }
+  .kk-likert-btn.kk-likert-sel[data-val="4"] { background:#60a5fa; border-color:#60a5fa; color:#1e212a; }
+  .kk-likert-btn.kk-likert-sel[data-val="5"] { background:#7c3aed; border-color:#7c3aed; color:#fff; }
+
+  /* ── Result cards ──────────────────────────────────── */
+  .kk-result-card {
+    background: #2a3042; border-radius: 16px;
+    padding: 24px 26px; border: 1px solid #333b4e;
+  }
+  .kk-card-primary {
+    background: linear-gradient(135deg, #2a3042, #333b4e);
+    border-width: 2px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.25);
+  }
+  .kk-card-primary .kk-area-name { font-size: 1.5rem; }
+  .kk-card-primary .kk-rank-lbl { font-size: 0.8rem; font-weight: 700; }
+  .kk-card-secondary { border-left-width: 0 !important; }
+
+  .kk-result-top {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-bottom: 4px;
+  }
+  .kk-rank-lbl { font-size: 0.75rem; color: #9ca3af; font-weight: 600; }
+  .kk-area-score { font-size: 0.88rem; font-weight: 700; }
+  .kk-area-name { font-size: 1.15rem; font-weight: 800; margin: 6px 0 12px; }
+  .kk-bar-track { background:#1e212a; border-radius:5px; height:8px; margin-bottom:14px; overflow:hidden; }
+  .kk-bar-fill { height:100%; border-radius:5px; transition: width 0.7s ease; }
+  .kk-area-desc { font-size:0.87rem; color:#9ca3af; line-height:1.65; margin-bottom:14px; }
+  .kk-careers { display:flex; flex-wrap:wrap; gap:6px; }
+  .kk-chip {
+    font-size:0.75rem; font-weight:600;
+    padding:4px 11px; border-radius:99px; white-space:nowrap;
+  }
+
+  /* ── Mobile ────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .kk-container { padding: 100px 16px 60px; }
+    .kk-likert-btns { gap: 6px; }
+    .kk-likert-btn { padding: 10px 4px; font-size: 0.88rem; }
+    .kk-gjinia-row { gap: 7px; }
+    .kk-card-primary .kk-area-name { font-size: 1.25rem; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  'use strict';
+
+  /* ── AREAS ─────────────────────────────────────────────────────────── */
+  var AREAS = {
+    R: {
+      name: 'Realist & Teknik', icon: '🔧', color: '#f97316',
+      desc: 'Ke talent për punë praktike dhe teknike. Je i/e aftë të ndërtosh, riparosh dhe punosh me mjete dhe teknologji. Inxhinieria dhe IT-ja janë fushat ku do të shkëlqesh.',
+      careers: ['Inxhinieri ndërtimi','Mekanikë','Agronomí','IT & rrjete','Arkitekturë','Elektroteknikë']
+    },
+    I: {
+      name: 'Hulumtues & Analitik', icon: '🔬', color: '#38bdf8',
+      desc: 'Je kureshtar/e dhe analitik/e nga natyra. Ke aftësi të jashtëzakonshme në zgjidhjen e problemeve komplekse dhe kërkimin shkencor.',
+      careers: ['Mjëkësi','Kimi & farmaci','Shkenca kompjuterike','Matematikë','Biologji','Psikologji klinike']
+    },
+    A: {
+      name: 'Krijues & Artistik', icon: '🎨', color: '#c084fc',
+      desc: 'Ke imagjinatë të pasur dhe talent krijues. Shprehja artistike, dizajni dhe krijimtaria janë pikat e tua të forta — vëren detaje estetike që të tjerët i kalojnë.',
+      careers: ['Design grafik','Gazetari','Film & produksion','Art & muzikë','Marketing kreativ','Arkitekturë']
+    },
+    S: {
+      name: 'Social & Ndihmues', icon: '🤝', color: '#2dd4bf',
+      desc: 'Je i/e dhënë pas njerëzve dhe komunitetit. Ndihma, mësimdhënia dhe puna me të tjerët të japin energji — njerëzit të ndjejnë të sigurt pranë teje.',
+      careers: ['Mësuesi','Psikologji','Shëndet publik','Punë sociale','Komunikim & PR','HR & burime njerëzore']
+    },
+    E: {
+      name: 'Sipërmarrës & Lider', icon: '🚀', color: '#fbbf24',
+      desc: 'Je lidër natyral/e me vizion. Sipërmarrja, menaxhimi dhe karrierat ku merr vendime strategjike janë fushat ku do të lulëzosh.',
+      careers: ['Biznes & menaxhim','Marketing','Drejtësi','Financë','Administrim publik','Sipërmarrje']
+    },
+    C: {
+      name: 'Organizues & Sistematik', icon: '📋', color: '#60a5fa',
+      desc: 'Je i/e organizuar, saktë dhe sistematik/e. Puna me të dhëna, numra dhe procedura të qarta është zona ku jep performancën e tua më të mirë.',
+      careers: ['Kontabilitet','Administrim biznesi','Logistikë','Statistikë','Drejtësi & noter','Arkivistikë']
+    }
+  };
+
+  /* ── POOL: 33 questions ────────────────────────────────────────────── */
+  var POOL = [
+    {id:1, area:'R', text:'Më pëlqen të ndërtoj ose riparojnë gjëra me duart e mia.'},
+    {id:2, area:'R', text:'Preferoj të punoj jashtë ose në mjedise fizike, jo në zyrë.'},
+    {id:3, area:'R', text:'Më interesojnë makineritë, mjetet dhe si funksionojnë ato.'},
+    {id:4, area:'R', text:'Kënaqem kur zgjidh probleme praktike me zgjidhje konkrete.'},
+    {id:5, area:'R', text:'Do të preferoja një punë ku rezultati mund të shihet dhe preket.'},
+    {id:31,area:'R', text:'Preferoj aktivitete fizike dhe sportin ndaj atyre të ulur.'},
+    {id:6, area:'I', text:'Kënaqem kur hulumtoj dhe lexoj për tema shkencore ose teknike.'},
+    {id:7, area:'I', text:'Kam kënaqësi në zgjidhjen e problemeve komplekse dhe abstrakte.'},
+    {id:8, area:'I', text:"Pyetja 'pse funksionon kështu?' më mban të zgjuar natën."},
+    {id:9, area:'I', text:'Më pëlqen të analizoj të dhëna dhe të nxjerr përfundime nga to.'},
+    {id:10,area:'I', text:'Eksperimentet dhe kërkimet shkencore më duken fascinuese.'},
+    {id:32,area:'I', text:'Lexoj artikuj shkencorë ose libra edukativë për kënaqësi personale.'},
+    {id:11,area:'A', text:'Shprehem lehtë nëpërmjet artit, muzikës, shkrimit ose dizajnit.'},
+    {id:12,area:'A', text:'Preferoj detyra ku kam liri kreative dhe nuk ka vetëm një përgjigje të saktë.'},
+    {id:13,area:'A', text:'Vërej detaje estetike që të tjerët shpesh i kalojnë pa i parë.'},
+    {id:14,area:'A', text:'Imagjinata dhe origjinaliteti janë pikat e mia më të forta.'},
+    {id:15,area:'A', text:'Kënaqem kur krijoj diçka nga e para — histori, vizatime, muzikë ose dizajne.'},
+    {id:33,area:'A', text:'Muzika, filmat ose librat janë burime frymëzimi të rëndësishme për mua.'},
+    {id:16,area:'S', text:'Më jep energji kur ndihmoj njerëz të tjerë të zgjidhin problemet e tyre.'},
+    {id:17,area:'S', text:'Preferoj të punoj në grup sesa vetëm.'},
+    {id:18,area:'S', text:'Jam i/e mirë në dëgjim dhe i/e kuptoj njerëzit me lehtësi.'},
+    {id:19,area:'S', text:'Do të kënaqesha duke mësuar ose duke trajnuar të tjerët.'},
+    {id:20,area:'S', text:'Çështjet sociale dhe komunitare më preokupojnë sinqerisht.'},
+    {id:21,area:'E', text:'Më pëlqen të drejtoj projekte dhe të vendos strategji.'},
+    {id:22,area:'E', text:'Bindja dhe negocimi janë aftësi ku ndihem i/e fortë.'},
+    {id:23,area:'E', text:'Nuk më frikëson të marr rreziqe të llogarituara për të arritur qëllimin tim.'},
+    {id:24,area:'E', text:'Kënaqem kur ndërtoj diçka nga e para — një projekt, biznes ose iniciativë.'},
+    {id:25,area:'E', text:'Jam motivuar nga sfida, konkurrenca dhe mundësia për të fituar.'},
+    {id:26,area:'C', text:'Më pëlqen të organizoj informacionin dhe të mbaj gjërat në rregull.'},
+    {id:27,area:'C', text:'Saktësia dhe vëmendja ndaj detajeve janë pikat e mia të forta.'},
+    {id:28,area:'C', text:'Preferohem të ndjek procedura dhe rregulla të qarta në punë.'},
+    {id:29,area:'C', text:'Kënaqem kur punoj me numra, spreadsheet-e ose sisteme organizimi.'},
+    {id:30,area:'C', text:'Planifikimi dhe strukturimi i detyrave vijnë natyrshëm tek unë.'}
+  ];
+
+  /* ── STATE ─────────────────────────────────────────────────────────── */
+  var userName    = '';
+  var userGjinia  = '';
+  var questions   = [];
+  var groups      = [];
+  var currentGroup = -1;
+  var answers     = {};
+  var lastTop3    = [];
+  var testDone    = false;
+
+  /* ── BEFOREUNLOAD ───────────────────────────────────────────────────── */
+  window.addEventListener('beforeunload', function (e) {
+    if (currentGroup >= 0 && !testDone) {
+      e.preventDefault();
+      e.returnValue = '';
+    }
+  });
+
+  /* ── UTILS ─────────────────────────────────────────────────────────── */
+  function shuffle(arr) { return arr.slice().sort(function () { return Math.random() - 0.5; }); }
+
+  function setApp(html) {
+    var el = document.getElementById('app');
+    if (el) el.innerHTML = html;
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ── INTRO ─────────────────────────────────────────────────────────── */
+  function showIntro() {
+    setApp(
+      '<div class="kk-container">' +
+        '<div class="test-header">' +
+          '<div class="kk-intro-badge"><i class="fas fa-compass"></i> Orientim Karriere</div>' +
+          '<h1>Çfarë karriera<br>mund të zgjedhësh?</h1>' +
+          '<p>21 pyetje · Rezultat personal · Bazuar në modelin Holland (RIASEC)</p>' +
+        '</div>' +
+        '<div class="kk-intro-card">' +
+          '<div class="kk-form-group">' +
+            '<label class="kk-label" for="kk-name">Emri yt</label>' +
+            '<input class="kk-input" type="text" id="kk-name" placeholder="Shkruaj emrin tënd..." maxlength="30" autocomplete="off" />' +
+          '</div>' +
+          '<div class="kk-form-group">' +
+            '<label class="kk-label">Gjinia</label>' +
+            '<div class="kk-gjinia-row">' +
+              '<button class="kk-gjinia-btn' + (userGjinia==='F'?' kk-sel':'') + '" onclick="kkGjinia(\'F\')">Femër</button>' +
+              '<button class="kk-gjinia-btn' + (userGjinia==='M'?' kk-sel':'') + '" onclick="kkGjinia(\'M\')">Mashkull</button>' +
+              '<button class="kk-gjinia-btn' + (userGjinia==='T'?' kk-sel':'') + '" onclick="kkGjinia(\'T\')">Tjetër</button>' +
+            '</div>' +
+          '</div>' +
+          '<button id="kk-btn-start" class="nav-btn nav-btn-submit" onclick="kkStart()" style="width:100%;' + (!userName||!userGjinia?'opacity:0.4;cursor:not-allowed;':'') + '"' + (!userName||!userGjinia?' disabled':'') + '>' +
+            '<i class="fas fa-play"></i> Fillo Testin' +
+          '</button>' +
+        '</div>' +
+      '</div>'
+    );
+
+    var inp = document.getElementById('kk-name');
+    if (inp) {
+      if (userName) inp.value = userName;
+      inp.addEventListener('input', kkCheckValid);
+    }
+  }
+
+  window.kkGjinia = function (g) {
+    userGjinia = g;
+    document.querySelectorAll('.kk-gjinia-btn').forEach(function (b) {
+      b.classList.toggle('kk-sel', b.getAttribute('onclick') === "kkGjinia('" + g + "')");
+    });
+    kkCheckValid();
+  };
+
+  function kkCheckValid() {
+    var name = (document.getElementById('kk-name') || {}).value;
+    name = name ? name.trim() : '';
+    var ok  = !!(name && userGjinia);
+    var btn = document.getElementById('kk-btn-start');
+    if (!btn) return;
+    btn.disabled      = !ok;
+    btn.style.opacity = ok ? '1' : '0.4';
+    btn.style.cursor  = ok ? 'pointer' : 'not-allowed';
+  }
+
+  /* ── START ──────────────────────────────────────────────────────────── */
+  window.kkStart = function () {
+    var inp = document.getElementById('kk-name');
+    var name = inp ? inp.value.trim() : '';
+    if (!name || !userGjinia) return;
+    userName = name;
+    answers  = {};
+    lastTop3 = [];
+    testDone = false;
+
+    var areas = ['R','I','A','S','E','C'];
+    var selected = [];
+    var usedIds  = {};
+    areas.forEach(function (a) {
+      var pool = POOL.filter(function (q) { return q.area === a; });
+      shuffle(pool).slice(0, 3).forEach(function (q) {
+        selected.push(q);
+        usedIds[q.id] = true;
+      });
+    });
+    var rest = shuffle(POOL.filter(function (q) { return !usedIds[q.id]; }));
+    rest.slice(0, 3).forEach(function (q) { selected.push(q); });
+    questions = shuffle(selected);
+
+    groups = [];
+    for (var i = 0; i < 7; i++) groups.push(questions.slice(i * 3, i * 3 + 3));
+
+    currentGroup = 0;
+    showGroup(0);
+  };
+
+  /* ── SHOW GROUP ─────────────────────────────────────────────────────── */
+  function showGroup(idx) {
+    currentGroup = idx;
+    var group    = groups[idx];
+    var pct      = Math.round(((idx + 1) / 7) * 100);
+    var allDone  = group.every(function (q) { return answers[q.id] !== undefined; });
+    var isLast   = idx === 6;
+
+    var qHtml = '';
+    group.forEach(function (q, li) {
+      var gNum  = idx * 3 + li + 1;
+      var area  = AREAS[q.area];
+      var ans   = answers[q.id];
+      var done  = ans !== undefined;
+
+      var btns = '';
+      for (var v = 1; v <= 5; v++) {
+        var sel = done && ans === v ? ' kk-likert-sel' : '';
+        btns += '<button class="kk-likert-btn' + sel + '" data-val="' + v + '" onclick="kkAns(' + q.id + ',' + v + ')">' + v + '</button>';
+      }
+
+      qHtml +=
+        '<div class="step-question' + (done ? ' step-q-answered' : '') + '" id="sq-' + q.id + '">' +
+          '<div class="step-q-header">' +
+            '<span class="question-category" style="background:' + area.color + '22;color:' + area.color + ';border:1px solid ' + area.color + '55;">' + area.icon + ' ' + area.name + '</span>' +
+            '<span class="step-q-num">' + gNum + ' / 21</span>' +
+          '</div>' +
+          '<p class="question-text">' + esc(q.text) + '</p>' +
+          '<div class="kk-likert-scale">' +
+            '<div class="kk-likert-btns">' + btns + '</div>' +
+            '<div class="kk-likert-labels">' +
+              '<span class="kk-likert-label">Nuk pajtohem</span>' +
+              '<span class="kk-likert-label">Pajtohem plotësisht</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+    });
+
+    var btnStyle  = allDone ? '' : 'opacity:0.4;cursor:not-allowed;';
+    var btnClass  = 'nav-btn ' + (isLast ? 'nav-btn-submit' : 'nav-btn-next');
+    var btnLabel  = isLast ? 'Shiko Rezultatin →' : 'Vazhdo →';
+    var hintTxt   = allDone ? '' : 'Vlerëso të 3 pyetjet për të vazhduar';
+
+    setApp(
+      '<div class="kk-container">' +
+        '<div class="progress-bar-container"><div class="progress-bar" style="width:' + pct + '%"></div></div>' +
+        '<div class="progress-text">Hapi ' + (idx + 1) + ' / 7</div>' +
+        '<div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">' + qHtml + '</div>' +
+        '<div class="nav-buttons" style="margin-top:24px;">' +
+          (idx > 0 ? '<button class="nav-btn nav-btn-prev" onclick="kkPrev()">← Prapa</button>' : '<span></span>') +
+          '<button class="' + btnClass + '" id="kk-btn-next" onclick="kkNext()" ' + (allDone ? '' : 'disabled') + ' style="' + btnStyle + '">' + btnLabel + '</button>' +
+        '</div>' +
+        '<p id="kk-hint" style="text-align:center;color:#6b7280;font-size:0.78rem;margin-top:8px;">' + hintTxt + '</p>' +
+      '</div>'
+    );
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── ANSWER ─────────────────────────────────────────────────────────── */
+  window.kkAns = function (qId, value) {
+    answers[qId] = value;
+
+    var sq = document.getElementById('sq-' + qId);
+    if (sq) {
+      sq.classList.add('step-q-answered');
+      sq.querySelectorAll('.kk-likert-btn').forEach(function (btn) {
+        var v = parseInt(btn.getAttribute('data-val'), 10);
+        btn.classList.toggle('kk-likert-sel', v === value);
+      });
+    }
+
+    var group    = groups[currentGroup];
+    var allDone  = group.every(function (q) { return answers[q.id] !== undefined; });
+    var btnNext  = document.getElementById('kk-btn-next');
+    var hint     = document.getElementById('kk-hint');
+
+    if (btnNext) {
+      btnNext.disabled      = !allDone;
+      btnNext.style.opacity = allDone ? '1' : '0.4';
+      btnNext.style.cursor  = allDone ? 'pointer' : 'not-allowed';
+    }
+    if (hint) hint.textContent = allDone ? '' : 'Vlerëso të 3 pyetjet për të vazhduar';
+  };
+
+  /* ── NAVIGATION ──────────────────────────────────────────────────────── */
+  window.kkNext = function () {
+    if (testDone) return;
+    var group = groups[currentGroup];
+    if (!group || !group.every(function (q) { return answers[q.id] !== undefined; })) return;
+    if (currentGroup < 6) showGroup(currentGroup + 1);
+    else showResult();
+  };
+
+  window.kkPrev = function () {
+    if (currentGroup > 0) showGroup(currentGroup - 1);
+    else showIntro();
+  };
+
+  /* ── RESULT ──────────────────────────────────────────────────────────── */
+  function showResult() {
+    testDone = true;
+
+    var scores = { R:0, I:0, A:0, S:0, E:0, C:0 };
+    questions.forEach(function (q) { scores[q.area] += (answers[q.id] || 0); });
+
+    var order  = ['R','I','A','S','E','C'];
+    var sorted = order
+      .map(function (a) { return { area: a, score: scores[a] }; })
+      .sort(function (a, b) { return b.score - a.score; });
+    lastTop3 = sorted.slice(0, 3);
+
+    var maxScore   = 15;
+    var artikel    = userGjinia === 'F' ? 'e' : 'i';
+    var rankLabels = ['🥇 Fusha Kryesore', '🥈 Fusha e Dytë', '🥉 Fusha e Tretë'];
+
+    var areasHtml = '';
+    lastTop3.forEach(function (item, rank) {
+      var area = AREAS[item.area];
+      var pct  = Math.min(Math.round((item.score / maxScore) * 100), 100);
+      var chips = area.careers.map(function (c) {
+        return '<span class="kk-chip" style="background:' + area.color + '18;color:' + area.color + ';border:1px solid ' + area.color + '40;">' + esc(c) + '</span>';
+      }).join('');
+
+      var cClass = rank === 0 ? 'kk-result-card kk-card-primary'
+                 : rank === 1 ? 'kk-result-card kk-card-secondary'
+                 : 'kk-result-card';
+      var cStyle = rank === 0
+        ? 'border:2px solid ' + area.color + ';box-shadow:0 0 36px ' + area.color + '22;'
+        : rank === 1
+        ? 'border:1px solid ' + area.color + '55;'
+        : 'border-left:4px solid ' + area.color + ';';
+
+      areasHtml +=
+        '<div class="' + cClass + '" style="' + cStyle + '">' +
+          '<div class="kk-result-top">' +
+            '<span class="kk-rank-lbl" style="' + (rank === 0 ? 'color:' + area.color + ';' : '') + '">' + rankLabels[rank] + '</span>' +
+            '<span class="kk-area-score" style="color:' + area.color + ';">' + item.score + '/' + maxScore + '</span>' +
+          '</div>' +
+          '<h3 class="kk-area-name" style="color:' + area.color + ';">' + area.icon + ' ' + area.name + '</h3>' +
+          '<div class="kk-bar-track"><div class="kk-bar-fill" style="width:' + pct + '%;background:' + area.color + ';"></div></div>' +
+          '<p class="kk-area-desc">' + esc(area.desc) + '</p>' +
+          '<div class="kk-careers">' + chips + '</div>' +
+        '</div>';
+    });
+
+    setApp(
+      '<div class="kk-container">' +
+        '<div class="results-header">' +
+          '<h1 style="color:#f97316;">Rezultatet e ' + esc(userName) + '</h1>' +
+          '<p style="color:#9ca3af;">Ti je <strong style="color:#e5e7eb;">' + artikel + '</strong> fortë në këto 3 fusha</p>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:16px;margin:24px 0;">' + areasHtml + '</div>' +
+        '<div style="text-align:center;margin:28px 0 12px;">' +
+          '<a href="/universitetet" class="nav-btn nav-btn-submit" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;justify-content:center;max-width:320px;width:100%;">' +
+            '<i class="fas fa-university"></i> Shiko Universitetet' +
+          '</a>' +
+        '</div>' +
+        '<div class="share-buttons" style="margin-top:12px;">' +
+          '<button class="share-btn share-btn-download" onclick="kkDownload()"><i class="fas fa-download"></i> Shkarko PNG</button>' +
+          '<button class="share-btn share-btn-restart" onclick="kkRestart()"><i class="fas fa-redo"></i> Bëje Përsëri</button>' +
+        '</div>' +
+      '</div>'
+    );
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── PNG DOWNLOAD ────────────────────────────────────────────────────── */
+  window.kkDownload = function () {
+    if (!lastTop3.length) return;
+
+    var W = 720, H = 680;
+    var cv  = document.createElement('canvas');
+    cv.width  = W * 2;
+    cv.height = H * 2;
+    var ctx = cv.getContext('2d');
+    ctx.scale(2, 2);
+
+    var maxScore  = 15;
+    var artikel   = userGjinia === 'F' ? 'e' : 'i';
+
+    ctx.fillStyle = '#1e212a';
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.fillStyle = '#f97316';
+    ctx.fillRect(10, 10, W - 20, 4);
+
+    ctx.strokeStyle = '#f97316';
+    ctx.lineWidth   = 1.5;
+    kkRR(ctx, 10, 10, W - 20, H - 20, 14);
+    ctx.stroke();
+
+    ctx.fillStyle    = '#f97316';
+    ctx.font         = 'bold 22px Arial, sans-serif';
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText('ScaleGrades', W / 2, 52);
+
+    ctx.fillStyle = '#9ca3af';
+    ctx.font      = '12px Arial, sans-serif';
+    ctx.fillText('scalegrades.com  ·  Orientim Karriere', W / 2, 72);
+
+    ctx.fillStyle = '#333b4e';
+    ctx.fillRect(40, 86, W - 80, 1);
+
+    ctx.fillStyle    = '#f3f4f6';
+    ctx.font         = 'bold 22px Arial, sans-serif';
+    ctx.textAlign    = 'center';
+    ctx.fillText('Rezultatet e ' + userName, W / 2, 118);
+
+    ctx.fillStyle = '#9ca3af';
+    ctx.font      = '12px Arial, sans-serif';
+    ctx.fillText('Ti je ' + artikel + ' fortë në këto 3 fusha:', W / 2, 140);
+
+    var blockY  = 156;
+    var blockH  = 155;
+    var rankTxt = ['#1 Fusha Kryesore', '#2 Fusha e Dyte', '#3 Fusha e Trete'];
+
+    lastTop3.forEach(function (item, rank) {
+      var area  = AREAS[item.area];
+      var pct   = Math.min(item.score / maxScore, 1);
+      var by    = blockY + rank * (blockH + 8);
+      var barW  = W - 120;
+
+      ctx.fillStyle = '#2a3042';
+      kkRR(ctx, 30, by, W - 60, blockH - 2, 10);
+      ctx.fill();
+
+      ctx.fillStyle = area.color;
+      ctx.fillRect(30, by, 4, blockH - 2);
+
+      ctx.fillStyle    = '#9ca3af';
+      ctx.font         = '10px Arial, sans-serif';
+      ctx.textAlign    = 'left';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText(rankTxt[rank], 48, by + 22);
+
+      ctx.fillStyle = area.color;
+      ctx.font      = 'bold 16px Arial, sans-serif';
+      ctx.fillText(area.icon + ' ' + area.name, 48, by + 46);
+
+      ctx.fillStyle = '#9ca3af';
+      ctx.font      = '11px Arial, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(item.score + '/' + maxScore, W - 42, by + 46);
+
+      ctx.fillStyle = '#1e212a';
+      kkRR(ctx, 48, by + 58, barW, 8, 4);
+      ctx.fill();
+
+      if (pct > 0) {
+        ctx.fillStyle = area.color;
+        kkRR(ctx, 48, by + 58, barW * pct, 8, 4);
+        ctx.fill();
+      }
+
+      ctx.fillStyle    = area.color;
+      ctx.font         = '10px Arial, sans-serif';
+      ctx.textAlign    = 'left';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText(area.careers.slice(0, 4).join('  ·  '), 48, by + 88);
+
+      ctx.fillStyle = '#6b7280';
+      ctx.font      = '10px Arial, sans-serif';
+      var descShort = area.desc.length > 90 ? area.desc.slice(0, 90) + '...' : area.desc;
+      ctx.fillText(descShort, 48, by + 110);
+    });
+
+    var footerY = blockY + 3 * blockH + 24 + 18;
+    ctx.fillStyle = '#333b4e';
+    ctx.fillRect(40, footerY, W - 80, 1);
+    ctx.fillStyle    = '#4b5563';
+    ctx.font         = '11px Arial, sans-serif';
+    ctx.textAlign    = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('scalegrades.com — Orientim Karriere  ·  Albania & Kosovë', W / 2, footerY + 22);
+
+    var link    = document.createElement('a');
+    link.download = 'ScaleGrades_Karriera_' + userName.replace(/\s+/g, '_') + '.png';
+    link.href   = cv.toDataURL('image/png');
+    link.click();
+  };
+
+  function kkRR(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y,     x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x,     y + h, r);
+    ctx.arcTo(x,     y + h, x,     y,     r);
+    ctx.arcTo(x,     y,     x + w, y,     r);
+    ctx.closePath();
+  }
+
+  /* ── RESTART ─────────────────────────────────────────────────────────── */
+  window.kkRestart = function () {
+    testDone     = false;
+    currentGroup = -1;
+    answers      = {};
+    questions    = [];
+    groups       = [];
+    lastTop3     = [];
+    userName     = '';
+    userGjinia   = '';
+    showIntro();
+  };
+
+  /* ── BOOT ────────────────────────────────────────────────────────────── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', showIntro);
+  } else {
+    showIntro();
+  }
+})();
+</script>

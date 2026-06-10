@@ -1,0 +1,133 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+---
+
+<Layout title="Testi Vocacional RIASEC — Orientim Profesional | ScaleGrades">
+    <Navbar slot="header" />
+    <link rel="stylesheet" href="/js/test-styles.css" />
+
+    <div class="test-back-bar">
+      <a href="/nxenes" class="test-back-link"><i class="fas fa-arrow-left"></i> Kthehu te Testet</a>
+    </div>
+
+    <section class="test-container" id="test-section">
+        <div class="test-header">
+            <h1 id="test-title">Testi Vocacional RIASEC</h1>
+            <p id="test-description">Zbuloni profilin tuaj profesional përmes 24 pyetjeve.</p>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar" style="width: 4%"></div>
+        </div>
+        <div class="progress-text" id="progress-text">1 / 24</div>
+
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Duke ngarkuar pyetjet...</p>
+        </div>
+
+        <div id="test-content" style="display: none;">
+            <div id="question-card"></div>
+            <div class="nav-buttons">
+                <button class="nav-btn nav-btn-prev" id="btn-prev" onclick="prevQuestion()" style="display: none;">Prapa</button>
+                <button class="nav-btn nav-btn-next" id="btn-next" onclick="nextQuestion()">Para</button>
+                <button class="nav-btn nav-btn-submit" id="btn-submit" onclick="submitTest()" style="display: none;">Përfundo Testin</button>
+            </div>
+            <div class="submit-notice" id="submit-notice"></div>
+        </div>
+    </section>
+
+    <section class="results-container" id="results-section" style="display: none;">
+        <div class="results-header">
+            <h1 id="results-title">Rezultatet Tuaja</h1>
+            <p id="results-subtitle">Profili juaj profesional RIASEC</p>
+        </div>
+
+        <div class="results-capture-card" id="results-capture-card">
+            <div class="capture-logo">
+                <h2>ScaleGrades</h2>
+                <p>scalegrades.com</p>
+            </div>
+            <div class="capture-result">
+                <div class="label" id="primary-label">Profili Kryesor</div>
+                <div class="value" id="capture-primary"></div>
+            </div>
+            <div class="capture-scores" id="capture-scores"></div>
+            <div class="capture-footer">
+                <p>Testi Vocacional RIASEC — ScaleGrades</p>
+            </div>
+        </div>
+
+        <div class="primary-result">
+            <h3 id="primary-label-2">Profili Kryesor</h3>
+            <div class="profile-name" id="primary-name"></div>
+            <p class="profile-description" id="primary-description"></p>
+        </div>
+
+        <div class="secondary-result">
+            <h3 id="secondary-label">Profili Dytesor</h3>
+            <div class="profile-name" id="secondary-name"></div>
+            <p class="profile-description" id="secondary-description"></p>
+        </div>
+
+        <div class="results-card">
+            <h2>Rezultatet</h2>
+            <div class="radar-container">
+                <canvas id="radar-canvas" class="radar-chart"></canvas>
+            </div>
+            <div class="score-bars" id="score-bars"></div>
+        </div>
+
+        <div class="share-buttons">
+            <button class="share-btn share-btn-download" id="download-btn" onclick="downloadResultsAsPNG()">Shkarko Imazhin</button>
+            <button class="share-btn share-btn-restart" id="restart-btn" onclick="restartTest()">Përsërit Testin</button>
+        </div>
+
+        <div style="text-align:center; margin-top:24px;">
+          <a href="/nxenes" style="color:#8b5cf6; font-size:0.88rem; font-weight:600; text-decoration:none;">
+            ← Kthehu te të gjithë testet
+          </a>
+        </div>
+    </section>
+
+    <style>
+        :root {
+            --cat-R-color: #fb7185;
+            --cat-I-color: #38bdf8;
+            --cat-A-color: #c084fc;
+            --cat-S-color: #2dd4bf;
+            --cat-E-color: #fbbf24;
+            --cat-C-color: #60a5fa;
+        }
+        .test-back-bar {
+            position: fixed;
+            top: 62px;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: #1e212a;
+            border-bottom: 1px solid #2a3042;
+            padding: 8px 20px;
+        }
+        .test-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: color 0.18s;
+        }
+        .test-back-link:hover { color: #9ca3af; }
+        /* navbar (62px) + back-bar (~36px) + breathing room */
+        .test-container, .results-container { padding-top: 112px !important; }
+    </style>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" is:inline></script>
+    <script src="/js/test-app.js" is:inline></script>
+</Layout>
+
+<Footer slot="footer" />

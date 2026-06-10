@@ -1,0 +1,43 @@
+[
+  { "id": "R1", "category": "R", "type": "interest", "text": "A të pëlqen të mësosh se si funksionojnë pajisjet teknologjike apo makineritë?" },
+  { "id": "R2", "category": "R", "type": "interest", "text": "A do të pëlqente të punoje në projekte praktike në natyrë apo në ndërtim?" },
+  { "id": "R3", "category": "R", "type": "interest", "text": "A të pëlqen të krijosh apo të ndërtosh gjëra me duart e tua?" },
+  { "id": "R4", "category": "R", "type": "aptitude", "text": "Nëse diçka prishet në shtëpi, a ndihesh i sigurt duke u përpjekur ta rregullosh vetë?" },
+  { "id": "R5", "category": "R", "type": "aptitude", "text": "A ke më shumë siguri kur zgjidh një problem praktik sesa kur shkruan një tekst të gjatë?" },
+  { "id": "R6", "category": "R", "type": "aptitude", "text": "A e ke të lehtë të kuptosh skica teknike, udhëzues montimi apo plane?" },
+
+  { "id": "I1", "category": "I", "type": "interest", "text": "A të pëlqen të zbulosh teoritë pas shkencës, mjekësisë apo kodimit të programeve?" },
+  { "id": "I2", "category": "I", "type": "interest", "text": "A të pëlqen të hulumtosh thellë për një temë derisa të gjesh të vërtetën?" },
+  { "id": "I3", "category": "I", "type": "interest", "text": "A të tërheq të lexosh për zbulimet e reja, inteligjencën artificiale apo sekretet e natyrës?" },
+  { "id": "I4", "category": "I", "type": "aptitude", "text": "A ndihesh i sigurt dhe i aftë kur përballesh me probleme komplekse matematike apo logjike?" },
+  { "id": "I5", "category": "I", "type": "aptitude", "text": "A e dallon shumë shpejt një gabim në tabela, të dhëna apo statistika?" },
+  { "id": "I6", "category": "I", "type": "aptitude", "text": "A ke aftësi të përqendrohesh për orë të tëra duke analizuar një problem të vështirë?" },
+
+  { "id": "A1", "category": "A", "type": "interest", "text": "A të pëlqen të shprehësh idetë e tua përmes artit, muzikës, dizajnit apo shkrimit?" },
+  { "id": "A2", "category": "A", "type": "interest", "text": "A të pëlqen të punosh në mjedise të lira ku mund të jesh origjinal dhe pa rregulla të rrepta?" },
+  { "id": "A3", "category": "A", "type": "interest", "text": "A të pëlqen të ndjekësh ngjarje kulturore, ekspozita dizajni apo kinema?" },
+  { "id": "A4", "category": "A", "type": "aptitude", "text": "A të thonë shpesh njerëzit se ke një imagjinatë apo stil vizual që të dallon nga të tjerët?" },
+  { "id": "A5", "category": "A", "type": "aptitude", "text": "Nëse një projekt, a ke më shumë siguri duke krijuar konceptin vizual sesa duke llogaritur buxhetin?" },
+  { "id": "A6", "category": "A", "type": "aptitude", "text": "A e ke të lehtë të gjesh zgjidhje kreative dhe të improvizosh kur plani dështon?" },
+
+  { "id": "S1", "category": "S", "type": "interest", "text": "A ndjen kënaqësi kur ndihmon, mëson apo kujdesesh për njerëzit e tjerë?" },
+  { "id": "S2", "category": "S", "type": "interest", "text": "A të pëlqen të punosh në grupe dhe të dëgjosh mendimet e të tjerëve?" },
+  { "id": "S3", "category": "S", "type": "interest", "text": "A të intereson psikologjia e njeriut apo përfshirja në fushata bamirësie?" },
+  { "id": "S4", "category": "S", "type": "aptitude", "text": "A je personi ku miqtë vijnë gjithmonë për të kërkuar këshilla apo për të zgjidhur konflikte?" },
+  { "id": "S5", "category": "S", "type": "aptitude", "text": "A ke aftësi të shpjegosh një temë të ndërlikuar në mënyrë që kushdo ta kuptojë lehtë?" },
+  { "id": "S6", "category": "S", "type": "aptitude", "text": "A ndihesh i sigurt dhe i qetë kur duhet të përballesh me gjendjen emocionale të dikujt që po vuan?" },
+
+  { "id": "E1", "category": "E", "type": "interest", "text": "A të pëlqen lajmi i të pasurit të një biznesi tënd, konkurrenca dhe suksesi financiar?" },
+  { "id": "E2", "category": "E", "type": "interest", "text": "A të pëlqen të marrësh drejtimin e situatave, të udhëheqësh njerëz apo të negociosh?" },
+  { "id": "E3", "category": "E", "type": "interest", "text": "A të pëlqen të ndjekësh lajmet për startup-e, strategji marketingu apo politikë?" },
+  { "id": "E4", "category": "E", "type": "aptitude", "text": "A ndihesh i sigurt për të marrë vendime të rëndësishme dhe të shpejta nën presion?" },
+  { "id": "E5", "category": "E", "type": "aptitude", "text": "A ke talent për të bindur të tjerët se ideja jote është më e mira?" },
+  { "id": "E6", "category": "E", "type": "aptitude", "text": "A ke aftësi të motivosh një grup njerëzish për të arritur një qëllim të përbashkët?" },
+
+  { "id": "C1", "category": "C", "type": "interest", "text": "A të pëlqen kur gjërat janë të sakta, të strukturuara mirë dhe ndjekin rregulla të qarta?" },
+  { "id": "C2", "category": "C", "type": "interest", "text": "A të pëlqen të organizosh dokumente, lista detyrash, kalendarë apo të menaxhosh buxhete?" },
+  { "id": "C3", "category": "C", "type": "interest", "text": "A të intereson të mësosh se si funksionojnë ligjet, proceset zyrtare apo sistemet bankare?" },
+  { "id": "C4", "category": "C", "type": "aptitude", "text": "A ndihesh plotësisht i sigurt në punë që kërkojnë vëmendje maksimale ndaj detajeve pa bërë gabime?" },
+  { "id": "C5", "category": "C", "type": "aptitude", "text": "A performon më mirë kur ke një udhëzues të saktë sesa kur të duhet të improvizosh?" },
+  { "id": "C6", "category": "C", "type": "aptitude", "text": "A ke aftësi të vendosësh rregull në një situatë apo mjedis që është tërësisht i çorganizuar?" }
+]

@@ -1,4 +1,4 @@
-<h2 class="text-2xl font-bold text-center mb-4 mt-4">Calcula mi promedio</h2>
+<h2 class="text-2xl font-bold text-center mb-4 mt-4" id="titulo-alumno">Calcula mi promedio</h2>
 <div class="flex flex-col items-center">
 	<div class="w-auto mx-2 mb-0 p-4 shadow-lg h-full caja">
 		<div class="flex gap-4">
@@ -7,14 +7,15 @@
 					<label
 						for="notaMaxima"
 						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+						id="label-notaMaxima"
 					>
 						Nota máxima:
 					</label>
 					<input
 						type="number"
 						id="notaMaxima"
-						value="70"
-						placeholder="Nota máxima"
+						value="10"
+						placeholder="10"
 						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 					/>
 				</div>
@@ -24,14 +25,15 @@
 					<label
 						for="notaMinima"
 						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+						id="label-notaMinima"
 					>
 						Nota mínima:
 					</label>
 					<input
 						type="number"
 						id="notaMinima"
-						value="10"
-						placeholder="Nota mínima"
+						value="1"
+						placeholder="1"
 						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 					/>
 				</div>
@@ -43,14 +45,15 @@
 					<label
 						for="notaEximir"
 						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+						id="label-notaEximir"
 					>
 						Nota eximirse:
 					</label>
 					<input
 						type="number"
 						id="notaEximir"
-						value="55"
-						placeholder="Nota para eximir examen"
+						value="7"
+						placeholder="7"
 						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 					/>
 				</div>
@@ -60,14 +63,15 @@
 					<label
 						for="notaAprobar"
 						class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+						id="label-notaAprobar"
 					>
 						Nota aprobar:
 					</label>
 					<input
 						type="number"
 						id="notaAprobar"
-						value="40"
-						placeholder="Nota para aprobar"
+						value="4"
+						placeholder="4"
 						class="w-1/2 bg-gray-200 appearance-none border-2 border-gray-200 rounded px-2 py-1 text-xs text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
 					/>
 				</div>
@@ -81,6 +85,7 @@
 						<div class="flex w-full pr-1 items-center">
 							<label
 								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+								id="label-nombre-seccion"
 							>
 								Nombre de sección:
 							</label>
@@ -95,6 +100,7 @@
 						<div class="flex w-full pr-1 items-center">
 							<label
 								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+								id="label-pondera-seccion"
 							>
 								Pondera la sección:
 							</label>
@@ -111,6 +117,7 @@
 						<div class="flex w-full pr-1 items-center">
 							<label
 								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+								id="label-nota-seccion"
 							>
 								Nota:
 							</label>
@@ -125,6 +132,7 @@
 						<div class="flex w-full pr-1 items-center">
 							<label
 								class="text-xs block text-gray-500 font-bold mb-1 md:mb-0 w-1/2"
+								id="label-pondera-nota"
 							>
 								Pondera la nota:
 							</label>
@@ -138,19 +146,20 @@
 				</div>
 				<div class="w-full mx-auto flex justify-center gap-2">
 					<button
-						class="w-max py-2 px-4 text-white rounded text-xs text-yellow-500 hover:text-yellow-300 add-note-btn"
+						class="w-max py-2 px-4 text-white rounded text-xs text-orange-500 hover:text-orange-300 add-note-btn"
 						style="background: #212735;"
+						id="btn-agregar-nota"
 					>
 						Agregar nota
 					</button>
 					<button
 						class="w-max py-2 px-3 bg-red-500 text-white rounded text-xs delete-note-btn"
-						style="background: #eab308;"
+						style="background: #f97316;"
 					>
 						<i class="fas fa-trash"></i>
 					</button>
 				</div>
-				<div class="section-average text-center font-bold mt-2">
+				<div class="section-average text-center font-bold mt-2" id="label-promedio-seccion">
 					Promedio de la sección: <span></span>
 				</div>
 			</div>
@@ -158,22 +167,24 @@
 	</div>
 	<div class="w-full mx-auto flex mt-4 justify-center gap-2">
 		<button
-			class="w-max py-2 px-4 text-white rounded text-xs text-yellow-500 hover:text-yellow-300 add-section-btn"
+			class="w-max py-2 px-4 text-white rounded text-xs text-orange-500 hover:text-orange-300 add-section-btn"
 			style="background: #212735;"
+			id="btn-agregar-seccion"
 		>
 			Agregar sección
 		</button>
 		<button
 			class="w-max py-2 px-3 bg-red-500 text-white rounded text-xs delete-section-btn"
-			style="background: #eab308;"
+			style="background: #f97316;"
 		>
 			<i class="fas fa-trash"></i>
 		</button>
 	</div>
 	<div class="w-full mx-auto flex justify-center">
 		<button
-			class="w-max py-2 px-4 my-1 text-white rounded text-xs text-yellow-500 hover:text-yellow-300 calculate-grade-btn"
+			class="w-max py-2 px-4 my-1 text-white rounded text-xs text-orange-500 hover:text-orange-300 calculate-grade-btn"
 			style="background: #212735;"
+			id="btn-calcular-final"
 		>
 			Calcular Nota Final
 		</button>

@@ -1,0 +1,443 @@
+---
+import LayoutInfo from "../../layouts/LayoutInfo.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Si Funksionon Sistemi i Notave në Shqipëri",
+  "description": "Shpjegim i detajuar i shkallës së notave shqiptare 1–10, nota minimale kalimtare, si llogariten mesataret dhe ekuivalenca me sistemet ndërkombëtare.",
+  "url": "https://scalegrades.com/blog/sistema-notas-albania",
+  "datePublished": "2024-11-01",
+  "dateModified": "2026-06-09",
+  "inLanguage": ["sq"],
+  "author": { "@type": "Organization", "name": "ScaleGrades", "url": "https://scalegrades.com" },
+  "publisher": { "@type": "Organization", "name": "ScaleGrades", "url": "https://scalegrades.com" },
+  "about": { "@type": "Country", "name": "Albania" }
+};
+---
+
+<LayoutInfo
+  title="Si Funksionon Sistemi i Notave në Shqipëri — Udhëzues 2024 | ScaleGrades"
+  description="Shpjegim i plotë i shkallës së notave shqiptare 1–10: nota kalimtare (4), llogaritja e mesatares, ekuivalencat me GPA dhe ECTS, dhe si të llogarisësh notat si mësues."
+  keywords="sistemi i notave shqiperi, shkalla e notave 1-10, nota kalimtare albania, mesatarja shqiperi, gpa albania, ects shqiperi, llogarit notat"
+  canonical="https://scalegrades.com/blog/sistema-notas-albania"
+  ogType="article"
+  ldJson={ldJson}
+>
+  <Navbar slot="header" />
+
+  <div style="padding-top:62px;">
+
+    <!-- Hero -->
+    <section style="background:linear-gradient(135deg,#1e212a 0%,#1e1e4a 100%); padding:48px 20px 36px; color:#fff; text-align:center;">
+      <div style="max-width:760px; margin:0 auto;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:14px; flex-wrap:wrap;">
+          <a href="/blog" style="color:#a5b4fc; font-size:0.85rem; text-decoration:none; display:flex; align-items:center; gap:5px;">
+            <i class="fas fa-arrow-left"></i> Blog
+          </a>
+          <span style="color:#4b5563;">/</span>
+          <span style="background:#e0e7ff; color:#3730a3; font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:99px;">Notat</span>
+        </div>
+        <h1 style="font-size:clamp(1.4rem,4vw,2.1rem); font-weight:900; margin:0 0 10px; line-height:1.25;">
+          Si Funksionon Sistemi i Notave në Shqipëri
+        </h1>
+        <p style="font-size:0.95rem; color:#a5b4fc; font-style:italic; margin:0 0 14px;">
+          How does Albania's grading system work?
+        </p>
+        <div style="display:flex; align-items:center; justify-content:center; gap:14px; font-size:0.8rem; color:#6b7280; flex-wrap:wrap;">
+          <span><i class="fas fa-calendar-alt"></i> 1 Nëntor 2024</span>
+          <span><i class="fas fa-clock"></i> 6 min lexim</span>
+          <span><i class="fas fa-globe"></i> Shqipëri</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article body -->
+    <div style="max-width:760px; margin:0 auto; padding:44px 20px 64px;">
+
+      <!-- Intro -->
+      <div class="article-intro">
+        <p>Sistemi i notave në Shqipëri mund të duket i thjeshtë në shikim të parë — numra nga 1 në 10. Por në praktikë, ka nuanca të rëndësishme: çfarë do të thotë "nota kalimtare", si llogaritet mesatarja, dhe si ekuivalohet me sistemet e huaja si GPA apo ECTS.</p>
+        <p>Ky artikull shpjegon gjithçka: nga kuptimi i çdo note deri te llogaritja e saktë e shkallës.</p>
+      </div>
+
+      <!-- Section 1: Shkalla -->
+      <h2>1. Shkalla e Notave: 1 deri 10</h2>
+      <p>Sistemi shqiptar përdor shkallën numerike <strong>nga 1 (nota më e ulët) deri në 10 (nota perfekte)</strong>. Ky sistem u fut gjatë reformave arsimore të viteve '90 dhe është harmonizuar me standardet europiane.</p>
+
+      <!-- Nota table -->
+      <div class="nota-table-wrap">
+        <table class="nota-table">
+          <thead>
+            <tr>
+              <th>Nota</th>
+              <th>Emërtimi</th>
+              <th>Kuptimi</th>
+              <th>ECTS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-green">
+              <td><strong>10</strong></td>
+              <td>Shkëlqyer</td>
+              <td>Excellent</td>
+              <td>A</td>
+            </tr>
+            <tr class="row-green">
+              <td><strong>9</strong></td>
+              <td>Shumë Mirë</td>
+              <td>Very Good</td>
+              <td>B</td>
+            </tr>
+            <tr class="row-green">
+              <td><strong>8</strong></td>
+              <td>Mirë</td>
+              <td>Good</td>
+              <td>C</td>
+            </tr>
+            <tr class="row-green">
+              <td><strong>7</strong></td>
+              <td>Kënaqshëm</td>
+              <td>Satisfactory</td>
+              <td>D</td>
+            </tr>
+            <tr class="row-orange">
+              <td><strong>5–6</strong></td>
+              <td>Mjaftueshëm</td>
+              <td>Sufficient</td>
+              <td>E</td>
+            </tr>
+            <tr class="row-orange nota-min">
+              <td><strong>4</strong></td>
+              <td>Nota minimale</td>
+              <td>Minimum pass</td>
+              <td>—</td>
+            </tr>
+            <tr class="row-red">
+              <td><strong>1–3</strong></td>
+              <td>Rrëzuar</td>
+              <td>Fail</td>
+              <td>F</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-box info-orange">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>Nota kalimtare është 4.</strong> Çdo vlerësim nën 4 konsiderohet i pakaluar (rrëzuar), pavarësisht nivelit të shkollës — fillore, e mesme apo universiteti.
+        </div>
+      </div>
+
+      <!-- Section 2: Si llogaritet -->
+      <h2>2. Si Llogaritet Shkalla e Notave?</h2>
+      <p>Shkalla e notave lidh <strong>pikët e fituara</strong> nga nxënësi me <strong>notën korrespondente</strong> duke u bazuar në disa parametra:</p>
+
+      <ul class="article-list">
+        <li><strong>Nota maksimale (p.sh. 10)</strong> — nota më e lartë e mundshme</li>
+        <li><strong>Nota minimale (p.sh. 1)</strong> — nota me pikë zero</li>
+        <li><strong>Nota kalimtare (4)</strong> — pikëprerja e kalimit/dështimit</li>
+        <li><strong>Eksigenca (%)</strong> — sa % e pikëve totale duhen për notën kalimtare (zakonisht 40–60%)</li>
+      </ul>
+
+      <p>Formula ndjek dy segmente lineare:</p>
+      <div class="formula-box">
+        <div class="formula-row">
+          <span class="formula-label">Segment nën prag:</span>
+          <code>nota = ((N_kalimtare − N_min) / (eksigenca × piks_max)) × pikë + N_min</code>
+        </div>
+        <div class="formula-row">
+          <span class="formula-label">Segment mbi prag:</span>
+          <code>nota = ((N_max − N_kalimtare) / (piks_max × (1 − eksigenca))) × (pikë − prag) + N_kalimtare</code>
+        </div>
+      </div>
+
+      <div class="info-box info-purple">
+        <i class="fas fa-calculator"></i>
+        <div>
+          <strong>Tip praktik:</strong> Mos e llogarit me dorë! Përdor <a href="/llogarites-mesues">llogaritësin tonë falas</a> — fut parametrat dhe gjeneron tabelën automatikisht.
+        </div>
+      </div>
+
+      <!-- Section 3: Shembull -->
+      <h2>3. Shembull Praktik: Test me 50 Pikë</h2>
+      <p>Supozojmë: test me 50 pikë, eksigencë 60%, nota min 1, nota max 10, kalimtare 4.</p>
+
+      <div class="example-table-wrap">
+        <table class="nota-table">
+          <thead>
+            <tr><th>Pikë</th><th>Nota</th><th>Rezultat</th></tr>
+          </thead>
+          <tbody>
+            <tr class="row-green"><td>50</td><td>10.0</td><td>Shkëlqyer ✓</td></tr>
+            <tr class="row-green"><td>45</td><td>9.0</td><td>Shumë mirë ✓</td></tr>
+            <tr class="row-green"><td>38</td><td>7.3</td><td>Mirë ✓</td></tr>
+            <tr class="row-orange nota-min"><td>30</td><td>4.0</td><td>Nota min. kalimtare ✓</td></tr>
+            <tr class="row-red"><td>20</td><td>2.6</td><td>Rrëzuar ✗</td></tr>
+            <tr class="row-red"><td>0</td><td>1.0</td><td>Rrëzuar ✗</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section 4: Mesatarja -->
+      <h2>4. Llogaritja e Mesatares</h2>
+      <p>Mesatarja llogaritet si <strong>mesatare e thjeshtë aritmetike</strong> e të gjitha notave (ose e ponderuar kur lëndët kanë kredite të ndryshme):</p>
+
+      <div class="formula-box">
+        <div class="formula-row">
+          <span class="formula-label">Mesatare e thjeshtë:</span>
+          <code>M = (N1 + N2 + ... + Nn) / n</code>
+        </div>
+        <div class="formula-row">
+          <span class="formula-label">Mesatare e ponderuar:</span>
+          <code>M = Σ(Nota × Kredite) / Σ(Kredite)</code>
+        </div>
+      </div>
+
+      <p>Në universitete, mesatarja e ponderuar është standardi — lëndë me 6 ECTS peshon dyfish se një lëndë me 3 ECTS.</p>
+
+      <!-- Section 5: Ekuivalencat -->
+      <h2>5. Ekuivalenca me Sistemet Ndërkombëtare</h2>
+
+      <div class="nota-table-wrap">
+        <table class="nota-table">
+          <thead>
+            <tr><th>Shqipëri (1–10)</th><th>ECTS</th><th>USA (GPA 4.0)</th><th>Britani</th></tr>
+          </thead>
+          <tbody>
+            <tr class="row-green"><td>9–10</td><td>A</td><td>4.0 (A)</td><td>First (70%+)</td></tr>
+            <tr class="row-green"><td>8–8.9</td><td>B</td><td>3.0–3.9 (B)</td><td>Upper 2:1 (60–69%)</td></tr>
+            <tr class="row-green"><td>7–7.9</td><td>C</td><td>2.0–2.9 (C)</td><td>Lower 2:2 (50–59%)</td></tr>
+            <tr class="row-orange"><td>5–6.9</td><td>D–E</td><td>1.0–1.9 (D)</td><td>Third (40–49%)</td></tr>
+            <tr class="row-red"><td>1–4</td><td>F</td><td>0.0 (F)</td><td>Fail (&lt;40%)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-box info-blue">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          Kur aplikoni jashtë vendit, shumë universitete europiane pranojnë <strong>nota mbi 7</strong> si ekuivalent i "Good Standing". Gjithmonë konsultohuni me universitetin pritës.
+        </div>
+      </div>
+
+      <!-- Section 6: Lirimi -->
+      <h2>6. Lirimi nga Provimi (Eximimi)</h2>
+      <p>Në shumë shkolla dhe universitete shqiptare ekziston sistemi i <strong>lirimit nga provimi final</strong>: nëse mesatarja e vitit (ose semestrit) është mbi një prag të caktuar, nxënësi mund të <em>shmanget</em> provimit përfundimtar.</p>
+      <ul class="article-list">
+        <li>Pragu zakonisht: <strong>nota 6 ose 7</strong> gjatë vitit shkollor</li>
+        <li>Vendoset nga institucioni — nuk ka prag kombëtar uniform</li>
+        <li>Vlen edhe për Maturën Shtetërore në disa raste</li>
+      </ul>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <div class="article-cta-icon"><i class="fas fa-calculator"></i></div>
+        <h3>Llogarit shkallën e notave menjëherë</h3>
+        <p>Mjeti ynë falas gjeneron automatikisht tabelën e plotë të notave — ideal për mësues dhe pedagogë.</p>
+        <a href="/llogarites-mesues" class="article-cta-btn">
+          <i class="fas fa-chalkboard-teacher"></i> Hap Llogaritësin
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="/blog/sistema-educativo-albania" class="anav-btn">
+          <i class="fas fa-arrow-left"></i>
+          <div>
+            <small>Artikulli i mëparshëm</small>
+            <span>Sistemi Arsimor i Shqipërisë</span>
+          </div>
+        </a>
+        <a href="/blog/mejores-universidades-albania" class="anav-btn anav-btn-right">
+          <div>
+            <small>Artikulli tjetër</small>
+            <span>Universitetet më të Mira</span>
+          </div>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</LayoutInfo>
+
+<style>
+  /* Article typography */
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1e212a;
+    margin: 2rem 0 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 2px solid #e0e7ff;
+  }
+  p {
+    color: #374151;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+
+  .article-intro {
+    background: #f8fafc;
+    border-left: 4px solid #3730a3;
+    border-radius: 0 10px 10px 0;
+    padding: 18px 20px;
+    margin-bottom: 2rem;
+  }
+  .article-intro p { color: #374151; margin-bottom: 0.5rem; }
+  .article-intro p:last-child { margin-bottom: 0; }
+
+  .article-list {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .article-list li {
+    color: #374151;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.4rem;
+  }
+
+  /* Tables */
+  .nota-table-wrap, .example-table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .nota-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    min-width: 360px;
+  }
+  .nota-table thead tr {
+    background: #1e212a;
+    color: #fff;
+  }
+  .nota-table th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .nota-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .row-green { background: #f0fdf4; }
+  .row-green td { color: #15803d; }
+  .row-orange { background: #fff7ed; }
+  .row-orange td { color: #c2410c; }
+  .row-red { background: #fef2f2; }
+  .row-red td { color: #991b1b; }
+  .nota-min {
+    border-left: 4px solid #f97316;
+    font-weight: 700;
+  }
+
+  /* Info boxes */
+  .info-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin: 1.4rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .info-box i { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+  .info-orange { background: #fff7ed; border: 1px solid #fed7aa; color: #7c2d12; }
+  .info-orange i { color: #f97316; }
+  .info-purple { background: #faf5ff; border: 1px solid #ddd6fe; color: #4c1d95; }
+  .info-purple i { color: #7c3aed; }
+  .info-purple a { color: #7c3aed; font-weight: 700; }
+  .info-blue { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a5f; }
+  .info-blue i { color: #3b82f6; }
+
+  /* Formula box */
+  .formula-box {
+    background: #1e212a;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 1rem 0 1.4rem;
+    overflow-x: auto;
+  }
+  .formula-row { margin-bottom: 10px; }
+  .formula-row:last-child { margin-bottom: 0; }
+  .formula-label { display: block; color: #9ca3af; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .formula-row code {
+    display: block;
+    color: #f97316;
+    font-size: 0.82rem;
+    font-family: 'Courier New', monospace;
+    word-break: break-all;
+  }
+
+  /* Article CTA */
+  .article-cta {
+    background: linear-gradient(135deg, #1e212a, #2a1f5f);
+    border-radius: 14px;
+    padding: 32px 24px;
+    text-align: center;
+    margin: 2.5rem 0;
+  }
+  .article-cta-icon {
+    width: 50px; height: 50px;
+    border-radius: 12px;
+    background: rgba(249,115,22,0.15);
+    border: 1px solid rgba(249,115,22,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: #f97316;
+    margin: 0 auto 14px;
+  }
+  .article-cta h3 { color: #fff; font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+  .article-cta p { color: #9ca3af; font-size: 0.88rem; margin-bottom: 18px; }
+  .article-cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 26px; border-radius: 9px;
+    background: #f97316; color: #1e212a;
+    font-weight: 700; font-size: 0.9rem;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .article-cta-btn:hover { background: #fb923c; }
+
+  /* Article navigation */
+  .article-nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  .anav-btn {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+    color: #374151;
+    transition: border-color 0.18s, background 0.18s;
+  }
+  .anav-btn:hover { border-color: #7c3aed; background: #faf5ff; }
+  .anav-btn small { display: block; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .anav-btn span { display: block; font-size: 0.88rem; font-weight: 700; }
+  .anav-btn i { color: #7c3aed; flex-shrink: 0; }
+  .anav-btn-right { justify-content: flex-end; text-align: right; }
+</style>

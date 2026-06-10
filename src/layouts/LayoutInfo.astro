@@ -1,0 +1,118 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonical: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  ldJson?: object | object[];
+}
+
+const {
+  title,
+  description,
+  keywords = '',
+  canonical,
+  ogTitle,
+  ogDescription,
+  ogType = 'website',
+  ldJson,
+} = Astro.props;
+
+const resolvedOgTitle = ogTitle || title;
+const resolvedOgDesc  = ogDescription || description;
+---
+
+<!doctype html>
+<html lang="sq">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical"  href={canonical} />
+    <link rel="alternate"  hreflang="x-default" href={canonical} />
+    <link rel="alternate"  hreflang="sq"         href={canonical} />
+    <link rel="alternate"  hreflang="en"         href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+
+    <!-- Open Graph -->
+    <meta property="og:type"              content={ogType} />
+    <meta property="og:site_name"         content="ScaleGrades" />
+    <meta property="og:url"               content={canonical} />
+    <meta property="og:title"             content={resolvedOgTitle} />
+    <meta property="og:description"       content={resolvedOgDesc} />
+    <meta property="og:locale"            content="sq_AL" />
+    <meta property="og:locale:alternate"  content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDesc} />
+
+    <!-- JSON-LD Structured Data -->
+    {ldJson && (
+      Array.isArray(ldJson)
+        ? ldJson.map((schema) => (
+            <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+          ))
+        : <script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
+    )}
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- Google Analytics 4 — reemplaza G-Z46VHH4WTV con tu Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z46VHH4WTV" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z46VHH4WTV');
+    </script>
+  </head>
+
+  <body style="display:flex; flex-direction:column; min-height:100vh; margin:0; background-color:#f3f4f6;">
+    <slot name="header" />
+    <main style="flex:1;">
+      <slot />
+    </main>
+    <slot name="footer" />
+    <script src="/js/navbar.js" is:inline></script>
+  </body>
+
+  <style is:global>
+    * { box-sizing: border-box; margin: 0; }
+
+    body { font-family: Arial, sans-serif; }
+
+    /* Tarjetas de ranking / carrera */
+    .info-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    /* Tipografía artículos de blog */
+    .prose h2 { font-size: 1.4rem; font-weight: 700; margin: 1.6rem 0 0.6rem; color: #1e212a; }
+    .prose h3 { font-size: 1.1rem; font-weight: 700; margin: 1.2rem 0 0.4rem; color: #1e212a; }
+    .prose p  { line-height: 1.75; color: #374151; margin-bottom: 1rem; }
+    .prose ul { margin: 0.5rem 0 1rem 1.5rem; color: #374151; line-height: 1.75; }
+    .prose li { margin-bottom: 0.35rem; }
+    .prose a  { color: #1d4ed8; text-decoration: underline; }
+    .prose strong { color: #1e212a; }
+  </style>
+</html>

@@ -1,15 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://gscale.site/</loc>
-        <lastmod>2024-05-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://gscale.site/alumno</loc>
-        <lastmod>2024-05-05</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Faqja kryesore — Platforma arsimore -->
+  <url>
+    <loc>https://scalegrades.com/</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/"/>
+  </url>
+
+  <!-- Llogaritës i notave për mësues -->
+  <url>
+    <loc>https://scalegrades.com/llogarites-mesues</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/llogarites-mesues"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/llogarites-mesues"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://scalegrades.com/llogarites-mesues"/>
+  </url>
+
+  <!-- Mjete për nxënës — qendra e testeve -->
+  <url>
+    <loc>https://scalegrades.com/nxenes</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/nxenes"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/nxenes"/>
+  </url>
+
+  <!-- Test i personalitetit: cili është lloji yt -->
+  <url>
+    <loc>https://scalegrades.com/nxenes/lloji-i-shokut</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/nxenes/lloji-i-shokut"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/nxenes/lloji-i-shokut"/>
+  </url>
+
+  <!-- Test zgjedhja e karrierës -->
+  <url>
+    <loc>https://scalegrades.com/nxenes/zgjidhje-karriere</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/nxenes/zgjidhje-karriere"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/nxenes/zgjidhje-karriere"/>
+  </url>
+
+  <!-- Test RIASEC vocacional -->
+  <url>
+    <loc>https://scalegrades.com/nxenes/test-riasec</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/nxenes/test-riasec"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/nxenes/test-riasec"/>
+  </url>
+
+  <!-- Mjete për prindër -->
+  <url>
+    <loc>https://scalegrades.com/prinderit</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/prinderit"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/prinderit"/>
+  </url>
+
+  <!-- Universitetet, renditjet dhe karrierat në Shqipëri -->
+  <url>
+    <loc>https://scalegrades.com/universitetet</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/universitetet"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/universitetet"/>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://scalegrades.com/universitetet"/>
+  </url>
+
+  <!-- Blog arsimor — indeksi -->
+  <url>
+    <loc>https://scalegrades.com/blog</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/blog"/>
+  </url>
+
+  <!-- Blog — Sistemi Arsimor i Shqipërisë -->
+  <url>
+    <loc>https://scalegrades.com/blog/sistema-educativo-albania</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/blog/sistema-educativo-albania"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/blog/sistema-educativo-albania"/>
+  </url>
+
+  <!-- Blog — Universitetet më të Mira në Shqipëri -->
+  <url>
+    <loc>https://scalegrades.com/blog/mejores-universidades-albania</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/blog/mejores-universidades-albania"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/blog/mejores-universidades-albania"/>
+  </url>
+
+  <!-- Blog — Si Funksionon Sistemi i Notave në Shqipëri -->
+  <url>
+    <loc>https://scalegrades.com/blog/sistema-notas-albania</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scalegrades.com/blog/sistema-notas-albania"/>
+    <xhtml:link rel="alternate" hreflang="sq"        href="https://scalegrades.com/blog/sistema-notas-albania"/>
+  </url>
+
 </urlset>

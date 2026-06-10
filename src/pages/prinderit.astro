@@ -1,0 +1,652 @@
+---
+import LayoutInfo from "../layouts/LayoutInfo.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+---
+
+<LayoutInfo
+  title="Si e njoh fëmijën tim? — Test për Prindër | ScaleGrades"
+  description="Test falas për prindër — zbulo pikat e forta të fëmijës dhe si ta shoqërosh në zgjedhjen e karrierës pa e shtypur."
+  canonical="https://scalegrades.com/prinderit"
+>
+  <Navbar slot="header" />
+  <link rel="stylesheet" href="/js/test-styles.css" />
+
+  <div class="pp-back-bar">
+    <a href="/" class="pp-back-link"><i class="fas fa-arrow-left"></i> Kthehu në Faqen Kryesore</a>
+  </div>
+
+  <div id="app" style="min-height:100vh;"></div>
+
+  <Footer slot="footer" />
+</LayoutInfo>
+
+<style is:global>
+  body { background-color: #1e212a !important; color: #e5e7eb; }
+
+  .pp-back-bar {
+    position: fixed; top: 62px; left: 0; right: 0; z-index: 50;
+    background: #1e212a; border-bottom: 1px solid #2a3042; padding: 8px 20px;
+  }
+  .pp-back-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    color: #6b7280; text-decoration: none; font-size: 0.8rem; font-weight: 600;
+    transition: color 0.18s;
+  }
+  .pp-back-link:hover { color: #9ca3af; }
+
+  .pp-container { max-width: 800px; margin: 0 auto; padding: 112px 20px 80px; min-height: 100vh; }
+
+  .pp-intro-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 99px; padding: 6px 14px; font-size: 0.8rem; color: #60a5fa; margin-bottom: 14px;
+  }
+  .pp-intro-card { background: #2a3042; border: 1px solid #333b4e; border-radius: 16px; padding: 32px 28px; margin-top: 20px; }
+  .pp-form-group { margin-bottom: 22px; }
+  .pp-label { display: block; font-size: 0.8rem; color: #9ca3af; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .pp-input {
+    width: 100%; background: #1e212a; border: 1.5px solid #333b4e; border-radius: 9px;
+    padding: 13px 16px; color: #e5e7eb; font-size: 1rem; font-family: inherit;
+    outline: none; transition: border-color 0.2s; box-sizing: border-box;
+  }
+  .pp-input:focus { border-color: #3b82f6; }
+  .pp-btn-row { display: flex; gap: 10px; }
+  .pp-sel-btn {
+    flex: 1; padding: 11px 6px; border-radius: 9px; border: 1.5px solid #333b4e;
+    background: #1e212a; color: #9ca3af; font-size: 0.88rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; font-family: inherit; white-space: nowrap;
+  }
+  .pp-sel-btn:hover { border-color: #3b82f6; color: #60a5fa; }
+  .pp-sel-btn.pp-sel { background: rgba(59,130,246,0.15); border-color: #3b82f6; color: #93c5fd; }
+
+  /* Likert */
+  .kk-likert-scale { margin-top: 18px; }
+  .kk-likert-btns { display: flex; gap: 8px; margin-bottom: 7px; }
+  .kk-likert-labels { display: flex; justify-content: space-between; }
+  .kk-likert-label { font-size: 0.68rem; color: #4b5563; }
+  .kk-likert-btn {
+    flex: 1; padding: 12px 6px; border: 2px solid #333b4e; border-radius: 10px;
+    background: #1e212a; color: #9ca3af; font-size: 0.95rem; font-weight: 700;
+    cursor: pointer; transition: all 0.22s ease; text-align: center; font-family: inherit;
+  }
+  .kk-likert-btn:hover { border-color: #3b82f6; color: #60a5fa; background: rgba(59,130,246,0.05); }
+  .kk-likert-btn.kk-likert-sel[data-val="1"] { background:#fb7185; border-color:#fb7185; color:#1e212a; }
+  .kk-likert-btn.kk-likert-sel[data-val="2"] { background:#f97316; border-color:#f97316; color:#1e212a; }
+  .kk-likert-btn.kk-likert-sel[data-val="3"] { background:#fbbf24; border-color:#fbbf24; color:#1e212a; }
+  .kk-likert-btn.kk-likert-sel[data-val="4"] { background:#60a5fa; border-color:#60a5fa; color:#1e212a; }
+  .kk-likert-btn.kk-likert-sel[data-val="5"] { background:#7c3aed; border-color:#7c3aed; color:#fff; }
+
+  .pp-padre-badge {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px; background: rgba(96,165,250,0.1);
+    color: #60a5fa; border: 1px solid rgba(96,165,250,0.25);
+  }
+
+  .pp-section-banner {
+    background: linear-gradient(135deg,rgba(59,130,246,0.08),rgba(124,58,237,0.08));
+    border: 1px solid rgba(59,130,246,0.2); border-radius: 14px;
+    padding: 24px; text-align: center; margin-bottom: 20px;
+  }
+  .pp-section-icon { font-size: 2rem; margin-bottom: 8px; }
+  .pp-section-banner h3 { font-size: 1.1rem; font-weight: 800; color: #93c5fd; margin-bottom: 6px; }
+  .pp-section-banner p { font-size: 0.85rem; color: #6b7280; line-height: 1.5; }
+
+  .pp-result-area-card { background: #2a3042; border-radius: 14px; padding: 22px 24px; border: 1px solid #333b4e; }
+  .pp-area-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .pp-area-icon { font-size: 1.5rem; }
+  .pp-area-name { font-size: 1.1rem; font-weight: 800; margin: 0; }
+  .pp-area-rank { font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
+  .pp-area-desc { font-size: 0.87rem; color: #9ca3af; line-height: 1.65; margin-bottom: 10px; }
+  .pp-area-market { font-size: 0.82rem; color: #6b7280; line-height: 1.55; display: flex; gap: 8px; align-items: flex-start; }
+  .pp-area-market i { flex-shrink: 0; margin-top: 2px; }
+
+  .pp-section-title {
+    font-size: 0.78rem; font-weight: 700; color: #6b7280; text-transform: uppercase;
+    letter-spacing: 0.07em; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .pp-section-title i { color: #3b82f6; }
+
+  .pp-balance-card {
+    background: linear-gradient(135deg,#2a3042,#333b4e); border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 14px; padding: 22px 24px; font-size: 0.9rem; color: #d1d5db;
+    line-height: 1.75; margin-bottom: 8px; box-shadow: 0 0 30px rgba(59,130,246,0.06);
+  }
+
+  .pp-rec-card {
+    background: #2a3042; border: 1px solid #333b4e; border-radius: 12px;
+    padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start;
+  }
+  .pp-rec-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+  .pp-rec-label { font-size: 0.72rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+  .pp-rec-text { font-size: 0.88rem; color: #d1d5db; line-height: 1.6; margin: 0; }
+
+  .pp-blog-links { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+  .pp-blog-link {
+    display: flex; align-items: center; gap: 8px; padding: 13px 16px;
+    background: #2a3042; border: 1px solid #333b4e; border-radius: 10px;
+    color: #60a5fa; text-decoration: none; font-size: 0.87rem; font-weight: 600;
+    transition: all 0.18s;
+  }
+  .pp-blog-link:hover { border-color: #3b82f6; background: rgba(59,130,246,0.06); color: #93c5fd; }
+  .pp-blog-link i { color: #3b82f6; flex-shrink: 0; }
+
+  @media (max-width: 600px) {
+    .pp-container { padding: 100px 16px 60px; }
+    .pp-btn-row { gap: 6px; }
+    .pp-sel-btn { font-size: 0.8rem; padding: 10px 4px; }
+    .kk-likert-btns { gap: 6px; }
+    .kk-likert-btn { padding: 10px 4px; font-size: 0.88rem; }
+  }
+</style>
+
+<script is:inline>
+(function () {
+  'use strict';
+
+  /* ── AREAS ──────────────────────────────────────────────────────────── */
+  var AREAS = {
+    R: {
+      name: 'Realist & Teknik', icon: '🔧', color: '#f97316',
+      parent_desc: 'Fëmija juaj mëson duke bërë — i tërheqin gjërat konkrete, mekanika dhe ndërtimi. Ka nevojë për rezultate të prekshme dhe të dukshme.',
+      market: 'Ndërtimi, infrastruktura, energjia e rinovueshme dhe IT-i janë fushat me kërkesën më të lartë në Shqipëri. Karrierë e qëndrueshme dhe e paguar mirë.',
+      week: 'Pyesni fëmijën: "Çfarë do të ndërtoje nëse kishe gjithë materialet?" — dhe dëgjoni pa gjykuar.',
+      market_tip: 'Inxhinieria e ndërtimit dhe IT-i hardware janë nga profesionet me pagat më të larta për të rinj në Shqipëri sot.',
+      convo: '"Kam vënë re se ti je shumë i/e mirë kur punon me duar. Çfarë do të prodhoje nëse kishe burimet?"'
+    },
+    I: {
+      name: 'Hulumtues & Analitik', icon: '🔬', color: '#38bdf8',
+      parent_desc: 'Fëmija juaj bën pyetje gjithmonë — ka nevojë për thellësi dhe eksplorим shkencor. Kurioziteti i tij/saj është forcë e madhe.',
+      market: 'Mjekësia, farmacia, informatika dhe kërkimi shkencor ofrojnë karriera afatgjata me të ardhura të qëndrueshme dhe respekt social.',
+      week: 'Gjeni bashkë një dokumentar ose libër mbi temën që e intrigon fëmijën tuaj — ndiqeni pa e shndërruar në detyrë.',
+      market_tip: 'Mjekësia ka prestigjin më të lartë shoqëror në Shqipëri. Por informatika po fiton terren me shpejtësi të jashtëzakonshme.',
+      convo: '"Çfarë do të doje të kuptoje në botë që ende nuk e ka kuptuar askush?" — lëreni të ëndërrojë me zë të lartë.'
+    },
+    A: {
+      name: 'Krijues & Artistik', icon: '🎨', color: '#c084fc',
+      parent_desc: 'Fëmija juaj sheh botën ndryshe — ka sens estetik dhe nevojë kreative. Kreativiteti sot është aftësi profesionale e kërkuar globalisht.',
+      market: 'Ekonomia dixhitale ka nevojë të madhe për dizajnerë UX, krijues përmbajtjeje dhe marketingues kreativë — tregu është global, jo vetëm lokal.',
+      week: 'Krijoni hapësirën shtëpiake ku fëmija mund të provojë pa gjykuar — vizatim, muzikë, shkrim. Lavdëroni procesin, jo vetëm produktin.',
+      market_tip: 'Dizajni grafik dhe marketing dixhital janë dy fushat ku talentët shqiptarë po gjejnë punë jashtë kufijve me pagesa konkurruese.',
+      convo: '"Çfarë do të krijonit nëse nuk kishit frikë nga gjykimi i askujt?" — dhe tregoni se ju intereson vërtet.'
+    },
+    S: {
+      name: 'Social & Ndihmues', icon: '🤝', color: '#2dd4bf',
+      parent_desc: 'Fëmija juaj është i/e lidhur me njerëzit — ndihmon, dëgjon dhe kujdeset. Kjo empati është forcë e madhe profesionale dhe njerëzore.',
+      market: 'Arsimi, shëndeti publik dhe puna sociale janë sektorë me kërkesë të qëndrueshme. Komunikimi dhe HR po rriten me shpejtësi në Shqipëri.',
+      week: 'Lejojeni fëmijën të marrë përsipër një rol ku ndihmon dikë — dhe falënderojeni konkretisht: "E di që kjo është forca jote."',
+      market_tip: 'Sektori i shëndetit publik dhe HR janë duke u rritur me shpejtësi në Shqipëri dhe Kosovë pas vitit 2020.',
+      convo: '"Cili moment kur ke ndihmuar dikë të ka bërë të ndihesh mirë me veten?" — lëreni të tregojë pa ngutur.'
+    },
+    E: {
+      name: 'Sipërmarrës & Lider', icon: '🚀', color: '#fbbf24',
+      parent_desc: 'Fëmija juaj merr iniciativë dhe ka vizion — organizon, bind dhe drejton. Ka nevojë për autonomi dhe sfida reale.',
+      market: 'Sipërmarrja, biznesi dhe administrimi kanë potencial të lartë. Shqipëria dhe Kosova kanë nevojë të madhe për liderë lokalë të formuar mirë.',
+      week: 'Lejojeni fëmijën të organizojë diçka të vogël vetëm — darkë familjare, aktivitet. Mos ndërhyrni — vetëm shikoni.',
+      market_tip: 'Administrimi i biznesit dhe drejtësia janë dy nga degët universitare me punësueshmërinë më të lartë pas diplomimit.',
+      convo: '"Nëse do të kishe buxhet të lirë dhe kohë, çfarë projekti do të nisje?" — dhe merreni seriozisht.'
+    },
+    C: {
+      name: 'Organizues & Sistematik', icon: '📋', color: '#60a5fa',
+      parent_desc: 'Fëmija juaj është metodikë dhe i/e saktë — i beson procedurave dhe vëren detajet. Kjo qëndrueshmëri është vlerë e madhe profesionale.',
+      market: 'Kontabiliteti, financat, logjistika dhe administrimi kanë punësueshmëri të lartë dhe stabilitet afatgjatë — karrierë me pak rrezik.',
+      week: 'Krijoni bashkë një sistem organizimi për javën — orar, lista detyrash. Lejojeni të udhëheqë procesin.',
+      market_tip: 'Kontabiliteti dhe financat janë nga fushat me mungesën më të madhe të profesionistëve të kualifikuar në Shqipëri sot.',
+      convo: '"Çfarë gjëje do ta organizoje ndryshe në shtëpi ose shkollë nëse do të kishe autoritet?" — dhe merreni seriozisht.'
+    }
+  };
+
+  /* ── POOL ───────────────────────────────────────────────────────────── */
+  var POOL_HIJO = [
+    {id:1,  area:'R', text:'Fëmija im ndreq ose ndërton gjëra me duar kur ka kohë të lirë.'},
+    {id:2,  area:'R', text:'Preferon aktivitete jashtë shtëpisë dhe lëvizje fizike.'},
+    {id:3,  area:'R', text:'Tregon interes për makina, teknologji mekanike ose elektrike.'},
+    {id:4,  area:'R', text:'Zgjidh problemet duke provuar me duar, jo vetëm duke menduar.'},
+    {id:25, area:'R', text:'Preferon të mësojë duke bërë, jo duke dëgjuar ose lexuar.'},
+    {id:5,  area:'I', text:'Bën pyetje të shumta — kërkon të kuptojë pse funksionojnë gjërat.'},
+    {id:6,  area:'I', text:'Lexon ose shikon dokumentarë për shkencë, histori ose teknologji.'},
+    {id:7,  area:'I', text:'I/e pëlqen të analizojë situata përpara se të vendosë.'},
+    {id:8,  area:'I', text:'Tregon kënaqësi kur zbulon diçka të re vetë, pa i treguar dikush.'},
+    {id:26, area:'I', text:'Kënaqet me lojëra strategjike ose puzzle-t komplekse.'},
+    {id:9,  area:'A', text:'Kalon kohë duke krijuar — vizatime, muzikë, shkrime ose dizajn.'},
+    {id:10, area:'A', text:'Ka një mënyrë unike të shprehjes — në veshje, hapësirë ose komunikim.'},
+    {id:11, area:'A', text:'Preferon detyra pa përgjigje të vetme të saktë.'},
+    {id:12, area:'A', text:'Vëren detaje estetike që të tjerët nuk i shohin.'},
+    {id:13, area:'S', text:'Shokët ose miqtë vijnë tek ai/ajo kur kanë probleme.'},
+    {id:14, area:'S', text:'Ndihet mirë kur ndihmon të tjerët — vëllezërit, shokët, fqinjët.'},
+    {id:15, area:'S', text:'Preferon të punojë në grup sesa vetëm.'},
+    {id:16, area:'S', text:'Tregon empati — e ndjen kur dikush tjetër është i/e shqetësuar.'},
+    {id:27, area:'S', text:'Përfshihet në aktivitete vullnetare ose komunitare kur ka mundësi.'},
+    {id:17, area:'E', text:'Merr iniciativë — organizon, propozon, fillon gjëra vetë.'},
+    {id:18, area:'E', text:'I/e pëlqen të bindë të tjerët ose të drejtojë aktivitete.'},
+    {id:19, area:'E', text:'Nuk tërhiqet lehtë kur has vështirësi — ka këmbëngulje.'},
+    {id:20, area:'E', text:'Flet me siguri për idetë e tij/saj, edhe para të rriturve.'},
+    {id:21, area:'C', text:'Mban gjërat në rregull — librat, dhomën, detyrat.'},
+    {id:22, area:'C', text:'Ndjek rregulla dhe procedura pa nevojë për t\'u kujtuar.'},
+    {id:23, area:'C', text:'I/e pëlqen të planifikojë përpara — lista, orare, hapa të qartë.'},
+    {id:24, area:'C', text:'Punon mirë me detaje dhe vëren gabimet e vogla.'}
+  ];
+
+  var POOL_PADRE = [
+    {id:28, text:'Për mua, një karrierë e mirë është para së gjithash ajo që siguron të ardhura të qëndrueshme.'},
+    {id:29, text:'Jam i/e shqetësuar nëse fëmija zgjedh një fushë që nuk ka prestigj social.'},
+    {id:30, text:'Mendoj se disa karriera (art, muzikë, sport) janë hobi, jo punë e vërtetë.'},
+    {id:31, text:'Preferohet që fëmija të studiojë diçka të sigurt edhe nëse nuk i pëlqen shumë.'},
+    {id:32, text:'Vendimi final për karrierën duhet të jetë kryesisht i familjes, jo vetëm i fëmijës.'},
+    {id:33, text:'Më vjen vështirë ta imagjinoj fëmijën tim duke punuar në një fushë kreative ose artistike.'}
+  ];
+
+  var BLOG = {
+    R: [{t:'Sistemi i arsimit në Shqipëri', u:'/blog/sistema-educativo-albania'},{t:'Universitetet më të mira', u:'/blog/mejores-universidades-albania'}],
+    I: [{t:'Sistemi i arsimit në Shqipëri', u:'/blog/sistema-educativo-albania'},{t:'Universitetet më të mira', u:'/blog/mejores-universidades-albania'}],
+    A: [{t:'Si funksionon sistemi i notave', u:'/blog/sistema-notas-albania'},{t:'Universitetet më të mira', u:'/blog/mejores-universidades-albania'}],
+    S: [{t:'Si funksionon sistemi i notave', u:'/blog/sistema-notas-albania'},{t:'Universitetet më të mira', u:'/blog/mejores-universidades-albania'}],
+    E: [{t:'Sistemi i arsimit në Shqipëri', u:'/blog/sistema-educativo-albania'},{t:'Si funksionon sistemi i notave', u:'/blog/sistema-notas-albania'}],
+    C: [{t:'Sistemi i arsimit në Shqipëri', u:'/blog/sistema-educativo-albania'},{t:'Si funksionon sistemi i notave', u:'/blog/sistema-notas-albania'}]
+  };
+
+  /* ── STATE ──────────────────────────────────────────────────────────── */
+  var parentName   = '';
+  var childGender  = '';
+  var childAge     = '';
+  var questionsHijo  = [];
+  var questionsPadre = [];
+  var groups       = [];
+  var currentGroup = -1;
+  var answers      = {};
+  var testDone     = false;
+  var lastResult   = null;
+
+  window.addEventListener('beforeunload', function (e) {
+    if (currentGroup >= 0 && !testDone) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  function shuffle(arr) { return arr.slice().sort(function () { return Math.random() - 0.5; }); }
+  function setApp(html) { var el = document.getElementById('app'); if (el) el.innerHTML = html; }
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  /* ── SELECT ─────────────────────────────────────────────────────────── */
+  function selectQuestions() {
+    var areas = ['R','I','A','S','E','C'];
+    var selected = [], usedIds = {};
+    areas.forEach(function (a) {
+      var pool = POOL_HIJO.filter(function (q) { return q.area === a; });
+      shuffle(pool).slice(0, 2).forEach(function (q) { selected.push(q); usedIds[q.id] = true; });
+    });
+    var rest = shuffle(POOL_HIJO.filter(function (q) { return !usedIds[q.id]; }));
+    rest.slice(0, 3).forEach(function (q) { selected.push(q); });
+    questionsHijo  = shuffle(selected);
+    questionsPadre = shuffle(POOL_PADRE);
+    groups = [];
+    for (var i = 0; i < 5; i++) groups.push(questionsHijo.slice(i * 3, i * 3 + 3));
+    groups.push(questionsPadre.slice(0, 3));
+    groups.push(questionsPadre.slice(3, 6));
+  }
+
+  /* ── INTRO ──────────────────────────────────────────────────────────── */
+  function showIntro() {
+    var gs = childGender, as2 = childAge;
+    setApp(
+      '<div class="pp-container">' +
+        '<div class="test-header">' +
+          '<div class="pp-intro-badge"><i class="fas fa-heart"></i> Test për Prindër</div>' +
+          '<h1 style="color:#fff;">Si e njoh fëmijën tim?</h1>' +
+          '<p>21 pyetje · 2 pjesë · Profil + këshilla konkrete</p>' +
+        '</div>' +
+        '<div class="pp-intro-card">' +
+          '<div class="pp-form-group">' +
+            '<label class="pp-label" for="pp-name">Emri juaj</label>' +
+            '<input class="pp-input" type="text" id="pp-name" placeholder="Shkruaj emrin tuaj..." maxlength="30" autocomplete="off" />' +
+          '</div>' +
+          '<div class="pp-form-group">' +
+            '<label class="pp-label">Gjinia e fëmijës</label>' +
+            '<div class="pp-btn-row">' +
+              '<button class="pp-sel-btn'+(gs==='M'?' pp-sel':'')+'" onclick="ppGender(\'M\')">Djalë</button>' +
+              '<button class="pp-sel-btn'+(gs==='F'?' pp-sel':'')+'" onclick="ppGender(\'F\')">Vajzë</button>' +
+              '<button class="pp-sel-btn'+(gs==='T'?' pp-sel':'')+'" onclick="ppGender(\'T\')">Tjetër</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="pp-form-group">' +
+            '<label class="pp-label">Mosha e fëmijës</label>' +
+            '<div class="pp-btn-row">' +
+              '<button class="pp-sel-btn'+(as2==='14-16'?' pp-sel':'')+'" onclick="ppAge(\'14-16\')">14–16 vjeç</button>' +
+              '<button class="pp-sel-btn'+(as2==='17-18'?' pp-sel':'')+'" onclick="ppAge(\'17-18\')">17–18 vjeç</button>' +
+              '<button class="pp-sel-btn'+(as2==='19+'?' pp-sel':'')+'" onclick="ppAge(\'19+\')">19+ vjeç</button>' +
+            '</div>' +
+          '</div>' +
+          '<button id="pp-btn-start" class="nav-btn nav-btn-submit" onclick="ppStart()" style="width:100%;'+ (!parentName||!gs||!as2?'opacity:0.4;cursor:not-allowed;':'') +'"'+ (!parentName||!gs||!as2?' disabled':'') +'>' +
+            '<i class="fas fa-play"></i> Fillo Testin' +
+          '</button>' +
+        '</div>' +
+      '</div>'
+    );
+    var inp = document.getElementById('pp-name');
+    if (inp) { if (parentName) inp.value = parentName; inp.addEventListener('input', ppCheckValid); }
+  }
+
+  window.ppGender = function (g) {
+    childGender = g;
+    document.querySelectorAll('.pp-sel-btn[onclick^="ppGender"]').forEach(function (b) {
+      b.classList.toggle('pp-sel', b.getAttribute('onclick') === "ppGender('" + g + "')");
+    });
+    ppCheckValid();
+  };
+
+  window.ppAge = function (a) {
+    childAge = a;
+    document.querySelectorAll('.pp-sel-btn[onclick^="ppAge"]').forEach(function (b) {
+      b.classList.toggle('pp-sel', b.getAttribute('onclick') === "ppAge('" + a + "')");
+    });
+    ppCheckValid();
+  };
+
+  function ppCheckValid() {
+    var name = (document.getElementById('pp-name') || {}).value;
+    name = name ? name.trim() : '';
+    var ok = !!(name && childGender && childAge);
+    var btn = document.getElementById('pp-btn-start');
+    if (!btn) return;
+    btn.disabled = !ok;
+    btn.style.opacity = ok ? '1' : '0.4';
+    btn.style.cursor  = ok ? 'pointer' : 'not-allowed';
+  }
+
+  /* ── START ──────────────────────────────────────────────────────────── */
+  window.ppStart = function () {
+    var inp  = document.getElementById('pp-name');
+    var name = inp ? inp.value.trim() : '';
+    if (!name || !childGender || !childAge) return;
+    parentName  = name;
+    answers     = {};
+    testDone    = false;
+    lastResult  = null;
+    selectQuestions();
+    currentGroup = 0;
+    showGroup(0);
+  };
+
+  /* ── SHOW GROUP ─────────────────────────────────────────────────────── */
+  function showGroup(idx) {
+    currentGroup = idx;
+    var group   = groups[idx];
+    var isPart2 = idx >= 5;
+    var pct     = Math.round(((idx + 1) / 7) * 100);
+    var allDone = group.every(function (q) { return answers[q.id] !== undefined; });
+    var isLast  = idx === 6;
+
+    var banner = '';
+    if (idx === 5) {
+      banner =
+        '<div class="pp-section-banner">' +
+          '<div class="pp-section-icon">👆</div>' +
+          '<h3>Tani disa pyetje për ju</h3>' +
+          '<p>Kemi matur pikat e forta të fëmijës suaj. Tani disa pyetje mbi pritshmëritë tuaja — nuk ka përgjigje të gabuar.</p>' +
+        '</div>';
+    }
+
+    var qHtml = '';
+    group.forEach(function (q, li) {
+      var ans  = answers[q.id];
+      var done = ans !== undefined;
+      var numLabel = isPart2 ? ('P' + (idx === 5 ? li + 1 : li + 4) + '/6') : ((idx * 3 + li + 1) + '/15');
+      var area = !isPart2 && q.area ? AREAS[q.area] : null;
+      var badge = area
+        ? '<span class="question-category" style="background:' + area.color + '22;color:' + area.color + ';border:1px solid ' + area.color + '55;">' + area.icon + ' ' + area.name + '</span>'
+        : '<span class="pp-padre-badge"><i class="fas fa-user"></i> Pritshmëritë tuaja</span>';
+
+      var btns = '';
+      for (var v = 1; v <= 5; v++) {
+        var sel = (done && ans === v) ? ' kk-likert-sel' : '';
+        btns += '<button class="kk-likert-btn' + sel + '" data-val="' + v + '" onclick="ppAns(' + q.id + ',' + v + ')">' + v + '</button>';
+      }
+
+      qHtml +=
+        '<div class="step-question' + (done ? ' step-q-answered' : '') + '" id="sq-' + q.id + '">' +
+          '<div class="step-q-header">' + badge + '<span class="step-q-num">' + numLabel + '</span></div>' +
+          '<p class="question-text">' + esc(q.text) + '</p>' +
+          '<div class="kk-likert-scale">' +
+            '<div class="kk-likert-btns">' + btns + '</div>' +
+            '<div class="kk-likert-labels"><span class="kk-likert-label">Aspak</span><span class="kk-likert-label">Gjithmonë</span></div>' +
+          '</div>' +
+        '</div>';
+    });
+
+    var btnStyle = allDone ? '' : 'opacity:0.4;cursor:not-allowed;';
+    var btnClass = 'nav-btn ' + (isLast ? 'nav-btn-submit' : 'nav-btn-next');
+    var btnLabel = isLast ? 'Shiko Rezultatin →' : 'Vazhdo →';
+    var hintTxt  = allDone ? '' : 'Vlerëso të 3 pyetjet për të vazhduar';
+
+    setApp(
+      '<div class="pp-container">' +
+        banner +
+        '<div class="progress-bar-container"><div class="progress-bar" style="width:' + pct + '%;background:linear-gradient(90deg,#3b82f6,#7c3aed)"></div></div>' +
+        '<div class="progress-text">Hapi ' + (idx + 1) + ' / 7</div>' +
+        '<div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">' + qHtml + '</div>' +
+        '<div class="nav-buttons" style="margin-top:24px;">' +
+          (idx > 0 ? '<button class="nav-btn nav-btn-prev" onclick="ppPrev()">← Prapa</button>' : '<span></span>') +
+          '<button class="' + btnClass + '" id="pp-btn-next" onclick="ppNext()" ' + (allDone ? '' : 'disabled') + ' style="' + btnStyle + '">' + btnLabel + '</button>' +
+        '</div>' +
+        '<p id="pp-hint" style="text-align:center;color:#6b7280;font-size:0.78rem;margin-top:8px;">' + hintTxt + '</p>' +
+      '</div>'
+    );
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── ANSWER ─────────────────────────────────────────────────────────── */
+  window.ppAns = function (qId, value) {
+    answers[qId] = value;
+    var sq = document.getElementById('sq-' + qId);
+    if (sq) {
+      sq.classList.add('step-q-answered');
+      sq.querySelectorAll('.kk-likert-btn').forEach(function (btn) {
+        btn.classList.toggle('kk-likert-sel', parseInt(btn.getAttribute('data-val'), 10) === value);
+      });
+    }
+    var group   = groups[currentGroup];
+    var allDone = group.every(function (q) { return answers[q.id] !== undefined; });
+    var btnNext = document.getElementById('pp-btn-next');
+    var hint    = document.getElementById('pp-hint');
+    if (btnNext) { btnNext.disabled = !allDone; btnNext.style.opacity = allDone ? '1' : '0.4'; btnNext.style.cursor = allDone ? 'pointer' : 'not-allowed'; }
+    if (hint) hint.textContent = allDone ? '' : 'Vlerëso të 3 pyetjet për të vazhduar';
+  };
+
+  /* ── NAV ────────────────────────────────────────────────────────────── */
+  window.ppNext = function () {
+    if (testDone) return;
+    var group = groups[currentGroup];
+    if (!group || !group.every(function (q) { return answers[q.id] !== undefined; })) return;
+    if (currentGroup < 6) showGroup(currentGroup + 1);
+    else showResult();
+  };
+  window.ppPrev = function () {
+    if (currentGroup > 0) showGroup(currentGroup - 1);
+    else showIntro();
+  };
+
+  /* ── CALC ───────────────────────────────────────────────────────────── */
+  function calcResult() {
+    var rawScores = {R:0,I:0,A:0,S:0,E:0,C:0};
+    var counts    = {R:0,I:0,A:0,S:0,E:0,C:0};
+    questionsHijo.forEach(function (q) {
+      var v = answers[q.id] || 0;
+      rawScores[q.area] += v;
+      counts[q.area]++;
+    });
+    var areas = ['R','I','A','S','E','C'];
+    var normalized = areas.map(function (a) {
+      return { area: a, score: counts[a] > 0 ? rawScores[a] / counts[a] : 0 };
+    });
+    normalized.sort(function (a, b) { return b.score - a.score; });
+    var top2 = normalized.slice(0, 2);
+
+    var pressure = 0;
+    questionsPadre.forEach(function (q) { pressure += (answers[q.id] || 0); });
+    var lvl = pressure <= 14 ? 'low' : pressure <= 22 ? 'mid' : 'high';
+
+    return { top2: top2, pressure: pressure, pressureLevel: lvl };
+  }
+
+  /* ── RESULT ─────────────────────────────────────────────────────────── */
+  function showResult() {
+    testDone   = true;
+    lastResult = calcResult();
+    var top2   = lastResult.top2;
+    var lvl    = lastResult.pressureLevel;
+
+    var area1 = AREAS[top2[0].area];
+    var area2 = AREAS[top2[1].area];
+    var childRef = childGender === 'M' ? 'Djali juaj' : childGender === 'F' ? 'Vajza juaj' : 'Fëmija juaj';
+
+    var areasHtml =
+      '<div class="pp-result-area-card" style="border-left:4px solid ' + area1.color + ';">' +
+        '<div class="pp-area-header">' +
+          '<span class="pp-area-icon">' + area1.icon + '</span>' +
+          '<h3 class="pp-area-name" style="color:' + area1.color + ';">' + area1.name + '</h3>' +
+          '<span class="pp-area-rank" style="background:' + area1.color + '20;color:' + area1.color + ';">Fusha kryesore</span>' +
+        '</div>' +
+        '<p class="pp-area-desc">' + esc(area1.parent_desc) + '</p>' +
+        '<div class="pp-area-market"><i class="fas fa-briefcase" style="color:' + area1.color + '"></i> ' + esc(area1.market) + '</div>' +
+      '</div>' +
+      '<div class="pp-result-area-card" style="border-left:3px solid ' + area2.color + ';">' +
+        '<div class="pp-area-header">' +
+          '<span class="pp-area-icon">' + area2.icon + '</span>' +
+          '<h3 class="pp-area-name" style="color:' + area2.color + ';">' + area2.name + '</h3>' +
+          '<span class="pp-area-rank" style="background:' + area2.color + '20;color:' + area2.color + ';">Fusha e dytë</span>' +
+        '</div>' +
+        '<p class="pp-area-desc">' + esc(area2.parent_desc) + '</p>' +
+        '<div class="pp-area-market"><i class="fas fa-briefcase" style="color:' + area2.color + '"></i> ' + esc(area2.market) + '</div>' +
+      '</div>';
+
+    var balanceMsg = lvl === 'low'
+      ? 'Ju tashmë po e shoqëroni fëmijën tuaj në mënyrën e duhur — duke lënë hapësirë dhe duke qenë prezent. Ky ekuilibër është rrallë i natyrshëm dhe shumë i çmuar. Ajo që mund ta forconi: krijoni hapësira ku fëmija flet hapur për ëndrrat, jo vetëm për detyrat.'
+      : lvl === 'mid'
+      ? 'Ju keni pritshmëri të qarta — kjo tregon se ju interesoni dhe dëshironi të mirën e fëmijës suaj. Megjithatë, mund të jetë momenti të kontrolloni nëse pritshmëritë tuaja i kanë lënë fëmijës hapësirë të mjaftueshme për të zbuluar vetë çfarë dëshiron. Pritshmëritë dhe mbështetja janë të dyja të rëndësishme — çelësi është ekuilibri i tyre.'
+      : 'Dashuria juaj për fëmijën është e qartë — dhe kjo është gjëja më e rëndësishme. Por studiot tregojnë se fëmijët që studiojnë çfarë familja zgjedh (jo ata vetë) kanë nivele shumë më të larta braktisje universitare dhe pakënaqësi profesionale. Biseda më e vlerësuar: "Çfarë do ti?" — jo si pyetje retorike, por si pyetje e vërtetë. Jepini fëmijës hapësirën të përgjigjet.';
+
+    var recs = [
+      {icon:'📅', label:'Çfarë mund të bëni këtë javë',       text: area1.week},
+      {icon:'💼', label:'Çfarë duhet të dini për tregun',      text: area1.market_tip},
+      {icon:'💬', label:'Si ta mbani bisedën të hapur',        text: area1.convo}
+    ];
+    var recsHtml = recs.map(function (r) {
+      return '<div class="pp-rec-card"><div class="pp-rec-icon">' + r.icon + '</div><div><div class="pp-rec-label">' + esc(r.label) + '</div><p class="pp-rec-text">' + esc(r.text) + '</p></div></div>';
+    }).join('');
+
+    var arts = BLOG[top2[0].area] || [];
+    var artsHtml = arts.map(function (a) {
+      return '<a href="' + esc(a.u) + '" class="pp-blog-link"><i class="fas fa-book-open"></i> ' + esc(a.t) + ' →</a>';
+    }).join('');
+
+    setApp(
+      '<div class="pp-container">' +
+        '<div class="results-header">' +
+          '<h1 style="color:#3b82f6;">Rezultatet e ' + esc(parentName) + '</h1>' +
+          '<p style="color:#9ca3af;">' + childRef + ' tregon forcë në këto dy fusha</p>' +
+        '</div>' +
+
+        '<div class="pp-section-title"><i class="fas fa-child"></i> Profili i fëmijës suaj</div>' +
+        '<div style="display:flex;flex-direction:column;gap:14px;margin-bottom:8px;">' + areasHtml + '</div>' +
+
+        '<div class="pp-section-title"><i class="fas fa-balance-scale"></i> Ekuilibri prind–fëmijë</div>' +
+        '<div class="pp-balance-card">' + esc(balanceMsg) + '</div>' +
+
+        '<div class="pp-section-title"><i class="fas fa-lightbulb"></i> 3 veprime konkrete</div>' +
+        '<div style="display:flex;flex-direction:column;gap:12px;margin-bottom:8px;">' + recsHtml + '</div>' +
+
+        (artsHtml ? '<div class="pp-section-title"><i class="fas fa-book"></i> Artikuj të rekomanduar</div><div class="pp-blog-links">' + artsHtml + '</div>' : '') +
+
+        '<div class="share-buttons" style="margin-top:32px;">' +
+          '<button class="share-btn share-btn-download" onclick="ppDownload()"><i class="fas fa-download"></i> Shkarko PNG</button>' +
+          '<button class="share-btn share-btn-restart" onclick="ppRestart()"><i class="fas fa-redo"></i> Bëje Përsëri</button>' +
+        '</div>' +
+      '</div>'
+    );
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── PNG ────────────────────────────────────────────────────────────── */
+  window.ppDownload = function () {
+    if (!lastResult) return;
+    var top2 = lastResult.top2;
+    var W = 720, H = 620;
+    var cv = document.createElement('canvas');
+    cv.width = W * 2; cv.height = H * 2;
+    var ctx = cv.getContext('2d');
+    ctx.scale(2, 2);
+
+    ctx.fillStyle = '#1e212a'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#3b82f6'; ctx.fillRect(10, 10, W - 20, 4);
+    ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 1.5;
+    ppRR(ctx, 10, 10, W - 20, H - 20, 14); ctx.stroke();
+
+    ctx.fillStyle = '#3b82f6'; ctx.font = 'bold 22px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText('ScaleGrades', W / 2, 52);
+    ctx.fillStyle = '#9ca3af'; ctx.font = '12px Arial';
+    ctx.fillText('scalegrades.com  ·  Test për Prindër', W / 2, 72);
+    ctx.fillStyle = '#333b4e'; ctx.fillRect(40, 86, W - 80, 1);
+
+    ctx.fillStyle = '#f3f4f6'; ctx.font = 'bold 20px Arial'; ctx.textAlign = 'center';
+    ctx.fillText('Rezultatet e ' + parentName, W / 2, 116);
+    var cref = childGender === 'M' ? 'Djali juaj ka forcë në:' : childGender === 'F' ? 'Vajza juaj ka forcë në:' : 'Fëmija juaj ka forcë në:';
+    ctx.fillStyle = '#9ca3af'; ctx.font = '12px Arial';
+    ctx.fillText(cref, W / 2, 138);
+
+    var blockY = 152, blockH = 168;
+    top2.forEach(function (item, rank) {
+      var area = AREAS[item.area];
+      var pct  = Math.min(item.score / 5, 1);
+      var by   = blockY + rank * (blockH + 10);
+      var barW = W - 120;
+
+      ctx.fillStyle = '#2a3042'; ppRR(ctx, 30, by, W - 60, blockH - 2, 10); ctx.fill();
+      ctx.fillStyle = area.color; ctx.fillRect(30, by, 4, blockH - 2);
+
+      ctx.fillStyle = '#9ca3af'; ctx.font = '10px Arial'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      ctx.fillText(rank === 0 ? 'Fusha Kryesore' : 'Fusha e Dytë', 48, by + 22);
+
+      ctx.fillStyle = area.color; ctx.font = 'bold 15px Arial';
+      ctx.fillText(area.icon + ' ' + area.name, 48, by + 44);
+
+      ctx.fillStyle = '#1e212a'; ppRR(ctx, 48, by + 56, barW, 7, 3); ctx.fill();
+      if (pct > 0) { ctx.fillStyle = area.color; ppRR(ctx, 48, by + 56, barW * pct, 7, 3); ctx.fill(); }
+
+      ctx.fillStyle = '#9ca3af'; ctx.font = '10px Arial';
+      var d = area.parent_desc.length > 90 ? area.parent_desc.slice(0, 90) + '...' : area.parent_desc;
+      ctx.fillText(d, 48, by + 80);
+
+      ctx.fillStyle = area.color; ctx.font = '10px Arial';
+      ctx.fillText(area.market.length > 80 ? area.market.slice(0, 80) + '...' : area.market, 48, by + 100);
+    });
+
+    var fy = blockY + 2 * blockH + 24;
+    ctx.fillStyle = '#333b4e'; ctx.fillRect(40, fy, W - 80, 1);
+    ctx.fillStyle = '#4b5563'; ctx.font = '11px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('scalegrades.com — Test për Prindër  ·  Albania & Kosovë', W / 2, fy + 22);
+
+    var link = document.createElement('a');
+    link.download = 'ScaleGrades_Prinderit_' + parentName.replace(/\s+/g, '_') + '.png';
+    link.href = cv.toDataURL('image/png');
+    link.click();
+  };
+
+  function ppRR(ctx, x, y, w, h, r) {
+    ctx.beginPath(); ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+
+  /* ── RESTART ────────────────────────────────────────────────────────── */
+  window.ppRestart = function () {
+    testDone = false; currentGroup = -1; answers = {};
+    questionsHijo = []; questionsPadre = []; groups = [];
+    lastResult = null; parentName = ''; childGender = ''; childAge = '';
+    showIntro();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', showIntro);
+  } else {
+    showIntro();
+  }
+})();
+</script>

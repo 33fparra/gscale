@@ -2,101 +2,165 @@
 interface Props {
   title: string;
 }
-
 const { title } = Astro.props;
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScaleGrades — Student Calculator",
+  "url": "https://scalegrades.com/alumno",
+  "description": "Free weighted grade calculator for students. Add sections, set weights, and instantly find out if you pass or qualify for grade exemption.",
+  "applicationCategory": "EducationApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Weighted average calculator",
+    "Section-by-section grade tracking",
+    "Grade exemption checker",
+    "Albanian, English and Spanish support"
+  ],
+  "inLanguage": [
+    { "@type": "Language", "name": "English",  "alternateName": "en" },
+    { "@type": "Language", "name": "Albanian", "alternateName": "sq" },
+    { "@type": "Language", "name": "Spanish",  "alternateName": "es" }
+  ],
+  "audience": { "@type": "Audience", "audienceType": "Students" }
+};
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="sq">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical"  id="link-canonical"   href="https://scalegrades.com/alumno" />
+    <link rel="alternate"  hreflang="x-default"  href="https://scalegrades.com/alumno" />
+    <link rel="alternate"  hreflang="sq"          href="https://scalegrades.com/alumno" />
+    <link rel="alternate"  hreflang="en"          href="https://scalegrades.com/alumno" />
+
+    <!-- SEO parazgjedhëse — shqip (ndryshon nga JS sipas vendndodhjes) -->
+    <title>Llogarit Mesataren Tënde — Mjet Falas për Nxënës | ScaleGrades</title>
+    <meta name="description" content="Llogarit notën tënde përfundimtare me ponderime falas. Shto seksionet, vendos peshat dhe zbulo nëse lirohesh nga provimi final." />
+    <meta name="keywords"    content="llogarit mesataren, nota përfundimtare me ponderime, llogaritës notash nxënës, mesatare ponderuar, lirim provimi, mjet falas nxënës shqip" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"              content="website" />
+    <meta property="og:site_name"         content="ScaleGrades" />
+    <meta property="og:url"               content="https://scalegrades.com/alumno" />
+    <meta property="og:title"             content="Llogarit Mesataren Tënde — Mjet Falas për Nxënës | ScaleGrades" />
+    <meta property="og:description"       content="Llogarit notën tënde përfundimtare me ponderime falas. Shto seksionet, vendos peshat dhe zbulo nëse lirohesh nga provimi final." />
+    <meta property="og:locale"            content="sq_AL" />
+    <meta property="og:locale:alternate"  content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary" />
+    <meta name="twitter:title"       content="Llogarit Mesataren Tënde — Mjet Falas për Nxënës | ScaleGrades" />
+    <meta name="twitter:description" content="Llogarit notën tënde përfundimtare me ponderime falas. Shto seksionet, vendos peshat dhe zbulo nëse lirohesh nga provimi final." />
+
+    <!-- JSON-LD Structured Data (static, crawler-friendly) -->
+    <script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
+
+    <!-- Dynamic SEO: overrides title/meta based on detected IP language -->
     <script is:inline>
-      const metaData = {
+      const _SEO = {
         al: {
-          title: "Llogarit mesataren time - Mjet falas për studentë",
-          description: "Llogaritni mesataret tuaja akademike me ponderime në mënyrë të thjeshtë dhe të shpejtë. Ideal për studentët që dëshirojnë të mbajnë një regjistër të saktë të performancës akademike.",
-          keywords: "llogaritje mesataresh, mjete për studentë, mesatare me ponderime, performancë akademike",
-          ogTitle: "Llogarit mesataren time - Mjet falas për studentë",
-          ogDescription: "Përdorni mjetin tonë për studentë dhe llogaritni mesataret tuaja me ponderime, duke optimizuar kohën tuaj të studimit dhe performancën akademike."
+          lang: 'sq',
+          title: 'Llogarit Mesataren Tënde — Mjet Falas për Nxënës | ScaleGrades',
+          description: 'Llogarit notën tënde përfundimtare me ponderime falas. Shto seksionet, vendos peshat dhe zbulo nëse lirohesh nga provimi final.',
+          keywords: 'llogarit mesataren, nota përfundimtare me ponderime, llogaritës notash nxënës, mesatare ponderuar, lirim provimi, mjet falas nxënës shqip',
+          ogLocale: 'sq_AL',
         },
         en: {
-          title: "Calculate my average - Free tool for students",
-          description: "Calculate your academic averages with weightings in a simple and fast way. Ideal for students who want to keep an accurate record of their academic performance.",
-          keywords: "calculate averages, tools for students, weighted averages, academic performance",
-          ogTitle: "Calculate my average - Free tool for students",
-          ogDescription: "Use our student tool and calculate your weighted averages, optimizing your study time and academic performance."
+          lang: 'en',
+          title: 'Weighted Grade Calculator — Free Average Calculator for Students | ScaleGrades',
+          description: 'Free weighted grade calculator for students. Add sections, set weights, and instantly find out if you pass or qualify for grade exemption.',
+          keywords: 'weighted grade calculator, final grade calculator, student average calculator, weighted average, grade exemption calculator, academic grade calculator',
+          ogLocale: 'en_US',
         },
         es: {
-          title: "Calcula mi promedio - Herramienta gratuita para estudiantes",
-          description: "Calcula tus promedios académicos con ponderaciones de manera sencilla y rápida. Ideal para estudiantes que desean llevar un registro preciso de su rendimiento académico.",
-          keywords: "calcular promedios, herramienta para estudiantes, promedios con ponderaciones, rendimiento académico",
-          ogTitle: "Calcula mi promedio - Herramienta gratuita para estudiantes",
-          ogDescription: "Utiliza nuestra herramienta para estudiantes y calcula tus promedios con ponderaciones, optimizando tu tiempo de estudio y rendimiento académico."
+          lang: 'es',
+          title: 'Calculadora de Promedio Ponderado — Herramienta Gratis para Alumnos | ScaleGrades',
+          description: 'Calcula tu nota final con ponderaciones de forma gratuita. Agrega secciones, configura el peso de cada una y descubre si te eximes del examen.',
+          keywords: 'calculadora promedio ponderado, nota final ponderada, calcula tu promedio, eximirse examen, calculadora notas alumno, promedio académico gratis',
+          ogLocale: 'es_ES',
         }
       };
 
-      async function applyMetaTags() {
-        let lang = 'es';
+      const _AMERICAS = new Set(['US','CA','MX','GT','HN','SV','NI','CR','PA','CU','DO','PR','JM','TT','BB','HT','CL','AR','CO','PE','VE','BO','EC','PY','UY','BR','GY','SR','BZ','GF','GP','MQ']);
+
+      const _GEO = {
+        AL:'al', XK:'al',
+        // ES:'es', CL:'es', AR:'es', CO:'es', PE:'es', VE:'es', BO:'es', EC:'es', PY:'es', UY:'es',
+        // MX:'es', GT:'es', HN:'es', SV:'es', NI:'es', CR:'es', PA:'es', CU:'es', DO:'es',
+        US:'en', CA:'en', AU:'en', GB:'en', NZ:'en', IE:'en', ZA:'en', PH:'en',
+      };
+
+      const _PAIS_LANG = { albania:'al', estados_unidos:'en' /*, chile:'es', espana:'es', mexico:'es' */ };
+
+      async function _detectLang() {
+        const savedPais = localStorage.getItem('gscale_pais');
+        if (savedPais && _PAIS_LANG[savedPais]) return _PAIS_LANG[savedPais];
         try {
-          const response = await fetch('http://ip-api.com/json/?fields=countryCode');
-          const data = await response.json();
-          if (data.countryCode === 'AL') lang = 'al';
-          else if (data.countryCode === 'US') lang = 'en';
-          else if (!['ES', 'CL', 'MX'].includes(data.countryCode)) lang = 'en';
-        } catch(e) {
-          lang = 'en';
-        }
-        
-        const meta = metaData[lang] || metaData.es;
-        
-        document.title = meta.title;
-        
-        let desc = document.querySelector('meta[name="description"]');
-        if (!desc) {
-          desc = document.createElement('meta');
-          desc.name = 'description';
-          document.head.appendChild(desc);
-        }
-        desc.content = meta.description;
-        
-        let keys = document.querySelector('meta[name="keywords"]');
-        if (!keys) {
-          keys = document.createElement('meta');
-          keys.name = 'keywords';
-          document.head.appendChild(keys);
-        }
-        keys.content = meta.keywords;
-        
-        let ogDesc = document.querySelector('meta[property="og:description"]');
-        if (!ogDesc) {
-          ogDesc = document.createElement('meta');
-          ogDesc.property = 'og:description';
-          document.head.appendChild(ogDesc);
-        }
-        ogDesc.content = meta.ogDescription;
-        
-        document.documentElement.lang = lang;
+          const r = await fetch('https://ipapi.co/json/');
+          const d = await r.json();
+          const code = d.country_code;
+          if (_GEO[code]) return _GEO[code];
+          if (!_AMERICAS.has(code)) return 'al';
+        } catch (_) {}
+        return 'en';
       }
-      
-      applyMetaTags();
+
+      function _setMeta(sel, attr, val) {
+        let el = document.querySelector(sel);
+        if (!el) { el = document.createElement('meta'); document.head.appendChild(el); }
+        el.setAttribute(attr, val);
+      }
+
+      (async function () {
+        const lang = await _detectLang();
+        const seo  = _SEO[lang] || _SEO.al;
+        const url  = 'https://scalegrades.com' + window.location.pathname;
+
+        document.title = seo.title;
+        document.documentElement.lang = seo.lang;
+
+        _setMeta('meta[name="description"]',       'content', seo.description);
+        _setMeta('meta[name="keywords"]',           'content', seo.keywords);
+        _setMeta('meta[property="og:title"]',       'content', seo.title);
+        _setMeta('meta[property="og:description"]', 'content', seo.description);
+        _setMeta('meta[property="og:locale"]',      'content', seo.ogLocale);
+        _setMeta('meta[property="og:url"]',         'content', url);
+        _setMeta('meta[name="twitter:title"]',       'content', seo.title);
+        _setMeta('meta[name="twitter:description"]', 'content', seo.description);
+
+        const canonical = document.getElementById('link-canonical');
+        if (canonical) canonical.href = url;
+      })();
     </script>
-    
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- Google Analytics 4 — reemplaza G-Z46VHH4WTV con tu Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z46VHH4WTV" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z46VHH4WTV');
+    </script>
   </head>
   <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
     <slot name="header"></slot>
-  <main style="flex: 1;">
-    <slot />
-  </main>
-  <slot name="footer"></slot>
+    <main style="flex: 1;">
+      <slot />
+    </main>
+    <slot name="footer"></slot>
+    <script src="/js/navbar.js" is:inline></script>
   </body>
   <style is:global>
     * {

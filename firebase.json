@@ -1,6 +1,23 @@
 {
-    "hosting":{
-        "public":"dist",
-        "ignore":[]
+    "hosting": {
+        "public": "dist",
+        "ignore": [],
+        "redirects": [
+            {
+                "source": "/universidades",
+                "destination": "/universitetet",
+                "type": 301
+            },
+            {
+                "source": "/estudiante",
+                "destination": "/nxenes/test-riasec",
+                "type": 301
+            },
+            {
+                "source": "/estudiante/**",
+                "destination": "/nxenes/test-riasec",
+                "type": 301
+            }
+        ]
     }
 }

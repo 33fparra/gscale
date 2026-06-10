@@ -1,157 +1,109 @@
-// Funciones de traducción para Alumnos
-function getTranslation(key) {
-    const traducciones = {
-        al: {
-            notaMaxima: "Nota maksimale",
-            notaMinima: "Nota minimale",
-            titleAlumno: "Llogarit mesataren time",
-            notaEximirse: "Nota për lirim",
-            notaEximirsePlaceholder: "Nota për lirim nga provimi",
-            notaAprobar: "Nota për kaluar",
-            notaAprobarPlaceholder: "Nota për të kaluar",
-            nombreSeccion: "Emri i seksionit",
-            nombreSeccionPlaceholder: "Lëndë, Temë, etj...",
-            ponderaSeccion: "Ponderon seksionin",
-            ponderaNota: "Ponderon notën",
-            agregarNota: "Shto notë",
-            agregarSeccion: "Shto seksion",
-            calcularNotaFinal: "Llogarit notën përfundimtare",
-            promedioSeccion: "Mesatarja e seksionit:",
-            resultado: "Nota përfundimtare e llogaritur:",
-            eximirseMsg: "Po liroheni nga lënda.",
-            noEximirseMsg: "Nuk po liroheni nga lënda.",
-            sinSecciones: " ende nuk keni shtuar të gjitha seksionet tuaja.",
-            ponderacionesError: "Shuma e ponderimeve të seksioneve nuk është 100%.",
-            minimoUnaNota: " Duhet të ketë të paku një notë në seksion.",
-            minimoUnaSeccion: " Duhet të keni të paku një seksion."
-        },
-        en: {
-            notaMaxima: "Maximum grade",
-            notaMinima: "Minimum grade",
-            titleAlumno: "Calculate my average",
-            notaEximirse: "Grade to exempt",
-            notaEximirsePlaceholder: "Grade to exempt from exam",
-            notaAprobar: "Grade to pass",
-            notaAprobarPlaceholder: "Grade to pass",
-            nombreSeccion: "Section name",
-            nombreSeccionPlaceholder: "Subject, Topic, etc...",
-            ponderaSeccion: "Section weight",
-            ponderaNota: "Grade weight",
-            agregarNota: "Add grade",
-            agregarSeccion: "Add section",
-            calcularNotaFinal: "Calculate Final Grade",
-            promedioSeccion: "Section average:",
-            resultado: "Calculated final grade:",
-            eximirseMsg: "You are being exempted from the course.",
-            noEximirseMsg: "You are not being exempted from the course.",
-            sinSecciones: "You haven't added all your sections yet.",
-            ponderacionesError: "The sum of section weights is not 100%.",
-            minimoUnaNota: "There must be at least one note in the section.",
-            minimoUnaSeccion: "You must have at least one section."
-        },
-        es: {
-            notaMaxima: "Nota máxima",
-            notaMinima: "Nota mínima",
-            titleAlumno: "Calcula mi promedio",
-            notaEximirse: "Nota eximirse",
-            notaEximirsePlaceholder: "Nota para eximir examen",
-            notaAprobar: "Nota aprobar",
-            notaAprobarPlaceholder: "Nota para aprobar",
-            nombreSeccion: "Nombre de sección",
-            nombreSeccionPlaceholder: "Taller, Cátedra, etc...",
-            ponderaSeccion: "Pondera la sección",
-            ponderaNota: "Pondera la nota",
-            agregarNota: "Agregar nota",
-            agregarSeccion: "Agregar sección",
-            calcularNotaFinal: "Calcular Nota Final",
-            promedioSeccion: "Promedio de la sección:",
-            resultado: "Nota final calculada:",
-            eximirseMsg: "Te estás eximiendo de la asignatura.",
-            noEximirseMsg: "No te estás eximiendo de la asignatura.",
-            sinSecciones: "Aún no agregas todas tus secciones.",
-            ponderacionesError: "La suma de las ponderaciones de las secciones no es 100%.",
-            minimoUnaNota: "Debe haber al menos una nota en la sección.",
-            minimoUnaSeccion: "Debes tener al menos una sección."
-        }
-    };
-    
-    // Obtener idioma - priorizar localStorage
-    let lang = 'es';
-    
-    // Primero buscar en localStorage
-    const savedLang = localStorage.getItem('gscale_idioma');
-    if (savedLang && ['al', 'en', 'es'].includes(savedLang)) {
-        lang = savedLang;
-    } else {
-        // Si no hay localStorage, usar el lang del documento
-        const docLang = document.documentElement.lang;
-        if (docLang && ['al', 'en', 'es'].includes(docLang)) {
-            lang = docLang;
-        }
-    }
-    
-    const t = traducciones[lang] || traducciones.es;
-    return t[key] || traducciones.es[key] || key;
-}
-
 // Función para actualizar textos de la página Alumnos
+// getTranslation proviene de navbar.js (cargado después de este script)
 function actualizarTextosAlumnos() {
+    console.log('Actualizando textos de Alumnos...');
+    
+    // Forzar lectura del lang del documento
+    const docLang = document.documentElement.lang || 'es';
+    console.log('Idioma del documento:', docLang);
+    
     // Título
-    const titulo = document.querySelector('h2');
-    if (titulo && titulo.textContent.includes('promedio')) {
+    const titulo = document.getElementById('titulo-alumno');
+    if (titulo) {
         titulo.textContent = getTranslation('titleAlumno');
+        console.log('Título actualizado a:', titulo.textContent);
     }
     
-    // Labels
-    const labels = {
-        'notaMaxima': getTranslation('notaMaxima'),
-        'notaMinima': getTranslation('notaMinima'),
-        'notaEximir': getTranslation('notaEximirse'),
-        'notaAprobar': getTranslation('notaAprobar')
-    };
+    // Labels usando IDs directos
+    const labelNotaMaxima = document.getElementById('label-notaMaxima');
+    const labelNotaMinima = document.getElementById('label-notaMinima');
+    const labelNotaEximir = document.getElementById('label-notaEximir');
+    const labelNotaAprobar = document.getElementById('label-notaAprobar');
     
-    Object.keys(labels).forEach(id => {
-        const label = document.querySelector(`label[for="${id}"]`);
-        if (label) label.textContent = labels[id] + ':';
+    if (labelNotaMaxima) {
+        labelNotaMaxima.textContent = getTranslation('notaMaxima') + ':';
+        console.log('Label notaMaxima:', labelNotaMaxima.textContent);
+    }
+    if (labelNotaMinima) labelNotaMinima.textContent = getTranslation('notaMinima') + ':';
+    if (labelNotaEximir) labelNotaEximir.textContent = getTranslation('notaEximirse') + ':';
+    if (labelNotaAprobar) labelNotaAprobar.textContent = getTranslation('notaAprobar') + ':';
+    
+    // Labels de las secciones dinámicas (buscar por texto o clase)
+    const labelsSeccion = document.querySelectorAll('.section .text-xs');
+    console.log('Labels de sección encontrados:', labelsSeccion.length);
+    labelsSeccion.forEach(label => {
+        const texto = label.textContent.toLowerCase();
+        if (texto.includes('nombre de')) {
+            label.textContent = getTranslation('nombreSeccion') + ':';
+        } else if (texto.includes('pondera la sec')) {
+            label.textContent = getTranslation('ponderaSeccion') + ':';
+        } else if (texto.includes('nota:') || texto.includes('nota ')) {
+            label.textContent = getTranslation('notaAprobar') + ':';
+        } else if (texto.includes('pondera la not')) {
+            label.textContent = getTranslation('ponderaNota') + ':';
+        }
     });
     
     // Placeholders de inputs principales
+    const notaMaximaInput = document.getElementById('notaMaxima');
+    const notaMinimaInput = document.getElementById('notaMinima');
     const notaEximirInput = document.getElementById('notaEximir');
-    if (notaEximirInput) notaEximirInput.placeholder = getTranslation('notaEximirsePlaceholder');
-    
     const notaAprobarInput = document.getElementById('notaAprobar');
+    
+    if (notaMaximaInput) notaMaximaInput.placeholder = "10";
+    if (notaMinimaInput) notaMinimaInput.placeholder = "1";
+    if (notaEximirInput) notaEximirInput.placeholder = getTranslation('notaEximirsePlaceholder');
     if (notaAprobarInput) notaAprobarInput.placeholder = getTranslation('notaAprobarPlaceholder');
     
-    // Botones
-    document.querySelectorAll('.add-note-btn').forEach(btn => {
-        btn.textContent = getTranslation('agregarNota');
+    // Placeholders de secciones
+    document.querySelectorAll('.section-name').forEach(input => {
+        input.placeholder = getTranslation('nombreSeccionPlaceholder');
     });
     
-    document.querySelectorAll('.add-section-btn').forEach(btn => {
+    // Botones - FORZAR actualización
+    const addNoteBtns = document.querySelectorAll('.add-note-btn');
+    console.log('Botones agregar nota encontrados:', addNoteBtns.length);
+    addNoteBtns.forEach(btn => {
+        const newText = getTranslation('agregarNota');
+        btn.textContent = newText;
+    });
+    
+    const addSectionBtns = document.querySelectorAll('.add-section-btn');
+    console.log('Botones agregar sección encontrados:', addSectionBtns.length);
+    addSectionBtns.forEach(btn => {
         btn.textContent = getTranslation('agregarSeccion');
     });
     
-    document.querySelectorAll('.calculate-grade-btn').forEach(btn => {
+    const calcBtns = document.querySelectorAll('.calculate-grade-btn');
+    console.log('Botones calcular encontrados:', calcBtns.length);
+    calcBtns.forEach(btn => {
         btn.textContent = getTranslation('calcularNotaFinal');
     });
     
-    // Labels de sección
-    document.querySelectorAll('.section-name').forEach(input => {
-        input.placeholder = getTranslation('nombreSeccionPlaceholder');
+    // Promedio de sección
+    document.querySelectorAll('.section-average').forEach(div => {
+        div.firstChild.textContent = getTranslation('promedioSeccion') + ' ';
     });
     
     // Mensajes iniciales
     const resultDiv = document.getElementById('result');
     if (resultDiv) resultDiv.textContent = getTranslation('sinSecciones');
+    
+    console.log('Textos de Alumnos actualizados');
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     actualizarTextosAlumnos();
-    
-    document.getElementById("result").textContent = getTranslation('sinSecciones');
+
     document.getElementById("eximirse").textContent = "";
     addInputEventListeners(document.getElementById("section1"));
     calculateFinalGrade();
+
+    // Cuando navbar.js termine de detectar el idioma, re-aplicar textos y recalcular
+    document.addEventListener('idiomaListo', () => {
+        actualizarTextosAlumnos();
+        calculateFinalGrade();
+    });
 
     document.querySelectorAll(".add-note-btn").forEach((button) => {
         button.addEventListener("click", () => addNote(button));
@@ -262,10 +214,10 @@ function addSection() {
     </div>
     <div class="w-full mx-auto flex justify-center gap-2">
         <button
-            class="w-max py-2 px-4 text-yellow-500 hover:text-yellow-300 text-white rounded text-xs add-note-btn" style="background: #212735;">
+            class="w-max py-2 px-4 text-orange-500 hover:text-orange-300 text-white rounded text-xs add-note-btn" style="background: #212735;">
             ${getTranslation('agregarNota')}
         </button>
-        <button class="w-max py-2 px-3 text-white rounded text-xs delete-note-btn" style="background: #eab308";>
+        <button class="w-max py-2 px-3 text-white rounded text-xs delete-note-btn" style="background: #f97316";>
             <i class="fas fa-trash"></i>
         </button>
     </div>

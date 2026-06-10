@@ -2,105 +2,169 @@
 interface Props {
   title: string;
 }
-
 const { title } = Astro.props;
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ScaleGrades",
+  "url": "https://scalegrades.com",
+  "description": "Free grade scale calculator for teachers. Set maximum, minimum and passing grades to instantly generate a complete student grade distribution table.",
+  "applicationCategory": "EducationApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Grade scale calculator",
+    "Multi-country grade systems",
+    "Albanian, English and Spanish support",
+    "Automatic grade distribution table"
+  ],
+  "inLanguage": [
+    { "@type": "Language", "name": "English",  "alternateName": "en" },
+    { "@type": "Language", "name": "Albanian", "alternateName": "sq" },
+    { "@type": "Language", "name": "Spanish",  "alternateName": "es" }
+  ],
+  "audience": { "@type": "Audience", "audienceType": "Teachers" }
+};
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="sq">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical"  id="link-canonical"   href="https://scalegrades.com/" />
+    <link rel="alternate"  hreflang="x-default"  href="https://scalegrades.com/" />
+    <link rel="alternate"  hreflang="sq"          href="https://scalegrades.com/" />
+    <link rel="alternate"  hreflang="en"          href="https://scalegrades.com/" />
+
+    <!-- SEO parazgjedhëse — shqip (ndryshon nga JS sipas vendndodhjes) -->
+    <title>Llogaritës i Shkallës së Notave — Falas për Mësues | ScaleGrades</title>
+    <meta name="description" content="Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave të nxënësve tuaj." />
+    <meta name="keywords"    content="llogaritës notash, shkalla e notave, mjet falas mësues, vlerësim nxënësish, tabela e notave, nota kaluese, kalkulator notash shqip" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"              content="website" />
+    <meta property="og:site_name"         content="ScaleGrades" />
+    <meta property="og:url"               content="https://scalegrades.com/" />
+    <meta property="og:title"             content="Llogaritës i Shkallës së Notave — Falas për Mësues | ScaleGrades" />
+    <meta property="og:description"       content="Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave." />
+    <meta property="og:locale"            content="sq_AL" />
+    <meta property="og:locale:alternate"  content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary" />
+    <meta name="twitter:title"       content="Llogaritës i Shkallës së Notave — Falas për Mësues | ScaleGrades" />
+    <meta name="twitter:description" content="Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave." />
+
+    <!-- JSON-LD Structured Data (static, crawler-friendly) -->
+    <script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
+
+    <!-- Dynamic SEO: overrides title/meta based on detected IP language -->
     <script is:inline>
-      // Meta tags dinámicos según idioma
-      const metaData = {
+      const _SEO = {
         al: {
-          title: "Shkalla e notave - Mjet falas për profesorë",
-          description: "Mjet falas për llogaritjen e shkallës së notave dhe vlerësimin e performancës së studentëve në mënyrë efektive dhe të saktë.",
-          keywords: "llogaritja e notave, shkalla e notave, mjete për profesorë, vlerësimi i studentëve",
-          ogTitle: "Shkalla e notave - Mjet falas për profesorë",
-          ogDescription: "Zbuloni se si mjeti ynë ndihmon profesorët të llogarisin shkallat e notave dhe të përmirësojnë vlerësimin në klasë."
+          lang: 'sq',
+          title: 'Llogaritës i Shkallës së Notave — Falas për Mësues | ScaleGrades',
+          description: 'Krijoni shkallë notash profesionale falas. Vendosni notën maksimale, minimale dhe kaluese dhe gjeneroni automatikisht shpërndarjen e plotë të notave të nxënësve tuaj.',
+          keywords: 'llogaritës notash, shkalla e notave, mjet falas mësues, vlerësim nxënësish, tabela e notave, nota kaluese, kalkulator notash shqip',
+          ogLocale: 'sq_AL',
         },
         en: {
-          title: "Grade Scale - Free tool for teachers",
-          description: "Free tool for teachers to calculate grade scales and evaluate student performance effectively and accurately.",
-          keywords: "grade calculation, grade scale, tools for teachers, student assessment",
-          ogTitle: "Grade Scale - Free tool for teachers",
-          ogDescription: "Discover how our tool helps teachers calculate grade scales and improve classroom assessment."
+          lang: 'en',
+          title: 'Grade Scale Calculator — Free Tool for Teachers | ScaleGrades',
+          description: 'Free grade scale calculator for teachers. Set maximum, minimum, and passing grades to instantly generate a complete student grade distribution table.',
+          keywords: 'grade scale calculator, grading scale, teacher grade calculator, grade distribution table, pass fail grade calculator, free grading tool',
+          ogLocale: 'en_US',
         },
         es: {
-          title: "Escala de notas - Herramienta gratuita para profesores",
-          description: "Herramienta gratuita para profesores para calcular escalas de notas y evaluar el rendimiento estudiantil de manera efectiva y precisa.",
-          keywords: "calculo de notas, escalas de notas, herramientas para profesores, evaluación estudiantil",
-          ogTitle: "Escala de notas - Herramienta gratuita para profesores",
-          ogDescription: "Descubre cómo nuestra herramienta ayuda a profesores a calcular escalas de notas y mejorar la evaluación en el aula."
+          lang: 'es',
+          title: 'Calculadora de Escala de Notas — Herramienta Gratis para Profesores | ScaleGrades',
+          description: 'Crea escalas de notas profesionales gratis. Configura nota máxima, mínima y de aprobación para generar automáticamente la distribución de notas de tus alumnos.',
+          keywords: 'calculadora escala de notas, tabla de notas, herramienta para profesores, distribución de notas, calcular nota aprobación, escala de calificaciones gratis',
+          ogLocale: 'es_ES',
         }
       };
 
-      // Detectar idioma y aplicar meta tags
-      async function applyMetaTags() {
-        let lang = 'es';
+      // Countries in the Americas (non-Spanish non-English → Albanian second default)
+      const _AMERICAS = new Set(['US','CA','MX','GT','HN','SV','NI','CR','PA','CU','DO','PR','JM','TT','BB','HT','CL','AR','CO','PE','VE','BO','EC','PY','UY','BR','GY','SR','BZ','GF','GP','MQ']);
+
+      // Direct country → internal language code mapping (Spanish commented out)
+      const _GEO = {
+        AL:'al', XK:'al',
+        // ES:'es', CL:'es', AR:'es', CO:'es', PE:'es', VE:'es', BO:'es', EC:'es', PY:'es', UY:'es',
+        // MX:'es', GT:'es', HN:'es', SV:'es', NI:'es', CR:'es', PA:'es', CU:'es', DO:'es',
+        US:'en', CA:'en', AU:'en', GB:'en', NZ:'en', IE:'en', ZA:'en', PH:'en',
+      };
+
+      // Country-name → language (Spanish commented out for now)
+      const _PAIS_LANG = { albania:'al', estados_unidos:'en' /*, chile:'es', espana:'es', mexico:'es' */ };
+
+      async function _detectLang() {
+        // Derivar idioma del país guardado (evita valores stale de gscale_idioma)
+        const savedPais = localStorage.getItem('gscale_pais');
+        if (savedPais && _PAIS_LANG[savedPais]) return _PAIS_LANG[savedPais];
         try {
-          const response = await fetch('http://ip-api.com/json/?fields=countryCode');
-          const data = await response.json();
-          if (data.countryCode === 'AL') lang = 'al';
-          else if (data.countryCode === 'US') lang = 'en';
-          else if (!['ES', 'CL', 'MX'].includes(data.countryCode)) lang = 'en';
-        } catch(e) {
-          lang = 'en';
-        }
-        
-        const meta = metaData[lang] || metaData.es;
-        
-        // Actualizar meta tags
-        document.title = meta.title;
-        
-        let desc = document.querySelector('meta[name="description"]');
-        if (!desc) {
-          desc = document.createElement('meta');
-          desc.name = 'description';
-          document.head.appendChild(desc);
-        }
-        desc.content = meta.description;
-        
-        let keys = document.querySelector('meta[name="keywords"]');
-        if (!keys) {
-          keys = document.createElement('meta');
-          keys.name = 'keywords';
-          document.head.appendChild(keys);
-        }
-        keys.content = meta.keywords;
-        
-        let ogDesc = document.querySelector('meta[property="og:description"]');
-        if (!ogDesc) {
-          ogDesc = document.createElement('meta');
-          ogDesc.property = 'og:description';
-          document.head.appendChild(ogDesc);
-        }
-        ogDesc.content = meta.ogDescription;
-        
-        // Actualizar html lang
-        document.documentElement.lang = lang;
+          const r = await fetch('https://ipapi.co/json/');
+          const d = await r.json();
+          const code = d.country_code;
+          if (_GEO[code]) return _GEO[code];
+          if (!_AMERICAS.has(code)) return 'al';
+        } catch (_) {}
+        return 'en';
       }
-      
-      applyMetaTags();
+
+      function _setMeta(sel, attr, val) {
+        let el = document.querySelector(sel);
+        if (!el) { el = document.createElement('meta'); document.head.appendChild(el); }
+        el.setAttribute(attr, val);
+      }
+
+      (async function () {
+        const lang = await _detectLang();
+        const seo  = _SEO[lang] || _SEO.al;
+        const url  = 'https://scalegrades.com' + window.location.pathname;
+
+        document.title = seo.title;
+        document.documentElement.lang = seo.lang;
+
+        _setMeta('meta[name="description"]',       'content', seo.description);
+        _setMeta('meta[name="keywords"]',           'content', seo.keywords);
+        _setMeta('meta[property="og:title"]',       'content', seo.title);
+        _setMeta('meta[property="og:description"]', 'content', seo.description);
+        _setMeta('meta[property="og:locale"]',      'content', seo.ogLocale);
+        _setMeta('meta[property="og:url"]',         'content', url);
+        _setMeta('meta[name="twitter:title"]',       'content', seo.title);
+        _setMeta('meta[name="twitter:description"]', 'content', seo.description);
+
+        const canonical = document.getElementById('link-canonical');
+        if (canonical) canonical.href = url;
+      })();
     </script>
-    
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- Google Analytics 4 — reemplaza G-Z46VHH4WTV con tu Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z46VHH4WTV" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z46VHH4WTV');
+    </script>
   </head>
   <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
     <slot name="header"></slot>
-  <main style="flex: 1;">
-    <slot />
-  </main>
-  <slot name="footer"></slot>
+    <main style="flex: 1;">
+      <slot />
+    </main>
+    <slot name="footer"></slot>
+    <script src="/js/navbar.js" is:inline></script>
   </body>
   <style is:global>
     * {

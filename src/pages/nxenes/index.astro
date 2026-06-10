@@ -1,0 +1,253 @@
+---
+import LayoutInfo from "../../layouts/LayoutInfo.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+---
+
+<LayoutInfo
+  title="Mjete për Nxënës — Teste Orientiruese | ScaleGrades"
+  description="Zbulo personalitetin tënd dhe karrierën e duhur me testet tona falas: RIASEC, test personaliteti dhe orientim profesional."
+  canonical="https://scalegrades.com/nxenes"
+>
+  <Navbar slot="header" />
+
+  <div class="tests-page">
+    <div class="tests-header">
+      <div class="tests-badge">Mjete për Nxënës</div>
+      <h1>Zbuloji Veten</h1>
+      <p>Tre teste falas — të thjeshta, të shpejta dhe të besueshme</p>
+    </div>
+
+    <div class="tests-grid">
+
+      <!-- Test 1: Lloji i shokut -->
+      <a href="/nxenes/lloji-i-shokut" class="test-card test-card-purple">
+        <div class="test-num">01</div>
+        <div class="test-icon"><i class="fas fa-users"></i></div>
+        <h2>Cili është lloji yt?</h2>
+        <p>Zbulo personalitetin tënd dhe gjej njërin nga 16 profilet me emra shqiptarë. Test i bazuar në tiparet e personalitetit.</p>
+        <div class="test-tags">
+          <span>Personalitet</span>
+          <span>32 pyetje</span>
+          <span>~10 min</span>
+        </div>
+        <div class="test-cta">Fillo Testin <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- Test 2: Zgjidhje karriere -->
+      <a href="/nxenes/zgjidhje-karriere" class="test-card test-card-blue">
+        <div class="test-num">02</div>
+        <div class="test-icon"><i class="fas fa-compass"></i></div>
+        <h2>Çfarë karriera mund të zgjedhësh?</h2>
+        <p>Test i thjeshtë por i hartuar me kujdes — eksploro karrierat sipas interesave dhe aftësive tuaja personale.</p>
+        <div class="test-tags">
+          <span>Karriera</span>
+          <span>21 pyetje</span>
+          <span>~8 min</span>
+        </div>
+        <div class="test-cta">Fillo Testin <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- Test 3: RIASEC -->
+      <a href="/nxenes/test-riasec" class="test-card test-card-orange">
+        <div class="test-num">03</div>
+        <div class="test-icon"><i class="fas fa-chart-bar"></i></div>
+        <h2>Testi Vocacional RIASEC</h2>
+        <p>Zbulo profilin tënd profesional ndërkombëtar. Metodologji e provuar në mbarë botën — 24 pyetje.</p>
+        <div class="test-tags">
+          <span>RIASEC</span>
+          <span>24 pyetje</span>
+          <span>~10 min</span>
+        </div>
+        <div class="test-cta">Fillo Testin <i class="fas fa-arrow-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="tests-cta-section">
+      <i class="fas fa-star" style="color:#f97316; font-size:1.2rem;"></i>
+      <p>Dëshiron rezultate edhe më të detajuara?</p>
+      <a href="https://leku.al" target="_blank" rel="noopener">Vizito leku.al për teste profesionale →</a>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</LayoutInfo>
+
+<style is:global>
+  body { background-color: #1e212a !important; color: #e5e7eb; }
+</style>
+
+<style>
+  .tests-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 96px 20px 80px;
+    min-height: 100vh;
+  }
+  .tests-header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .tests-badge {
+    display: inline-block;
+    background: rgba(124,58,237,0.12);
+    color: #8b5cf6;
+    border: 1px solid rgba(124,58,237,0.25);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+  .tests-header h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .tests-header p { color: #9ca3af; font-size: 1rem; }
+
+  .tests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-bottom: 48px;
+  }
+
+  .test-card {
+    background: #2a3042;
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid #333b4e;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .test-card:not(.test-card-soon):hover { transform: translateY(-4px); }
+
+  .test-num {
+    font-size: 4rem;
+    font-weight: 900;
+    opacity: 0.06;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    line-height: 1;
+    color: #fff;
+    pointer-events: none;
+    user-select: none;
+  }
+  .test-soon-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #333b4e;
+    color: #6b7280;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .test-icon {
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+  .test-card h2 {
+    font-size: 1.12rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+  }
+  .test-card p {
+    color: #9ca3af;
+    font-size: 0.87rem;
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
+  }
+  .test-tags {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  .test-tags span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: #333b4e;
+    color: #6b7280;
+  }
+  .test-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.87rem;
+    font-weight: 700;
+    padding: 12px 18px;
+    border-radius: 10px;
+    justify-content: center;
+    margin-top: 2px;
+    transition: background 0.18s;
+  }
+  .test-cta-disabled { color: #4b5563; background: #333b4e; cursor: default; }
+
+  /* Variants */
+  .test-card-purple { border-color: rgba(124,58,237,0.28); }
+  .test-card-purple:hover { box-shadow: 0 8px 36px rgba(124,58,237,0.14); }
+  .test-card-purple .test-icon { color: #8b5cf6; }
+  .test-card-purple .test-cta { background: #7c3aed; color: #fff; }
+  .test-card-purple .test-cta:hover { background: #8b5cf6; }
+
+  .test-card-blue { border-color: rgba(59,130,246,0.28); }
+  .test-card-blue:hover { box-shadow: 0 8px 36px rgba(59,130,246,0.12); }
+  .test-card-blue .test-icon { color: #60a5fa; }
+  .test-card-blue .test-cta { background: #3b82f6; color: #fff; }
+  .test-card-blue .test-cta:hover { background: #60a5fa; }
+
+  .test-card-orange { border-color: rgba(249,115,22,0.28); }
+  .test-card-orange:hover { box-shadow: 0 8px 36px rgba(249,115,22,0.12); }
+  .test-card-orange .test-icon { color: #f97316; }
+  .test-card-orange .test-cta { background: #f97316; color: #1e212a; }
+  .test-card-orange .test-cta:hover { background: #fb923c; }
+
+  /* .test-card-soon kept for future use */
+
+  /* CTA section */
+  .tests-cta-section {
+    text-align: center;
+    padding: 32px;
+    background: #2a3042;
+    border-radius: 16px;
+    border: 1px solid #333b4e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .tests-cta-section p { color: #9ca3af; font-size: 0.92rem; }
+  .tests-cta-section a { color: #f97316; font-weight: 700; text-decoration: none; font-size: 0.92rem; }
+  .tests-cta-section a:hover { color: #fb923c; text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .tests-page { padding: 88px 16px 60px; }
+    .tests-header h1 { font-size: 1.8rem; }
+    .tests-grid { grid-template-columns: 1fr; gap: 16px; }
+  }
+</style>

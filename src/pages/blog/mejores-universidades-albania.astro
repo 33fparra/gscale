@@ -1,0 +1,230 @@
+---
+import LayoutInfo from "../../layouts/LayoutInfo.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Universitetet më të Mira në Shqipëri / Best Universities in Albania — 2024",
+  "description": "In-depth analysis of Albania's top universities: public and private, strengths, English-taught programs and how to choose the right one.",
+  "url": "https://scalegrades.com/blog/mejores-universidades-albania",
+  "datePublished": "2024-10-01",
+  "dateModified": "2026-05-30",
+  "inLanguage": ["sq", "en"],
+  "author": { "@type": "Organization", "name": "ScaleGrades", "url": "https://scalegrades.com" },
+  "publisher": { "@type": "Organization", "name": "ScaleGrades", "url": "https://scalegrades.com" },
+  "about": { "@type": "Country", "name": "Albania" }
+};
+
+const unis = [
+  { rank:1, name:"Universiteti i Tiranës (UT)",             nameEn:"University of Tirana (UT)",              type:"Publik",  typeEn:"Public",  founded:1957, students:"~27,000", color:"#f97316",
+    descSq:"Institucioni akademik më i madh dhe më me ndikim. 10 fakultete: shkenca sociale, drejtësi, humanitetë, shkenca natyrore.",
+    descEn:"The largest and most influential academic institution. 10 faculties: social sciences, law, humanities, natural sciences.",
+    programsSq:"Drejtësi, Ekonomi, Marrëdhënie Ndërkombëtare, Filologji", programsEn:"Law, Economics, International Relations, Philology",
+    tuition:"€150–400/vit", lang:"Shqip" },
+  { rank:2, name:"Univ. Politeknik i Tiranës (UPT)",        nameEn:"Polytechnic University of Tirana (UPT)", type:"Publik",  typeEn:"Public",  founded:1951, students:"~8,000",  color:"#7c3aed",
+    descSq:"Qendra kryesore e inxhinierisë dhe shkencave të aplikuara. Partneritete të forta me industrinë dhe BE.",
+    descEn:"The leading engineering and applied sciences centre. Strong EU and industry partnerships.",
+    programsSq:"Inxhinieri Civile, Elektrike, TI, Mekanike", programsEn:"Civil, Electrical, IT, Mechanical Engineering",
+    tuition:"€180–500/vit", lang:"Shqip" },
+  { rank:3, name:"Univ. i Mjekësisë, Tiranë (UMSH)",       nameEn:"University of Medicine, Tirana (UMSH)",  type:"Publik",  typeEn:"Public",  founded:1952, students:"~4,000",  color:"#ea580c",
+    descSq:"I vetmi fakultet publik i mjekësisë. Diploma e njohur nga Shoqata Mjekësore Evropiane.",
+    descEn:"The only public medical faculty. Degree recognized by the European Medical Association.",
+    programsSq:"Mjekësi, Stomatologji, Farmaci, Infermieri", programsEn:"Medicine, Dentistry, Pharmacy, Nursing",
+    tuition:"€250–700/vit", lang:"Shqip" },
+  { rank:4, name:"Epoka University",                        nameEn:"Epoka University",                       type:"Privat",  typeEn:"Private", founded:2007, students:"~5,000",  color:"#f97316",
+    descSq:"Universiteti privat me njohjen ndërkombëtare më të lartë. Mësimdhënie 100% në anglisht. 150+ marrëveshje me universitete evropiane.",
+    descEn:"The highest-ranked private university. 100% English instruction. 150+ agreements with European universities.",
+    programsSq:"Arkitekturë, Inxhinieri Civile, Administrim Biznesi, Drejtësi", programsEn:"Architecture, Civil Engineering, Business Admin, Law",
+    tuition:"€2,500–4,500/vit", lang:"🇬🇧 Anglisht" },
+  { rank:5, name:"Univ. of New York in Tirana (UNYT)",     nameEn:"University of New York in Tirana (UNYT)",type:"Privat",  typeEn:"Private", founded:2002, students:"~2,500",  color:"#7c3aed",
+    descSq:"Sistem arsimor amerikan. Diploma me njohje ndërkombëtare. Ideal për karrierë jashtë Shqipërisë.",
+    descEn:"American-style education with internationally recognized degrees. Ideal for careers outside Albania.",
+    programsSq:"Biznes Ndërkombëtar, Informatikë, Psikologji", programsEn:"International Business, Computer Science, Psychology",
+    tuition:"€3,000–5,000/vit", lang:"🇬🇧 Anglisht" },
+  { rank:6, name:"Canadian Institute of Technology (CIT)", nameEn:"Canadian Institute of Technology (CIT)",  type:"Privat",  typeEn:"Private", founded:2011, students:"~2,000",  color:"#ea580c",
+    descSq:"Zgjedhja më e mirë për teknologjinë informatike. Mësimdhënie në anglisht, partneritete me kompani tech.",
+    descEn:"Top choice for information technology. English instruction, tech company partnerships.",
+    programsSq:"Inxhinieri Informatike, Siguri, Biznes Dixhital", programsEn:"Computer Engineering, Cybersecurity, Digital Business",
+    tuition:"€2,000–3,500/vit", lang:"🇬🇧 Anglisht" },
+];
+---
+
+<LayoutInfo
+  title="Universitetet më të Mira në Shqipëri / Best Universities in Albania 2024 | ScaleGrades"
+  description="Top Albanian universities in 2024: public and private, strengths, English-taught programs, costs and scholarships. Full bilingual guide (Albanian / English)."
+  keywords="universitetet me te mira shqiperi 2024, best universities albania, epoka university, universiteti tiranes, private universities albania, study albania english"
+  canonical="https://scalegrades.com/blog/mejores-universidades-albania"
+  ogType="article"
+  ldJson={ldJson}
+>
+  <Navbar slot="header" />
+
+  <div style="padding-top:62px;">
+
+    <!-- Hero -->
+    <section style="background:linear-gradient(135deg,#1e212a 0%,#3b1f6e 100%); padding:48px 20px 36px; color:#fff; text-align:center;">
+      <div style="max-width:760px; margin:0 auto;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:14px; flex-wrap:wrap;">
+          <a href="/blog" style="color:#c4b5fd; font-size:0.85rem; text-decoration:none; display:flex; align-items:center; gap:5px;">
+            <i class="fas fa-arrow-left"></i> Blog
+          </a>
+          <span style="color:#4b5563;">/</span>
+          <span style="font-size:0.7rem; font-weight:700; padding:3px 10px; border-radius:99px; background:#fff3e0; color:#c2410c;">
+            <span data-lang="sq">Universitetet</span><span data-lang="en">Universities</span>
+          </span>
+        </div>
+        <h1 style="font-size:clamp(1.35rem,4vw,1.95rem); font-weight:900; margin:0 0 6px; line-height:1.3;">
+          <span data-lang="sq">Universitetet më të Mira në Shqipëri — 2024</span>
+          <span data-lang="en">Best Universities in Albania — 2024</span>
+        </h1>
+        <div style="display:flex; align-items:center; justify-content:center; gap:16px; font-size:0.83rem; color:#94a3b8; flex-wrap:wrap; margin-top:12px;">
+          <span><i class="fas fa-calendar"></i> 1 Oct 2024</span>
+          <span><i class="fas fa-clock"></i> <span data-lang="sq">10 min lexim</span><span data-lang="en">10 min read</span></span>
+          <span><i class="fas fa-flag"></i> Shqipëri / Albania</span>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:760px; margin:0 auto; padding:40px 20px 60px;">
+
+      <!-- Intro summary -->
+      <div style="background:#f5f3ff; border:1px solid #ddd6fe; border-radius:10px; padding:20px 24px; margin-bottom:32px;">
+        <h2 style="font-size:0.93rem; font-weight:700; color:#4c1d95; margin:0 0 10px;">
+          <span data-lang="sq">Në këtë artikull</span>
+          <span data-lang="en">In this article</span>
+        </h2>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px; font-size:0.87rem; color:#374151;">
+          <li>→ <span data-lang="sq">Top 3 universitete publike dhe pikat e tyre</span><span data-lang="en">Top 3 public universities and their strengths</span></li>
+          <li>→ <span data-lang="sq">Top 3 universitete private me mësimdhënie në anglisht</span><span data-lang="en">Top 3 private universities with English-taught programs</span></li>
+          <li>→ <span data-lang="sq">Si të zgjidhni midis publikut dhe privatit</span><span data-lang="en">How to choose between public and private</span></li>
+          <li>→ <span data-lang="sq">Kostot, bursat dhe procesi i pranimit</span><span data-lang="en">Costs, scholarships and the admissions process</span></li>
+        </ul>
+      </div>
+
+      <article class="prose">
+
+        <!-- Intro paragraph -->
+        <p>
+          <span data-lang="sq">Shqipëria ka mbi <strong>50 institucione të arsimit të lartë</strong> — universitete publike dhe private. Vendi adoptoi Procesin e Bolonjës në vitin 2003, që do të thotë se diplomat shqiptare njihen në të gjithë Evropën.</span>
+          <span data-lang="en">Albania has over <strong>50 higher education institutions</strong> — public and private universities. The country adopted the Bologna Process in 2003, meaning Albanian degrees are recognized across Europe.</span>
+        </p>
+
+        <!-- University cards -->
+        {unis.map((u) => (
+          <div style={`background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:22px; margin:18px 0; border-left:4px solid ${u.color};`}>
+            <div style="display:flex; align-items:center; gap:13px; margin-bottom:13px;">
+              <div style={`background:${u.color}22; border:2px solid ${u.color}; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.3rem; font-weight:900; color:${u.color}; flex-shrink:0;`}>{u.rank}</div>
+              <div>
+                <h3 style="margin:0; font-size:1.02rem; color:#1e212a; font-weight:800; line-height:1.2;">
+                  <span data-lang="sq">{u.name}</span>
+                  <span data-lang="en">{u.nameEn}</span>
+                </h3>
+                <span style="font-size:0.75rem; color:#9ca3af;">
+                  <span data-lang="sq">{u.type}</span><span data-lang="en">{u.typeEn}</span>
+                  {` · ${u.founded} · ${u.students}`}
+                </span>
+              </div>
+            </div>
+            <p style="font-size:0.89rem; color:#374151; margin:0 0 12px; line-height:1.65;">
+              <span data-lang="sq">{u.descSq}</span>
+              <span data-lang="en">{u.descEn}</span>
+            </p>
+            <div style="display:flex; flex-direction:column; gap:4px; font-size:0.83rem; color:#374151;">
+              <div>
+                <strong style="color:#1e212a;"><span data-lang="sq">Programet kryesore:</span><span data-lang="en">Key programs:</span></strong>{' '}
+                <span data-lang="sq">{u.programsSq}</span>
+                <span data-lang="en">{u.programsEn}</span>
+              </div>
+              <div><strong style="color:#1e212a;"><span data-lang="sq">Gjuha:</span><span data-lang="en">Language:</span></strong> {u.lang}</div>
+              <div><strong style="color:#1e212a;"><span data-lang="sq">Tarifa:</span><span data-lang="en">Tuition:</span></strong> {u.tuition}</div>
+            </div>
+          </div>
+        ))}
+
+        <!-- Public vs Private -->
+        <div data-lang="sq">
+          <h2>Publik apo Privat? Si të zgjidhni</h2>
+          <ul>
+            <li><strong>Buxheti:</strong> Publiket: €150–700/vit. Privatët: €1,500–5,000/vit.</li>
+            <li><strong>Gjuha:</strong> Anglisht → Epoka, UNYT, CIT janë opsionet më të mira.</li>
+            <li><strong>Karriera:</strong> Mjekësi → UMSH. Teknologji → CIT/UPT. Arkitekturë → Epoka/Polis.</li>
+            <li><strong>Njohja ndërkombëtare:</strong> Privatët me akreditime ndërkombëtare hapin më shumë dyer jashtë.</li>
+          </ul>
+
+          <h2>Bursat dhe Financimi</h2>
+          <ul>
+            <li><strong>Bursë qeveritare:</strong> Për nota të larta në Maturë → universitetet publike.</li>
+            <li><strong>Erasmus+:</strong> Semestër studimi në Evropë me financim.</li>
+            <li><strong>Bursa institucionale:</strong> Epoka, UNYT ofrojnë 20%–50% zbritje për meritë.</li>
+            <li><strong>Bursa të huaja:</strong> TÜRKIYE Scholarships, MAECI (Itali), Fulbright (SHBA).</li>
+          </ul>
+
+          <h2>Përfundim</h2>
+          <p>Shqipëria ofron mundësi universitare për të gjitha buxhetet. Nëse kërkoni kosto të ulët → Universiteti i Tiranës. Nëse jepni prioritet anglishtes dhe njohjes ndërkombëtare → Epoka University.</p>
+        </div>
+
+        <div data-lang="en" style="display:none;">
+          <h2>Public vs Private — How to choose</h2>
+          <ul>
+            <li><strong>Budget:</strong> Public: €150–700/year. Private: €1,500–5,000/year.</li>
+            <li><strong>Language:</strong> English instruction → Epoka, UNYT and CIT are the best options.</li>
+            <li><strong>Career:</strong> Medicine → UMSH. Technology → CIT/UPT. Architecture → Epoka/Polis.</li>
+            <li><strong>International recognition:</strong> Internationally accredited private universities open more doors abroad.</li>
+          </ul>
+
+          <h2>Scholarships & Funding</h2>
+          <ul>
+            <li><strong>Government scholarship:</strong> High Matura scores → public university fees covered.</li>
+            <li><strong>Erasmus+:</strong> One semester in Europe with EU funding.</li>
+            <li><strong>Institutional grants:</strong> Epoka, UNYT offer 20%–50% merit discounts.</li>
+            <li><strong>Foreign scholarships:</strong> TÜRKIYE Scholarships, MAECI (Italy), Fulbright (USA).</li>
+          </ul>
+
+          <h2>Conclusion</h2>
+          <p>Albania offers quality university options for all budgets. For low cost and high local reputation → University of Tirana. For English instruction and international recognition → Epoka University.</p>
+        </div>
+
+        <!-- Shared CTA -->
+        <div style="background:#1e212a; border-radius:12px; padding:26px 24px; text-align:center; margin-top:34px;">
+          <p style="color:#a78bfa; font-size:0.85rem; margin:0 0 6px;">
+            <span data-lang="sq">Doni të shikoni renditjen e plotë?</span>
+            <span data-lang="en">Want to see the full ranking?</span>
+          </p>
+          <h3 style="color:#fff; font-size:1.05rem; font-weight:800; margin:0 0 18px;">
+            <span data-lang="sq">Top 10 universitete — publike dhe private</span>
+            <span data-lang="en">Top 10 universities — public and private</span>
+          </h3>
+          <a href="/universitetet" style="padding:11px 26px; background:#f97316; color:#1e212a; font-weight:700; border-radius:7px; text-decoration:none; font-size:0.9rem; display:inline-flex; align-items:center; gap:8px;">
+            <i class="fas fa-trophy"></i>
+            <span data-lang="sq">Shiko Renditjen e Plotë</span>
+            <span data-lang="en">View Full Rankings</span>
+          </a>
+        </div>
+
+        <!-- Related -->
+        <div style="margin-top:40px;">
+          <h3 style="font-size:0.95rem; font-weight:700; color:#1e212a; margin-bottom:12px;">
+            <span data-lang="sq">Artikuj të ngjashëm</span>
+            <span data-lang="en">Related articles</span>
+          </h3>
+          <div style="display:flex; flex-direction:column; gap:9px;">
+            <a href="/blog/sistema-educativo-albania" style="display:flex; align-items:center; gap:10px; padding:13px 16px; background:#fff; border:1px solid #e5e7eb; border-radius:9px; text-decoration:none;">
+              <div style="width:36px; height:36px; border-radius:8px; background:#f5f3ff; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <i class="fas fa-school" style="color:#7c3aed;"></i>
+              </div>
+              <div style="font-size:0.88rem; font-weight:700; color:#1e212a;">
+                <span data-lang="sq">Sistemi Arsimor i Shqipërisë: Udhëzues i Plotë 2024</span>
+                <span data-lang="en">Albania's Education System: Complete Guide 2024</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</LayoutInfo>

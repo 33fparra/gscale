@@ -1,0 +1,318 @@
+---
+import LayoutInfo from "../../layouts/LayoutInfo.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "@/components/footer.astro";
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog i Arsimit — ScaleGrades",
+  "url": "https://scalegrades.com/blog",
+  "description": "Artikuj mbi sistemin arsimor të Shqipërisë, universitetet, karrierat dhe këshilla praktike për studentët.",
+  "inLanguage": ["sq", "en"],
+  "isPartOf": { "@type": "WebSite", "name": "ScaleGrades", "url": "https://scalegrades.com" },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Sistemi Arsimor i Shqipërisë: Udhëzues i Plotë 2024",
+      "url": "https://scalegrades.com/blog/sistema-educativo-albania",
+      "datePublished": "2024-09-01",
+      "inLanguage": "sq"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Universitetet më të Mira në Shqipëri — 2024",
+      "url": "https://scalegrades.com/blog/mejores-universidades-albania",
+      "datePublished": "2024-10-01",
+      "inLanguage": "sq"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Si Funksionon Sistemi i Notave në Shqipëri",
+      "url": "https://scalegrades.com/blog/sistema-notas-albania",
+      "datePublished": "2024-11-01",
+      "inLanguage": "sq"
+    }
+  ]
+};
+
+const posts = [
+  {
+    slug: "sistema-educativo-albania",
+    title: "Sistemi Arsimor i Shqipërisë: Udhëzues i Plotë 2024",
+    titleEn: "Albania's Education System: Complete Guide 2024",
+    excerpt: "Gjithçka që duhet të dini mbi strukturën arsimore shqiptare: nga shkolla fillore deri te universiteti, Procesi i Bolonjës dhe si funksionon shkalla e notave.",
+    date: "1 Sht 2024",
+    category: "Sistemi Arsimor",
+    catBg: "#ede9fe",
+    catColor: "#5b21b6",
+    iconBg: "#ede9fe",
+    iconColor: "#7c3aed",
+    icon: "fa-school",
+    readTime: "8 min",
+  },
+  {
+    slug: "mejores-universidades-albania",
+    title: "Universitetet më të Mira në Shqipëri — 2024",
+    titleEn: "Best Universities in Albania — 2024",
+    excerpt: "Analizë e detajuar e institucioneve kryesore të arsimit të lartë shqiptar: publike dhe private, pikat e forta, programet dhe si të zgjidhni të duhurën.",
+    date: "1 Tet 2024",
+    category: "Universitetet",
+    catBg: "#fff3e0",
+    catColor: "#c2410c",
+    iconBg: "#fff3e0",
+    iconColor: "#f97316",
+    icon: "fa-university",
+    readTime: "10 min",
+  },
+  {
+    slug: "sistema-notas-albania",
+    title: "Si Funksionon Sistemi i Notave në Shqipëri",
+    titleEn: "How the Albanian Grading System Works",
+    excerpt: "Shpjegim i detajuar i shkallës së notave shqiptare (1–10), nota minimale kalimtare (4), si llogariten mesataret dhe ekuivalenca me sistemet ndërkombëtare.",
+    date: "1 Nën 2024",
+    category: "Notat",
+    catBg: "#e0e7ff",
+    catColor: "#3730a3",
+    iconBg: "#e0e7ff",
+    iconColor: "#4338ca",
+    icon: "fa-clipboard-list",
+    readTime: "6 min",
+  },
+];
+---
+
+<LayoutInfo
+  title="Blog i Arsimit në Shqipëri — Universitete, Karriera & Nota | ScaleGrades"
+  description="Artikuj mbi sistemin arsimor shqiptar, universitetet më të mira, karrierat me kërkesë të lartë dhe këshilla praktike për studentët dhe mësuesit."
+  keywords="blog arsimit albania, sistemi arsimor shqiperi, universitetet shqiperi, notat shqiperi, studime ne shqiperi, shkalla e notave albania"
+  canonical="https://scalegrades.com/blog"
+  ldJson={ldJson}
+>
+  <Navbar slot="header" />
+
+  <div style="padding-top: 62px;">
+
+    <!-- Hero -->
+    <section style="background: linear-gradient(135deg, #1e212a 0%, #212735 55%, #4c1d95 100%); padding: 48px 20px 40px; text-align:center; color:#fff;">
+      <div style="max-width:700px; margin:0 auto;">
+        <div style="display:inline-flex; align-items:center; gap:9px; background:rgba(196,181,253,0.15); border:1px solid rgba(196,181,253,0.3); border-radius:99px; padding:6px 16px; margin-bottom:16px; font-size:0.84rem; color:#c4b5fd;">
+          <i class="fas fa-feather-alt"></i> Blog i Arsimit
+        </div>
+        <h1 style="font-size:clamp(1.5rem,4vw,2.2rem); font-weight:900; margin:0 0 6px;">
+          Arsimi në Shqipëri
+        </h1>
+        <p style="font-size:0.88rem; color:#a78bfa; margin:0 0 12px; font-style:italic;">
+          Education in Albania
+        </p>
+        <p style="font-size:1rem; color:#cbd5e1; max-width:540px; margin:0 auto; line-height:1.65;">
+          Artikuj praktikë mbi universitetet, karrierat dhe sistemin e notave — gjithçka për të studiuar me sukses në Shqipëri.
+        </p>
+      </div>
+    </section>
+
+    <!-- Posts grid -->
+    <div style="max-width:980px; margin:0 auto; padding:40px 16px 60px;">
+      <div class="posts-grid">
+
+        {posts.map((post) => (
+          <article class="post-card">
+
+            <!-- Thumbnail -->
+            <div class="post-thumb">
+              <div style={`width:64px; height:64px; border-radius:50%; background:${post.iconBg}; display:flex; align-items:center; justify-content:center; font-size:1.7rem;`}>
+                <i class={`fas ${post.icon}`} style={`color:${post.iconColor};`}></i>
+              </div>
+            </div>
+
+            <!-- Meta -->
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+              <span class="cat-badge" style={`background:${post.catBg}; color:${post.catColor};`}>
+                {post.category}
+              </span>
+              <span class="meta-text">{post.date}</span>
+              <span class="meta-text" style="margin-left:auto;">
+                <i class="fas fa-clock"></i> {post.readTime}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h2 class="post-title">{post.title}</h2>
+            <p class="post-en">{post.titleEn}</p>
+
+            <!-- Excerpt -->
+            <p class="post-excerpt">{post.excerpt}</p>
+
+            <!-- Link -->
+            <a href={`/blog/${post.slug}`} class="read-link">
+              Lexo artikullin <i class="fas fa-arrow-right" style="font-size:0.72rem;"></i>
+            </a>
+          </article>
+        ))}
+
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-box">
+        <div class="cta-icon">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <h3 style="font-size:1.1rem; font-weight:800; color:#fff; margin:0 0 6px;">
+          Keni nevojë të llogarisni notat?
+        </h3>
+        <p style="color:#9ca3af; font-size:0.88rem; margin:0 0 20px; line-height:1.5;">
+          Përdorni mjetet tona falas për të shkallëzuar notat si mësues ose për të llogaritur mesataren tuaj si nxënës.
+        </p>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <a href="/llogarites-mesues" class="cta-btn cta-primary">
+            <i class="fas fa-chalkboard-teacher"></i> Mjet për Mësues
+          </a>
+          <a href="/nxenes" class="cta-btn cta-secondary">
+            <i class="fas fa-user-graduate"></i> Mjet për Nxënës
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</LayoutInfo>
+
+<style>
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 22px;
+    margin-bottom: 44px;
+  }
+
+  .post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.12);
+    border-color: #ddd6fe;
+  }
+
+  .post-thumb {
+    width: 100%;
+    height: 130px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1e212a 0%, #2a2060 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    flex-shrink: 0;
+  }
+
+  .cat-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+
+  .meta-text {
+    font-size: 0.77rem;
+    color: #9ca3af;
+  }
+
+  .post-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e212a;
+    margin: 0 0 3px;
+    line-height: 1.4;
+  }
+
+  .post-en {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    font-style: italic;
+    margin: 0 0 10px;
+  }
+
+  .post-excerpt {
+    font-size: 0.86rem;
+    color: #6b7280;
+    line-height: 1.65;
+    flex: 1;
+    margin: 0 0 16px;
+  }
+
+  .read-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #f97316;
+    font-weight: 700;
+    font-size: 0.86rem;
+    text-decoration: none;
+    margin-top: auto;
+    transition: gap 0.2s;
+  }
+  .read-link:hover { gap: 10px; }
+
+  /* CTA box */
+  .cta-box {
+    background: #1e212a;
+    border: 1px solid #333b4e;
+    border-radius: 14px;
+    padding: 30px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-box::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(124, 58, 237, 0.15);
+    pointer-events: none;
+  }
+
+  .cta-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(249, 115, 22, 0.15);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #f97316;
+    margin: 0 auto 14px;
+  }
+
+  .cta-btn {
+    padding: 10px 22px;
+    font-weight: 700;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .cta-primary  { background: #f97316; color: #1e212a; }
+  .cta-secondary { background: #2a3042; color: #e5e7eb; border: 1px solid #333b4e; }
+</style>

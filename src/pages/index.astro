@@ -1,15 +1,330 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
-import Docente from "../components/docentes.astro";
 import Footer from "@/components/footer.astro";
 ---
 
-<Layout title="Escala de Notas">
-    <Navbar slot="header" />
-    <section class="p-4 mt-20 container mx-auto">
-        <Docente />
-    </section>
-    <Footer slot="footer" />
+<Layout title="ScaleGrades — Platforma Arsimore për Shqipërinë">
+  <Navbar slot="header" />
+
+  <!-- Hero -->
+  <section class="hub-hero">
+    <div class="hub-hero-inner">
+      <div class="hub-logo">Scale<span>Grades</span></div>
+      <h1 class="hub-title">Platforma Arsimore<br>për Shqipërinë</h1>
+      <p class="hub-sub">Mjete praktike për mësues, nxënës dhe prindër — falas dhe në shqip.</p>
+      <div class="hub-cta-row">
+        <a href="/llogarites-mesues" class="hub-cta hub-cta-orange">
+          <i class="fas fa-chalkboard-teacher"></i> Hap Llogaritësin
+        </a>
+        <a href="/nxenes" class="hub-cta hub-cta-purple">
+          <i class="fas fa-star"></i> Zbuloji Veten
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 main sections -->
+  <section class="hub-grid">
+
+    <!-- 1: Mësues -->
+    <div class="hub-card hub-card-orange">
+      <div class="hub-card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+      <h2>Mjete për Mësues</h2>
+      <p>Llogarit shkallën e notave automatikisht. Cakto notat maksimale, minimale dhe pragun e kalimit.</p>
+      <ul class="hub-card-features">
+        <li><i class="fas fa-check"></i> Llogaritës i shkallës së notave</li>
+        <li><i class="fas fa-check"></i> Mbulim i sistemeve: Shqipëri, USA, Europe</li>
+        <li><i class="fas fa-check"></i> Rezultate të menjëhershme</li>
+      </ul>
+      <a href="/llogarites-mesues" class="hub-card-btn">
+        Hap Llogaritësin <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <!-- 2: Nxënës -->
+    <div class="hub-card hub-card-purple">
+      <div class="hub-card-icon"><i class="fas fa-user-graduate"></i></div>
+      <h2>Mjete për Nxënës</h2>
+      <p>Zbulo personalitetin tënd, eksploro karrierat dhe gjej rrugën tënde profesionale.</p>
+      <ul class="hub-card-features">
+        <li><i class="fas fa-check"></i> Çfarë lloj shoku klase je?</li>
+        <li><i class="fas fa-check"></i> Orientim profesional RIASEC</li>
+        <li><i class="fas fa-check"></i> Test i karrierës (së shpejti)</li>
+      </ul>
+      <a href="/nxenes" class="hub-card-btn">
+        Shiko Testet <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <!-- 3: Prindër -->
+    <div class="hub-card hub-card-blue">
+      <div class="hub-card-icon"><i class="fas fa-home"></i></div>
+      <h2>Mjete për Prindër</h2>
+      <p>Udhëzo fëmijën tënd. Kuptoni si t'i mbështesni dhe orientoni më mirë nxënësin tuaj.</p>
+      <ul class="hub-card-features">
+        <li><i class="fas fa-check"></i> Test udhëzues për prindër</li>
+        <li><i class="fas fa-check"></i> Këshilla praktike sipas rezultatit</li>
+        <li><i class="fas fa-check"></i> Të thjeshta dhe direkte</li>
+      </ul>
+      <a href="/prinderit" class="hub-card-btn">
+        Fillo Testin <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <!-- 4: Informohuni -->
+    <div class="hub-card hub-card-mixed">
+      <div class="hub-card-icon"><i class="fas fa-university"></i></div>
+      <h2>Informohuni</h2>
+      <p>Krahasoni universitetet shqiptare dhe ballkanike. Lexoni blogun tonë arsimor.</p>
+      <div class="hub-card-links">
+        <a href="/universitetet" class="hub-link-btn hub-link-orange">
+          <i class="fas fa-university"></i>
+          <div>
+            <span>Universitetet &amp; Karrierat</span>
+            <small>Renditje, krahasime, zgjedhje karriere</small>
+          </div>
+        </a>
+        <a href="/blog" class="hub-link-btn hub-link-purple">
+          <i class="fas fa-feather-alt"></i>
+          <div>
+            <span>Blog Arsimor</span>
+            <small>Artikuj dhe udhëzime për arsimin shqiptar</small>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <Footer slot="footer" />
 </Layout>
-<script src="/js/navbar.js" is:inline></script>
+
+<style is:global>
+  body { background-color: #1e212a !important; color: #e5e7eb; }
+</style>
+
+<style>
+  .hub-hero {
+    background: linear-gradient(160deg, #1e212a 0%, #2a3042 50%, #1e212a 100%);
+    padding: 110px 20px 88px;
+    text-align: center;
+    margin-top: 62px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hub-hero::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: -30%;
+    width: 160%;
+    height: 200%;
+    background: radial-gradient(ellipse at 60% 40%, rgba(249,115,22,0.07) 0%, transparent 55%),
+                radial-gradient(ellipse at 30% 70%, rgba(124,58,237,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hub-hero-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hub-logo {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.08em;
+    margin-bottom: 22px;
+    opacity: 0.35;
+    text-transform: uppercase;
+  }
+  .hub-logo span { color: #f97316; }
+
+  .hub-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+  .hub-sub {
+    font-size: 1.05rem;
+    color: #9ca3af;
+    max-width: 500px;
+    margin: 0 auto 38px;
+    line-height: 1.65;
+  }
+  .hub-cta-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hub-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .hub-cta:hover { transform: translateY(-2px); }
+  .hub-cta-orange {
+    background: #f97316;
+    color: #1e212a;
+    box-shadow: 0 4px 20px rgba(249,115,22,0.28);
+  }
+  .hub-cta-orange:hover { background: #fb923c; box-shadow: 0 6px 28px rgba(249,115,22,0.42); }
+  .hub-cta-purple {
+    background: transparent;
+    color: #8b5cf6;
+    border: 2px solid #7c3aed;
+  }
+  .hub-cta-purple:hover { background: rgba(124,58,237,0.1); box-shadow: 0 4px 20px rgba(124,58,237,0.2); }
+
+  /* Grid */
+  .hub-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px 88px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 22px;
+  }
+  .hub-card {
+    background: #2a3042;
+    border-radius: 18px;
+    padding: 32px;
+    border: 1px solid #333b4e;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .hub-card:hover { transform: translateY(-3px); }
+
+  .hub-card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+  }
+  .hub-card h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+  }
+  .hub-card p {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .hub-card-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    flex: 1;
+    padding: 0;
+  }
+  .hub-card-features li {
+    font-size: 0.82rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .hub-card-features i { font-size: 0.7rem; }
+  .hub-card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.18s, background 0.18s;
+    margin-top: 4px;
+  }
+  .hub-card-btn:hover { transform: translateY(-1px); }
+
+  /* Orange card */
+  .hub-card-orange { border-color: rgba(249,115,22,0.22); }
+  .hub-card-orange:hover { box-shadow: 0 8px 36px rgba(249,115,22,0.1); }
+  .hub-card-orange .hub-card-icon { background: rgba(249,115,22,0.1); color: #f97316; }
+  .hub-card-orange .hub-card-features i { color: #f97316; }
+  .hub-card-orange .hub-card-btn { background: #f97316; color: #1e212a; }
+  .hub-card-orange .hub-card-btn:hover { background: #fb923c; }
+
+  /* Purple card */
+  .hub-card-purple { border-color: rgba(124,58,237,0.22); }
+  .hub-card-purple:hover { box-shadow: 0 8px 36px rgba(124,58,237,0.1); }
+  .hub-card-purple .hub-card-icon { background: rgba(124,58,237,0.1); color: #8b5cf6; }
+  .hub-card-purple .hub-card-features i { color: #8b5cf6; }
+  .hub-card-purple .hub-card-btn { background: #7c3aed; color: #fff; }
+  .hub-card-purple .hub-card-btn:hover { background: #8b5cf6; }
+
+  /* Blue card */
+  .hub-card-blue { border-color: rgba(59,130,246,0.22); }
+  .hub-card-blue:hover { box-shadow: 0 8px 36px rgba(59,130,246,0.1); }
+  .hub-card-blue .hub-card-icon { background: rgba(59,130,246,0.1); color: #60a5fa; }
+  .hub-card-blue .hub-card-features i { color: #60a5fa; }
+  .hub-card-blue .hub-card-btn { background: #3b82f6; color: #fff; }
+  .hub-card-blue .hub-card-btn:hover { background: #60a5fa; }
+
+  /* Mixed card */
+  .hub-card-mixed { border-color: #333b4e; }
+  .hub-card-mixed:hover { box-shadow: 0 8px 36px rgba(0,0,0,0.2); }
+  .hub-card-mixed .hub-card-icon { background: rgba(255,255,255,0.04); color: #6b7280; }
+
+  .hub-card-links {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-top: 4px;
+    flex: 1;
+  }
+  .hub-link-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform 0.18s, background 0.18s;
+    border: 1px solid transparent;
+  }
+  .hub-link-btn:hover { transform: translateX(3px); }
+  .hub-link-btn i { font-size: 1.1rem; flex-shrink: 0; width: 20px; text-align: center; }
+  .hub-link-btn span { font-size: 0.88rem; font-weight: 700; display: block; }
+  .hub-link-btn small { font-size: 0.73rem; opacity: 0.55; display: block; margin-top: 2px; }
+
+  .hub-link-orange {
+    background: rgba(249,115,22,0.07);
+    border-color: rgba(249,115,22,0.18);
+    color: #f97316;
+  }
+  .hub-link-orange:hover { background: rgba(249,115,22,0.13); }
+  .hub-link-purple {
+    background: rgba(124,58,237,0.07);
+    border-color: rgba(124,58,237,0.18);
+    color: #8b5cf6;
+  }
+  .hub-link-purple:hover { background: rgba(124,58,237,0.13); }
+
+  @media (max-width: 767px) {
+    .hub-hero { padding: 88px 20px 64px; }
+    .hub-grid { padding: 40px 16px 64px; gap: 16px; }
+  }
+</style>

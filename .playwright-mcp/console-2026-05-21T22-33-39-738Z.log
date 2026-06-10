@@ -1,0 +1,7 @@
+[     130ms] [LOG] Inicializando idioma... @ http://localhost:4325/js/navbar.js:269
+[     130ms] [LOG] LocalStorage: null null @ http://localhost:4325/js/navbar.js:275
+[     131ms] [LOG] Iniciando detección de IP... @ http://localhost:4325/js/navbar.js:246
+[     590ms] [LOG] País detectado: AL @ http://localhost:4325/js/navbar.js:251
+[     590ms] [LOG] Idioma actual: al @ http://localhost:4325/js/navbar.js:293
+[     591ms] [LOG] Datos del país: {notaMaxima: 10, notaMinima: 1, notaAprobacion: 4, exigencia: 0.4, puntajeMaximo: 10} @ http://localhost:4325/js/navbar.js:300
+[     605ms] [LOG] Textos de Alumnos actualizados en navbar.js @ http://localhost:4325/js/navbar.js:489
